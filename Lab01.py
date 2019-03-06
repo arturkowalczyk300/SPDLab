@@ -1,3 +1,5 @@
+#Sterowanie procesami dyskretnymi, laboratorium 1, 2019
+
 def permutacja(liczba):
     dlugosc = len(liczba)
     if dlugosc == 1:
@@ -18,3 +20,4 @@ def permutacja(liczba):
 lista = [1,2,3]
 for p in permutacja(lista):
     print(p)
+	
