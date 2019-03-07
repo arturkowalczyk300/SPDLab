@@ -27,7 +27,7 @@ zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
 liczba_maszyn = 2
 liczba_zadan = 5
 czas = 0
-
+ 
 # wyswietla wszystkie permutacje
 for p in permutacja(zadania):
     print(p)
