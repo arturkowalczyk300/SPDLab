@@ -27,7 +27,7 @@ zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
 liczba_maszyn = 2
 liczba_zadan = 5
 czas = 0
- 
+
 # wyswietla wszystkie permutacje
 for p in permutacja(zadania):
     print(p)
@@ -37,7 +37,6 @@ zakonczenie_zadan_1[0] = czas_na_maszynie_1[0]
 for i in range(1, 5):
     print("i=", i)
     zakonczenie_zadan_1[i] = zakonczenie_zadan_1[i - 1] + czas_na_maszynie_1[i]
-print("czas zakonczenia ostatniego zadania=", zakonczenie_zadan_1[4])
 
 zakonczenie_zadan_2[0] = zakonczenie_zadan_1[0] + czas_na_maszynie_2[0]
 for i in range(1, 5):
@@ -48,3 +47,6 @@ for i in range(1, 5):
         zakonczenie_zadan_2[i] = zakonczenie_zadan_1[i] + czas_na_maszynie_2[i]
 cmax = zakonczenie_zadan_2[4]
 print("cmax=", cmax)
+
+print("czasy zakonczenia na maszynie 1", zakonczenie_zadan_1)
+print("czasy zakonczenia na maszynie 2", zakonczenie_zadan_2)
