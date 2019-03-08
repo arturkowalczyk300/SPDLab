@@ -1,5 +1,6 @@
 # Sterowanie procesami dyskretnymi, laboratorium 1, 2019
-
+import matplotlib.pyplot as plt
+import numpy as np
 
 def permutacja(liczba):
     dlugosc = len(liczba)
@@ -39,7 +40,11 @@ for p in permutacja(zadania):
 # naturalna kolejnosc (1,2,3,4,5)
 naturalnakolejnosc = [0, 1, 2, 3, 4]
 kolejnosc = [0, 0, 0, 0, 0]
+
+permutacje.clear()
+permutacje.append([1, 2, 3, 4, 5])
 for p in permutacje:
+    # kolejnosc = p
     kolejnosc = p
     for k in range(0, 5):
         kolejnosc[k] = kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
@@ -64,3 +69,25 @@ for p in permutacje:
 
 # print("czasy zakonczenia na maszynie 1", zakonczenie_zadan_1)
 # print("czasy zakonczenia na maszynie 2", zakonczenie_zadan_2)
+print("ZAKONCZENIE", zakonczenie_zadan_1)
+
+# wizualizacja maszyny pierwszej
+plt.figure(figsize=(20,7))
+plt.hlines(-1, 0, zakonczenie_zadan_1[0], colors="red", lw=4)
+plt.hlines(-1, zakonczenie_zadan_1[0], zakonczenie_zadan_1[1], colors="green", lw=4)
+plt.hlines(-1, zakonczenie_zadan_1[1], zakonczenie_zadan_1[2], colors="blue", lw=4)
+plt.hlines(-1, zakonczenie_zadan_1[2], zakonczenie_zadan_1[3], colors="cyan", lw=4)
+plt.hlines(-1, zakonczenie_zadan_1[3], zakonczenie_zadan_1[4], colors="magenta", lw=4)
+# wizualizacja maszyny drugiej
+plt.hlines(-2, zakonczenie_zadan_2[0]-czas_na_maszynie_2[0], zakonczenie_zadan_2[0], colors="red", lw=4)
+plt.hlines(-2, zakonczenie_zadan_2[1]-czas_na_maszynie_2[1], zakonczenie_zadan_2[1], colors="green", lw=4)
+plt.hlines(-2, zakonczenie_zadan_2[2]-czas_na_maszynie_2[2], zakonczenie_zadan_2[2], colors="blue", lw=4)
+plt.hlines(-2, zakonczenie_zadan_2[3]-czas_na_maszynie_2[3], zakonczenie_zadan_2[3], colors="cyan", lw=4)
+plt.hlines(-2, zakonczenie_zadan_2[4]-czas_na_maszynie_2[4], zakonczenie_zadan_2[4], colors="magenta", lw=4)
+
+plt.margins(0.1)
+plt.grid()
+plt.xticks(np.arange(0,40,1))
+plt.yticks(np.arange(0,-3, -1))
+#plt.show()
+plt.savefig('nowywykres')
