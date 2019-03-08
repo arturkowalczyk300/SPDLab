@@ -1,5 +1,5 @@
 # Sterowanie procesami dyskretnymi, laboratorium 1, 2019
-# todo (1): naprawic zly czas ukonczenia w nienaturalnej kolejnosci
+#todo (1): poprawne kolejnosc kolorow
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,7 +13,6 @@ def permutacja(liczba):
         return []
     else:
         wynik = []
-
         for i in range(dlugosc):
             a = liczba[i]
             b = liczba[:i] + liczba[i + 1:]
@@ -22,6 +21,7 @@ def permutacja(liczba):
         return wynik
 
 
+kolory=["red", "green", "blue", "cyan", "magenta"]
 # przykladowa konfiguracja
 zadania = [1, 2, 3, 4, 5]
 czas_na_maszynie_1 = [4, 4, 10, 6, 2]
@@ -31,6 +31,7 @@ zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
 liczba_maszyn = 2
 liczba_zadan = 5
 czas = 0
+
 
 permutacje = []
 
@@ -71,23 +72,23 @@ for p in permutacje:
 
     # wizualizacja maszyny pierwszej
     plt.figure(figsize=(20, 7))
-    plt.hlines(-1, 0, zakonczenie_zadan_1[0], colors="red", lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[0], zakonczenie_zadan_1[1], colors="green", lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[1], zakonczenie_zadan_1[2], colors="blue", lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[2], zakonczenie_zadan_1[3], colors="cyan", lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[3], zakonczenie_zadan_1[4], colors="magenta", lw=4)
+    plt.hlines(-1, 0, zakonczenie_zadan_1[kolejnosc[0]-1], colors=kolory[0], lw=4)
+    plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[0]-1], zakonczenie_zadan_1[kolejnosc[1]-1], colors=kolory[1], lw=4)
+    plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[1]-1], zakonczenie_zadan_1[kolejnosc[2]-1], colors=kolory[2], lw=4)
+    plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[2]-1], zakonczenie_zadan_1[kolejnosc[3]-1], colors=kolory[3], lw=4)
+    plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[3]-1], zakonczenie_zadan_1[kolejnosc[4]-1], colors=kolory[4], lw=4)
     # wizualizacja maszyny drugiej
-    plt.hlines(-2, zakonczenie_zadan_2[0] - czas_na_maszynie_2[0], zakonczenie_zadan_2[0], colors="red", lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[1] - czas_na_maszynie_2[1], zakonczenie_zadan_2[1], colors="green", lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[2] - czas_na_maszynie_2[2], zakonczenie_zadan_2[2], colors="blue", lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[3] - czas_na_maszynie_2[3], zakonczenie_zadan_2[3], colors="cyan", lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[4] - czas_na_maszynie_2[4], zakonczenie_zadan_2[4], colors="magenta", lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[0]-1] - czas_na_maszynie_2[kolejnosc[0]-1], zakonczenie_zadan_2[kolejnosc[0]-1],colors=kolory[0], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[1]-1] - czas_na_maszynie_2[kolejnosc[1]-1], zakonczenie_zadan_2[kolejnosc[1]-1], colors=kolory[1], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[2]-1] - czas_na_maszynie_2[kolejnosc[2]-1], zakonczenie_zadan_2[kolejnosc[2]-1], colors=kolory[2], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[3]-1] - czas_na_maszynie_2[kolejnosc[3]-1], zakonczenie_zadan_2[kolejnosc[3]-1], colors=kolory[3], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[4]-1] - czas_na_maszynie_2[kolejnosc[4]-1], zakonczenie_zadan_2[kolejnosc[4]-1], colors=kolory[4], lw=4)
 
     plt.margins(0.1)
     plt.grid()
     plt.xticks(np.arange(0, 40, 1))
     plt.yticks(np.arange(0, -3, -1))
-    plt.text(0, 0, "kolejnosc: " + str(kolejnosc) + "      cmax=" + str(cmax))
+    plt.text(0, 0, "kolejnosc: " + str(kolejnosc) + " || cmax=" + str(cmax))
     # plt.show()
     plt.savefig("wykresy/" + str(wykres))
     wykres += 1
@@ -109,7 +110,7 @@ for p in permutacje:
             wadliwe = 1
 
     if (wadliwe == 0):
-        print("kolejnosc=", p, "cmax=", cmax)
+        print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
 # print("czasy zakonczenia na maszynie 1", zakonczenie_zadan_1)
 # print("czasy zakonczenia na maszynie 2", zakonczenie_zadan_2)
 print("ZAKONCZENIE", zakonczenie_zadan_1)
