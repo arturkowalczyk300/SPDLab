@@ -29,23 +29,27 @@ liczba_zadan = 5
 czas = 0
 
 # wyswietla wszystkie permutacje
-for p in permutacja(zadania):
-    print(p)
+# for p in permutacja(zadania):
+#    print(p)
 
 # naturalna kolejnosc (1,2,3,4,5)
-zakonczenie_zadan_1[0] = czas_na_maszynie_1[0]
+kolejnosc = [0, 1, 2, 3, 4]
+# kolejnosc = calakolejnosc[1:5]
+
+zakonczenie_zadan_1[kolejnosc[0]] = czas_na_maszynie_1[kolejnosc[0]]
 for i in range(1, 5):
     print("i=", i)
-    zakonczenie_zadan_1[i] = zakonczenie_zadan_1[i - 1] + czas_na_maszynie_1[i]
+    zakonczenie_zadan_1[kolejnosc[i]] = zakonczenie_zadan_1[kolejnosc[i - 1]] + czas_na_maszynie_1[kolejnosc[i]]
 
-zakonczenie_zadan_2[0] = zakonczenie_zadan_1[0] + czas_na_maszynie_2[0]
+zakonczenie_zadan_2[kolejnosc[0]] = zakonczenie_zadan_1[kolejnosc[0]] + czas_na_maszynie_2[kolejnosc[0]]
 for i in range(1, 5):
     # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
-    if (zakonczenie_zadan_1[i] < zakonczenie_zadan_2[i - 1]):  # jesli zakonczenie zadania nastapilo wczesniej
-        zakonczenie_zadan_2[i] = zakonczenie_zadan_2[i - 1] + czas_na_maszynie_2[i]
+    if (zakonczenie_zadan_1[kolejnosc[i]] < zakonczenie_zadan_2[
+        kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
+        zakonczenie_zadan_2[kolejnosc[i]] = zakonczenie_zadan_2[kolejnosc[i - 1]] + czas_na_maszynie_2[kolejnosc[i]]
     else:
-        zakonczenie_zadan_2[i] = zakonczenie_zadan_1[i] + czas_na_maszynie_2[i]
-cmax = zakonczenie_zadan_2[4]
+        zakonczenie_zadan_2[kolejnosc[i]] = zakonczenie_zadan_1[kolejnosc[i]] + czas_na_maszynie_2[kolejnosc[i]]
+cmax = zakonczenie_zadan_2[kolejnosc[4]]
 print("cmax=", cmax)
 
 print("czasy zakonczenia na maszynie 1", zakonczenie_zadan_1)
