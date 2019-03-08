@@ -1,6 +1,9 @@
 # Sterowanie procesami dyskretnymi, laboratorium 1, 2019
+# todo (1): naprawic zly czas ukonczenia w nienaturalnej kolejnosci
+
 import matplotlib.pyplot as plt
 import numpy as np
+
 
 def permutacja(liczba):
     dlugosc = len(liczba)
@@ -40,9 +43,9 @@ for p in permutacja(zadania):
 # naturalna kolejnosc (1,2,3,4,5)
 naturalnakolejnosc = [0, 1, 2, 3, 4]
 kolejnosc = [0, 0, 0, 0, 0]
-wykres=0
-#permutacje.clear()
-#permutacje.append([1, 2, 3, 4, 5])
+wykres = 0
+# permutacje.clear()
+# permutacje.append([1, 2, 3, 4, 5])
 for p in permutacje:
     # kolejnosc = p
     kolejnosc = p
@@ -65,7 +68,7 @@ for p in permutacje:
     cmax = zakonczenie_zadan_2[kolejnosc[4]]
     for k in range(0, 5):
         kolejnosc[k] = kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
-    print("kolejnosc=", p, "cmax=", cmax)
+
     # wizualizacja maszyny pierwszej
     plt.figure(figsize=(20, 7))
     plt.hlines(-1, 0, zakonczenie_zadan_1[0], colors="red", lw=4)
@@ -84,12 +87,29 @@ for p in permutacje:
     plt.grid()
     plt.xticks(np.arange(0, 40, 1))
     plt.yticks(np.arange(0, -3, -1))
+    plt.text(0, 0, "kolejnosc: " + str(kolejnosc) + "      cmax=" + str(cmax))
     # plt.show()
-    plt.savefig("wykresy/"+str(wykres))
-    wykres+=1
+    plt.savefig("wykresy/" + str(wykres))
+    wykres += 1
+    # sprawdzenie czasow ukonczenia - do znalezienia wadliwej konfiguracji
+    max1 = 0
+    max2 = 0
+    wadliwe = 0
+    for i in range(0, 5):
+        if (zakonczenie_zadan_1[kolejnosc[i] - 1] > max1):
+            max1 = zakonczenie_zadan_1[kolejnosc[i] - 1]
+        else:
+            print("#WADLIWA KONFIGURACJA#", p, "czas konca 1", zakonczenie_zadan_1)
+            wadliwe = 1
+    for i in range(0, 5):
+        if (zakonczenie_zadan_2[kolejnosc[i] - 1] > max2):
+            max1 = zakonczenie_zadan_1[kolejnosc[i] - 1]
+        else:
+            print("#WADLIWA KONFIGURACJA#", p, "czas konca 1", zakonczenie_zadan_2)
+            wadliwe = 1
 
+    if (wadliwe == 0):
+        print("kolejnosc=", p, "cmax=", cmax)
 # print("czasy zakonczenia na maszynie 1", zakonczenie_zadan_1)
 # print("czasy zakonczenia na maszynie 2", zakonczenie_zadan_2)
 print("ZAKONCZENIE", zakonczenie_zadan_1)
-
-
