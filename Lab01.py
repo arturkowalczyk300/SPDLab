@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 kolory = ["red", "green", "blue", "cyan", "magenta"]
-
+zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
+zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
 
 def permutacja(liczba):
     dlugosc = len(liczba)
@@ -64,28 +65,27 @@ def wizualizacjaDwochMaszyn(arg_zakonczenie_zadan_1, arg_zakonczenie_zadan_2, ar
     plt.savefig("wykresy/" + str(arg_nazwa_pliku))
 
 
-def przegladKolejnosci(arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2, arg_zakonczenie_zadan_1,
-                       arg_zakonczenie_zadan_2):
-    for k in range(0, 5):
+def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2):
+    for k in range(0, n):
         arg_kolejnosc[k] = arg_kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
-    arg_zakonczenie_zadan_1[arg_kolejnosc[0]] = arg_czas_na_maszynie_1[arg_kolejnosc[0]]
-    for i in range(1, 5):
-        arg_zakonczenie_zadan_1[arg_kolejnosc[i]] = arg_zakonczenie_zadan_1[arg_kolejnosc[i - 1]] + \
+    zakonczenie_zadan_1[arg_kolejnosc[0]] = arg_czas_na_maszynie_1[arg_kolejnosc[0]]
+    for i in range(1, n):
+        zakonczenie_zadan_1[arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i - 1]] + \
                                                     arg_czas_na_maszynie_1[arg_kolejnosc[i]]
-    arg_zakonczenie_zadan_2[arg_kolejnosc[0]] = arg_zakonczenie_zadan_1[arg_kolejnosc[0]] + arg_czas_na_maszynie_2[
+    zakonczenie_zadan_2[arg_kolejnosc[0]] = zakonczenie_zadan_1[arg_kolejnosc[0]] + arg_czas_na_maszynie_2[
         arg_kolejnosc[0]]
-    for i in range(1, 5):
+    for i in range(1, n):
         # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
-        if (arg_zakonczenie_zadan_1[arg_kolejnosc[i]] < arg_zakonczenie_zadan_2[
+        if (zakonczenie_zadan_1[arg_kolejnosc[i]] < zakonczenie_zadan_2[
             arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
-            arg_zakonczenie_zadan_2[arg_kolejnosc[i]] = arg_zakonczenie_zadan_2[arg_kolejnosc[i - 1]] + \
+            zakonczenie_zadan_2[arg_kolejnosc[i]] = zakonczenie_zadan_2[arg_kolejnosc[i - 1]] + \
                                                         arg_czas_na_maszynie_2[
                                                             arg_kolejnosc[i]]
         else:
-            arg_zakonczenie_zadan_2[arg_kolejnosc[i]] = arg_zakonczenie_zadan_1[arg_kolejnosc[i]] + \
+            zakonczenie_zadan_2[arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i]] + \
                                                         arg_czas_na_maszynie_2[arg_kolejnosc[i]]
-    ret_cmax = arg_zakonczenie_zadan_2[arg_kolejnosc[4]]
-    for k in range(0, 5):
+    ret_cmax = zakonczenie_zadan_2[arg_kolejnosc[4]]
+    for k in range(0, n):
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     return ret_cmax
 
@@ -94,8 +94,7 @@ def przegladKolejnosci(arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszyn
 zadania = [1, 2, 3, 4, 5]
 czas_na_maszynie_1 = [4, 4, 10, 6, 2]
 czas_na_maszynie_2 = [5, 1, 4, 10, 3]
-zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
-zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
+
 liczba_maszyn = 2
 liczba_zadan = 5
 czas = 0
@@ -112,7 +111,7 @@ mincmax = 10000
 najlepszaKolejnosc = [0, 0, 0, 0, 0]
 
 for p in permutacje:
-    cmax = przegladKolejnosci(p, czas_na_maszynie_1, czas_na_maszynie_2, zakonczenie_zadan_1, zakonczenie_zadan_2)
+    cmax = przegladKolejnosci(5, p, czas_na_maszynie_1, czas_na_maszynie_2)
     wizualizacjaDwochMaszyn(zakonczenie_zadan_1, zakonczenie_zadan_2, czas_na_maszynie_2, kolejnosc, wykres, cmax)
     wykres += 1
     if cmax < mincmax:
@@ -134,8 +133,8 @@ czas = 0
 
 # algorytm Johnsona dla wariantu 2-maszynowego
 n = zadania  # zadania
-czas1 = czas_na_maszynie_1  # czas zadan na m1
-czas2 = czas_na_maszynie_2  # czas zadan na m2
+czas1 = czas_na_maszynie_1.copy()# czas zadan na m1
+czas2 = czas_na_maszynie_2.copy()  # czas zadan na m2
 m1 = n  # zadania na maszynie1
 m2 = n  # zadania na maszynie2
 a = list(n)  # tworzenie listy do n zadan
@@ -160,8 +159,10 @@ for k in a:
 
 # print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
+#przegladKolejnosci(5,najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2)
 print("algorytm Johnsona dla 2 maszyn: ", najkrotsza)
-#print("cmax=",przegladKolejnosci(najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2, zakonczenie_zadan_1, zakonczenie_zadan_2))
+#print("debug stack", "czas1=", czas_na_maszynie_1, "czas2=",czas_na_maszynie_2, "zak1=",zakonczenie_zadan_1, "zak2",zakonczenie_zadan_2)
+print("cmax=",przegladKolejnosci(5,najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
 
 # Algorytm dla 3 maszyn
 n = [1, 2, 3, 4]  # zadania
