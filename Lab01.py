@@ -102,24 +102,7 @@ for p in permutacje:
     # plt.show()
     #plt.savefig("wykresy/" + str(wykres))
     wykres += 1
-    # sprawdzenie czasow ukonczenia - do znalezienia wadliwej konfiguracji
-    max1 = 0
-    max2 = 0
-    wadliwe = 0
-    for i in range(0, 5):
-        if zakonczenie_zadan_1[kolejnosc[i] - 1] > max1:
-            max1 = zakonczenie_zadan_1[kolejnosc[i] - 1]
-        else:
-            print("#WADLIWA KONFIGURACJA#", p, "czas konca 1", zakonczenie_zadan_1)
-            wadliwe = 1
-    for i in range(0, 5):
-        if zakonczenie_zadan_2[kolejnosc[i] - 1] > max2:
-            max1 = zakonczenie_zadan_1[kolejnosc[i] - 1]
-        else:
-            print("#WADLIWA KONFIGURACJA#", p, "czas konca 1", zakonczenie_zadan_2)
-            wadliwe = 1
-    if wadliwe == 0:
-        print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
+    print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
 
 print("najlepsza konfiguracja przeplywowego", najlepszaKolejnosc, "cmax", mincmax)
 
