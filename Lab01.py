@@ -1,9 +1,12 @@
 # Sterowanie procesami dyskretnymi, laboratorium 1, 2019
 # todo(3) - wizualizacje dla 3 maszyn
 # todo (6) - johnson dla 2 maszyn w osobnej funkcji
+# todo(7) - liczenie cmax dla 3 maszyn
 import matplotlib.pyplot as plt
 import numpy as np
 import time
+
+#sekcja z danymi
 
 kolory = ["red", "green", "blue", "cyan", "magenta"]
 zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
@@ -155,11 +158,11 @@ n = [1, 2, 3, 4]  # zadania
 czas1 = [5, 4, 4, 3]  # czas zadan na m1
 czas2 = [5, 5, 4, 5]  # czas zadan na m2
 czas3 = [3, 2, 5, 7]  # czas zadan na m3
-czasw1 = (czas1 + czas2)
-czasw2 = (czas3 + czas2)
+czasw1 = (czas1 + czas2) #laczymy czasy wykonywania sie na maszynach 1 i 2 w jeden czas
+czasw2 = (czas3 + czas2) #analogicznie dla maszyn 2 i 3
 # print("czasw1", czasw1, " |||| czasw2", czasw2)
 
-# algorytm Johnsona dla wariantu 2-maszynowego
+#w tej chwili mamy obliczone czasy dla dwoch wirtualnych maszyn, wiec mozna uzyc zwyklego algorytmu Johnsona dla dwoch maszyn
 a = list(n)  # tworzenie listy do n zadan
 l1 = []  # scheduler1
 l2 = []  # scheduler2
