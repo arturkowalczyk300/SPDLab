@@ -158,12 +158,8 @@ for k in a:
         czas1.remove(Min1)
         czas2.remove(Min2)
 
-# print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
-# przegladKolejnosci(5,najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2)
-print("algorytm Johnsona dla 2 maszyn: ", najkrotsza)
-# print("debug stack", "czas1=", czas_na_maszynie_1, "czas2=",czas_na_maszynie_2, "zak1=",zakonczenie_zadan_1, "zak2",zakonczenie_zadan_2)
-print("cmax=", przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
+print("algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=", przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
 
 # Algorytm dla 3 maszyn
 n = [1, 2, 3, 4]  # zadania
