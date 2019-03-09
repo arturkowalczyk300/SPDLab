@@ -7,6 +7,7 @@
 # todo (6) - johnson dla 2 maszyn w osobnej funkcji
 import matplotlib.pyplot as plt
 import numpy as np
+import time
 
 kolory = ["red", "green", "blue", "cyan", "magenta"]
 zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
@@ -64,6 +65,7 @@ def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
     plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
     # plt.show()
     plt.savefig("wykresy/" + str(arg_nazwa_pliku))
+    plt.close()
 
 
 def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2):
@@ -118,7 +120,8 @@ for p in permutacje:
     if cmax < mincmax:
         mincmax = cmax
         najlepszaKolejnosc = p
-    print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
+    #print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
+    #time.sleep(1)
 
 print("najlepsza konfiguracja przeplywowego", najlepszaKolejnosc, "cmax", mincmax)
 
