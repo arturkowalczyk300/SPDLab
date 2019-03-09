@@ -92,11 +92,10 @@ def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_mas
     return ret_cmax
 
 
-# przykladowa konfiguracja
+#konfiguracja dla dwoch maszyn
 zadania = [1, 2, 3, 4, 5]
 czas_na_maszynie_1 = [4, 4, 10, 6, 2]
 czas_na_maszynie_2 = [5, 1, 4, 10, 3]
-
 liczba_maszyn = 2
 liczba_zadan = 5
 czas = 0
