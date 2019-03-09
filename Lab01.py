@@ -46,8 +46,8 @@ kolejnosc = [0, 0, 0, 0, 0]
 wykres = 0
 # permutacje.clear()
 # permutacje.append([1, 2, 3, 4, 5])
-mincmax=10000
-najlepszaKolejnosc=[0,0,0,0,0]
+mincmax = 10000
+najlepszaKolejnosc = [0, 0, 0, 0, 0]
 
 for p in permutacje:
     # kolejnosc = p
@@ -71,7 +71,7 @@ for p in permutacje:
         kolejnosc[k] = kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     if cmax < mincmax:
         mincmax = cmax
-        najlepszaKolejnosc=kolejnosc
+        najlepszaKolejnosc = kolejnosc
     # wizualizacja maszyny pierwszej
     plt.figure(figsize=(20, 7))
     plt.hlines(-1, 0, zakonczenie_zadan_1[kolejnosc[0] - 1], colors=kolory[0], lw=4)
@@ -100,12 +100,11 @@ for p in permutacje:
     plt.yticks(np.arange(0, -3, -1))
     plt.text(0, 0, "kolejnosc: " + str(kolejnosc) + " || cmax=" + str(cmax))
     # plt.show()
-    #plt.savefig("wykresy/" + str(wykres))
+    # plt.savefig("wykresy/" + str(wykres))
     wykres += 1
     print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
 
 print("najlepsza konfiguracja przeplywowego", najlepszaKolejnosc, "cmax", mincmax)
-
 
 # przykladowa konfiguracja
 zadania = [1, 2, 3, 4, 5]
@@ -152,42 +151,52 @@ print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
 print(najkrotsza)
 
-"""
+
 #Algorytm dla 3 maszyn
-n #zadania
-czas1=[] #czas zadan na m1
-czas2=[] #czas zadan na m2
-czas3=[] #czas zadan na m3
-m1[n,czas1]
-m2[n,czas2]
-m2[n,czas3]
-czasw1=[(czas1+czas2)]
-czasw2=[(czas3+czas2)]
-mw1=[n, czasw1] #wirtualna maszyna 1
-mw2=[n, czasw2] #wirtualna maszyna 2
-a=list(1,n) # tworzenie listy do n zadan
-l1=[]
-l2=[]
-najkrotsza=[]
-for n in a
-Min1 = min(czasw1)
-Min2 = min(czaw2)
-if Min1 < Min2
-a.remove(m1[n,Min1])
-l1.append(m1[n,Min1])
-elif Min2 < Min1
-a.remove(m2[n,Min2])
-l2.insert(0,m2[n,Min2])
-elif Min1=Min2
-a.remove(m1[n,Min1])
-l1.append(m1[n,Min1]) #mozna wybrac losowo
-Jeśli obie opcje znajdują się na komputerze 1,
- wybierz najpierw tę z dłuższą operacją 2
+n=[1,2,3,4] #zadania
+czas1=[5,4,4,3] #czas zadan na m1
+czas2=[5,5,4,5] #czas zadan na m2
+czas3=[3,2,5,7] #czas zadan na m3
+#m1[n,czas1]
+#m2[n,czas2]
+#m2[n,czas3]
+czasw1=(czas1+czas2)
+czasw2=(czas3+czas2)
+print("czasw1", czasw1, " |||| czasw2", czasw2)
+##mw1=[n, czasw1] #wirtualna maszyna 1
+##mw2=[n, czasw2] #wirtualna maszyna 2
 
-Jeśli oba są na maszynie 2,
-wybierz najpierw tę z dłuższą operacją 1.
+# algorytm Johnsona dla wariantu 2-maszynowego
+n = zadania  # zadania
+#czas1 = czas_na_maszynie_1  # czas zadan na m1
+#czas2 = czas_na_maszynie_2  # czas zadan na m2
+#m1 = n  # zadania na maszynie1
+#m2 = n  # zadania na maszynie2
+a = list(n)  # tworzenie listy do n zadan
+l1 = []  # scheduler1
+l2 = []  # scheduler2
+najkrotsza = []
+for k in a:
+    Min1 = czasw1[0]
+    Min2 = czasw2[0]  # znajdujemy zadanie o najkrotszym czasie wykonywania
+    if Min1 < Min2:  # jesli najkrotsze bedzie na maszynie1, to dodaj je na poczatek
+        l1.append(k)
+        czasw1.remove(Min1)
+        czasw2.remove(Min2)
+    elif Min1 > Min2:  # jesli najkrotsze bedzie na maszynie drugiej to dodaj je na koniec
+        l2.insert(0, k)
+        czasw1.remove(Min1)
+        czasw2.remove(Min2)
+    elif Min1 == Min2:
+        l1.insert(0, k)  # mozna wybrac losowo
+        czasw1.remove(Min1)
+        czasw2.remove(Min2)
 
+# Jeśli obie opcje znajdują się na komputerze 1,
+# wybierz najpierw tę z dłuższą operacją 2
 
+# Jeśli oba są na maszynie 2,
+# wybierz najpierw tę z dłuższą operacją 1.
+print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
 print(najkrotsza)
-"""
