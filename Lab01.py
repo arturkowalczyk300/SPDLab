@@ -85,7 +85,7 @@ def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_mas
         else:
             zakonczenie_zadan_2[arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i]] + \
                                                     arg_czas_na_maszynie_2[arg_kolejnosc[i]]
-    ret_cmax = zakonczenie_zadan_2[arg_kolejnosc[4]]
+    ret_cmax = zakonczenie_zadan_2[arg_kolejnosc[n - 1]]
     for k in range(0, n):
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     return ret_cmax
@@ -159,7 +159,8 @@ for k in a:
         czas2.remove(Min2)
 
 najkrotsza = l1 + l2
-print("algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=", przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
+print("algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=",
+      przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
 
 # Algorytm dla 3 maszyn
 n = [1, 2, 3, 4]  # zadania
@@ -208,4 +209,4 @@ for k in a:
 # wybierz najpierw tę z dłuższą operacją 1.
 # print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
-print("algorytm johnsona dla 3 maszyn", najkrotsza)
+print("algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", przegladKolejnosci(4, najkrotsza, czasw1, czasw2))
