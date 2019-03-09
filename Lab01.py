@@ -3,6 +3,8 @@
 # todo(2) - algorytm johnsona (2) - lepsze wyszukiwanie minimum i iterowanie po petli
 # todo(3) - wizualizacje dla 3 maszyn
 # todo(4) - liczenie cmax dla johnsona
+# todo (5) - przeplyw w osobnej funkcji
+# todo (6) - johnson dla 2 maszyn w osobnej funkcji
 import matplotlib.pyplot as plt
 import numpy as np
 
