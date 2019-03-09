@@ -4,6 +4,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+kolory = ["red", "green", "blue", "cyan", "magenta"]
+
 
 def permutacja(liczba):
     dlugosc = len(liczba)
@@ -21,7 +23,42 @@ def permutacja(liczba):
         return wynik
 
 
-kolory = ["red", "green", "blue", "cyan", "magenta"]
+def wizualizacjaDwochMaszyn(arg_zakonczenie_zadan_1, arg_zakonczenie_zadan_2, arg_czas_na_maszynie_2, arg_kolejnosc,
+                            arg_nazwa_pliku, arg_cmax):
+    plt.figure(figsize=(20, 7))
+    plt.hlines(-1, 0, arg_zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    plt.hlines(-1, arg_zakonczenie_zadan_1[arg_kolejnosc[0] - 1], arg_zakonczenie_zadan_1[arg_kolejnosc[1] - 1],
+               colors=kolory[1],
+               lw=4)
+    plt.hlines(-1, arg_zakonczenie_zadan_1[arg_kolejnosc[1] - 1], arg_zakonczenie_zadan_1[arg_kolejnosc[2] - 1],
+               colors=kolory[2],
+               lw=4)
+    plt.hlines(-1, arg_zakonczenie_zadan_1[arg_kolejnosc[2] - 1], arg_zakonczenie_zadan_1[arg_kolejnosc[3] - 1],
+               colors=kolory[3],
+               lw=4)
+    plt.hlines(-1, arg_zakonczenie_zadan_1[arg_kolejnosc[3] - 1], arg_zakonczenie_zadan_1[arg_kolejnosc[4] - 1],
+               colors=kolory[4],
+               lw=4)
+    # wizualizacja maszyny drugiej
+    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[0] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[0] - 1],
+               arg_zakonczenie_zadan_2[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[1] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[1] - 1],
+               arg_zakonczenie_zadan_2[arg_kolejnosc[1] - 1], colors=kolory[1], lw=4)
+    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[2] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[2] - 1],
+               arg_zakonczenie_zadan_2[arg_kolejnosc[2] - 1], colors=kolory[2], lw=4)
+    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[3] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[3] - 1],
+               arg_zakonczenie_zadan_2[arg_kolejnosc[3] - 1], colors=kolory[3], lw=4)
+    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[4] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[4] - 1],
+               arg_zakonczenie_zadan_2[arg_kolejnosc[4] - 1], colors=kolory[4], lw=4)
+    plt.margins(0.1)
+    plt.grid()
+    plt.xticks(np.arange(0, 40, 1))
+    plt.yticks(np.arange(0, -3, -1))
+    plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
+    # plt.show()
+    plt.savefig("wykresy/" + str(arg_nazwa_pliku))
+
+
 # przykladowa konfiguracja
 zadania = [1, 2, 3, 4, 5]
 czas_na_maszynie_1 = [4, 4, 10, 6, 2]
@@ -73,34 +110,7 @@ for p in permutacje:
         mincmax = cmax
         najlepszaKolejnosc = kolejnosc
     # wizualizacja maszyny pierwszej
-    plt.figure(figsize=(20, 7))
-    plt.hlines(-1, 0, zakonczenie_zadan_1[kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[0] - 1], zakonczenie_zadan_1[kolejnosc[1] - 1], colors=kolory[1],
-               lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[1] - 1], zakonczenie_zadan_1[kolejnosc[2] - 1], colors=kolory[2],
-               lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[2] - 1], zakonczenie_zadan_1[kolejnosc[3] - 1], colors=kolory[3],
-               lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[3] - 1], zakonczenie_zadan_1[kolejnosc[4] - 1], colors=kolory[4],
-               lw=4)
-    # wizualizacja maszyny drugiej
-    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[0] - 1] - czas_na_maszynie_2[kolejnosc[0] - 1],
-               zakonczenie_zadan_2[kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[1] - 1] - czas_na_maszynie_2[kolejnosc[1] - 1],
-               zakonczenie_zadan_2[kolejnosc[1] - 1], colors=kolory[1], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[2] - 1] - czas_na_maszynie_2[kolejnosc[2] - 1],
-               zakonczenie_zadan_2[kolejnosc[2] - 1], colors=kolory[2], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[3] - 1] - czas_na_maszynie_2[kolejnosc[3] - 1],
-               zakonczenie_zadan_2[kolejnosc[3] - 1], colors=kolory[3], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[4] - 1] - czas_na_maszynie_2[kolejnosc[4] - 1],
-               zakonczenie_zadan_2[kolejnosc[4] - 1], colors=kolory[4], lw=4)
-    plt.margins(0.1)
-    plt.grid()
-    plt.xticks(np.arange(0, 40, 1))
-    plt.yticks(np.arange(0, -3, -1))
-    plt.text(0, 0, "kolejnosc: " + str(kolejnosc) + " || cmax=" + str(cmax))
-    # plt.show()
-    # plt.savefig("wykresy/" + str(wykres))
+    wizualizacjaDwochMaszyn(zakonczenie_zadan_1, zakonczenie_zadan_2, czas_na_maszynie_2, kolejnosc, wykres, cmax)
     wykres += 1
     print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
 
@@ -151,27 +161,26 @@ print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
 print(najkrotsza)
 
-
-#Algorytm dla 3 maszyn
-n=[1,2,3,4] #zadania
-czas1=[5,4,4,3] #czas zadan na m1
-czas2=[5,5,4,5] #czas zadan na m2
-czas3=[3,2,5,7] #czas zadan na m3
-#m1[n,czas1]
-#m2[n,czas2]
-#m2[n,czas3]
-czasw1=(czas1+czas2)
-czasw2=(czas3+czas2)
+# Algorytm dla 3 maszyn
+n = [1, 2, 3, 4]  # zadania
+czas1 = [5, 4, 4, 3]  # czas zadan na m1
+czas2 = [5, 5, 4, 5]  # czas zadan na m2
+czas3 = [3, 2, 5, 7]  # czas zadan na m3
+# m1[n,czas1]
+# m2[n,czas2]
+# m2[n,czas3]
+czasw1 = (czas1 + czas2)
+czasw2 = (czas3 + czas2)
 print("czasw1", czasw1, " |||| czasw2", czasw2)
 ##mw1=[n, czasw1] #wirtualna maszyna 1
 ##mw2=[n, czasw2] #wirtualna maszyna 2
 
 # algorytm Johnsona dla wariantu 2-maszynowego
 n = zadania  # zadania
-#czas1 = czas_na_maszynie_1  # czas zadan na m1
-#czas2 = czas_na_maszynie_2  # czas zadan na m2
-#m1 = n  # zadania na maszynie1
-#m2 = n  # zadania na maszynie2
+# czas1 = czas_na_maszynie_1  # czas zadan na m1
+# czas2 = czas_na_maszynie_2  # czas zadan na m2
+# m1 = n  # zadania na maszynie1
+# m2 = n  # zadania na maszynie2
 a = list(n)  # tworzenie listy do n zadan
 l1 = []  # scheduler1
 l2 = []  # scheduler2
