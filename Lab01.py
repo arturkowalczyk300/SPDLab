@@ -46,8 +46,8 @@ kolejnosc = [0, 0, 0, 0, 0]
 wykres = 0
 # permutacje.clear()
 # permutacje.append([1, 2, 3, 4, 5])
-przeplywowy=0
-if(przeplywowy):
+przeplywowy = 0
+if (przeplywowy):
     for p in permutacje:
         # kolejnosc = p
         kolejnosc = p
@@ -64,7 +64,8 @@ if(przeplywowy):
             # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
             if (zakonczenie_zadan_1[kolejnosc[i]] < zakonczenie_zadan_2[
                 kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
-                zakonczenie_zadan_2[kolejnosc[i]] = zakonczenie_zadan_2[kolejnosc[i - 1]] + czas_na_maszynie_2[kolejnosc[i]]
+                zakonczenie_zadan_2[kolejnosc[i]] = zakonczenie_zadan_2[kolejnosc[i - 1]] + czas_na_maszynie_2[
+                    kolejnosc[i]]
             else:
                 zakonczenie_zadan_2[kolejnosc[i]] = zakonczenie_zadan_1[kolejnosc[i]] + czas_na_maszynie_2[kolejnosc[i]]
         cmax = zakonczenie_zadan_2[kolejnosc[4]]
@@ -74,10 +75,14 @@ if(przeplywowy):
         # wizualizacja maszyny pierwszej
         plt.figure(figsize=(20, 7))
         plt.hlines(-1, 0, zakonczenie_zadan_1[kolejnosc[0] - 1], colors=kolory[0], lw=4)
-        plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[0] - 1], zakonczenie_zadan_1[kolejnosc[1] - 1], colors=kolory[1], lw=4)
-        plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[1] - 1], zakonczenie_zadan_1[kolejnosc[2] - 1], colors=kolory[2], lw=4)
-        plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[2] - 1], zakonczenie_zadan_1[kolejnosc[3] - 1], colors=kolory[3], lw=4)
-        plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[3] - 1], zakonczenie_zadan_1[kolejnosc[4] - 1], colors=kolory[4], lw=4)
+        plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[0] - 1], zakonczenie_zadan_1[kolejnosc[1] - 1], colors=kolory[1],
+                   lw=4)
+        plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[1] - 1], zakonczenie_zadan_1[kolejnosc[2] - 1], colors=kolory[2],
+                   lw=4)
+        plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[2] - 1], zakonczenie_zadan_1[kolejnosc[3] - 1], colors=kolory[3],
+                   lw=4)
+        plt.hlines(-1, zakonczenie_zadan_1[kolejnosc[3] - 1], zakonczenie_zadan_1[kolejnosc[4] - 1], colors=kolory[4],
+                   lw=4)
         # wizualizacja maszyny drugiej
         plt.hlines(-2, zakonczenie_zadan_2[kolejnosc[0] - 1] - czas_na_maszynie_2[kolejnosc[0] - 1],
                    zakonczenie_zadan_2[kolejnosc[0] - 1], colors=kolory[0], lw=4)
@@ -121,9 +126,6 @@ if(przeplywowy):
     # print("czasy zakonczenia na maszynie 2", zakonczenie_zadan_2)
     print("ZAKONCZENIE", zakonczenie_zadan_1)
 
-
-
-
 # przykladowa konfiguracja
 zadania = [1, 2, 3, 4, 5]
 czas_na_maszynie_1 = [4, 4, 10, 6, 2]
@@ -133,39 +135,52 @@ zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
 liczba_maszyn = 2
 liczba_zadan = 5
 czas = 0
-#algorytm Johnsona dla wariantu 2-maszynowego
-n=zadania #zadania
-czas1=czas_na_maszynie_1 #czas zadan na m1
-czas2=czas_na_maszynie_2 #czas zadan na m2
-m1=[n,czas1]
-m2=[n,czas2]
-print("m1", m1)
-a=list(n) # tworzenie listy do n zadan
-l1=[]
-l2=[]
-najkrotsza=[]
-for n in a:
-    Min1 = min(czas1)
-    Min2 = min(czas2)
-    if Min1 < Min2:
-        a.remove(m1[n,Min1])
-        l1.append(m1[n,Min1])
-    elif Min2 < Min1:
-        a.remove(m2[n,Min2])
-        l2.insert(0,m2[n,Min2])
-    elif Min1==Min2:
-        a.remove(m1[n,Min1])
-        l1.append(m1[n,Min1]) #mozna wybrac losowo
-#Jeśli obie opcje znajdują się na komputerze 1,
+# algorytm Johnsona dla wariantu 2-maszynowego
+n = zadania  # zadania
+czas1 = czas_na_maszynie_1  # czas zadan na m1
+czas2 = czas_na_maszynie_2  # czas zadan na m2
+m1 = n  # zadania na maszynie1
+m2 = n  # zadania na maszynie2
+print("zadania", m1[0], "czas na maszynie 1", m1[1])
+a = list(n)  # tworzenie listy do n zadan
+print("aaaa", a)
+l1 = []  # scheduler1
+l2 = []  # scheduler2
+najkrotsza = []
+for k in a:
+    Min1 = czas1[0]
+    Min2 = czas2[0]  # znajdujemy zadanie o najkrotszym czasie wykonywania
+   # print("min1", Min1)
+   # print("min2", Min2)
+    if Min1 < Min2:  # jesli najkrotsze bedzie na maszynie1, to dodaj je na poczatek
+        # a.remove(k)
+        print("i=", k,"mniejszy, czas pracy",Min1)
+        #l1.insert(0, k)
+        l1.append(k)
+        czas1.remove(Min1)
+        czas2.remove(Min2)
+    elif Min1 > Min2:  # jesli najkrotsze bedzie na maszynie drugiej to dodaj je na koniec
+        ##a.remove(k)
+        print("i=", k,"wiekszy, czas pracy",Min2)
+        #l2.append(k)
+        l2.insert(0, k)
+        czas1.remove(Min1)
+        czas2.remove(Min2)
+    elif Min1 == Min2:
+        ##a.remove(k)
+        print("i=", k,"rowny, czas pracy",Min1)
+        l1.insert(0, k)  # mozna wybrac losowo
+        czas1.remove(Min1)
+        czas2.remove(Min2)
+
+# Jeśli obie opcje znajdują się na komputerze 1,
 # wybierz najpierw tę z dłuższą operacją 2
 
-#Jeśli oba są na maszynie 2,
-#wybierz najpierw tę z dłuższą operacją 1.
-
-
+# Jeśli oba są na maszynie 2,
+# wybierz najpierw tę z dłuższą operacją 1.
+print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
 print(najkrotsza)
-
 
 """
 #Algorytm dla 3 maszyn
