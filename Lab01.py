@@ -12,6 +12,7 @@ kolory = ["red", "green", "blue", "cyan", "magenta"]
 zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
 zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
 
+
 def permutacja(liczba):
     dlugosc = len(liczba)
     if dlugosc == 1:
@@ -28,34 +29,34 @@ def permutacja(liczba):
         return wynik
 
 
-def wizualizacjaDwochMaszyn(arg_zakonczenie_zadan_1, arg_zakonczenie_zadan_2, arg_czas_na_maszynie_2, arg_kolejnosc,
+def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
                             arg_nazwa_pliku, arg_cmax):
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
-    plt.hlines(-1, 0, arg_zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    plt.hlines(-1, arg_zakonczenie_zadan_1[arg_kolejnosc[0] - 1], arg_zakonczenie_zadan_1[arg_kolejnosc[1] - 1],
+    plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], zakonczenie_zadan_1[arg_kolejnosc[1] - 1],
                colors=kolory[1],
                lw=4)
-    plt.hlines(-1, arg_zakonczenie_zadan_1[arg_kolejnosc[1] - 1], arg_zakonczenie_zadan_1[arg_kolejnosc[2] - 1],
+    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[1] - 1], zakonczenie_zadan_1[arg_kolejnosc[2] - 1],
                colors=kolory[2],
                lw=4)
-    plt.hlines(-1, arg_zakonczenie_zadan_1[arg_kolejnosc[2] - 1], arg_zakonczenie_zadan_1[arg_kolejnosc[3] - 1],
+    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[2] - 1], zakonczenie_zadan_1[arg_kolejnosc[3] - 1],
                colors=kolory[3],
                lw=4)
-    plt.hlines(-1, arg_zakonczenie_zadan_1[arg_kolejnosc[3] - 1], arg_zakonczenie_zadan_1[arg_kolejnosc[4] - 1],
+    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[3] - 1], zakonczenie_zadan_1[arg_kolejnosc[4] - 1],
                colors=kolory[4],
                lw=4)
     # wizualizacja maszyny drugiej
-    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[0] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[0] - 1],
-               arg_zakonczenie_zadan_2[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[1] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[1] - 1],
-               arg_zakonczenie_zadan_2[arg_kolejnosc[1] - 1], colors=kolory[1], lw=4)
-    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[2] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[2] - 1],
-               arg_zakonczenie_zadan_2[arg_kolejnosc[2] - 1], colors=kolory[2], lw=4)
-    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[3] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[3] - 1],
-               arg_zakonczenie_zadan_2[arg_kolejnosc[3] - 1], colors=kolory[3], lw=4)
-    plt.hlines(-2, arg_zakonczenie_zadan_2[arg_kolejnosc[4] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[4] - 1],
-               arg_zakonczenie_zadan_2[arg_kolejnosc[4] - 1], colors=kolory[4], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[0] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[0] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[1] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[1] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[1] - 1], colors=kolory[1], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[2] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[2] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[2] - 1], colors=kolory[2], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[3] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[3] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[3] - 1], colors=kolory[3], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[4] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[4] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[4] - 1], colors=kolory[4], lw=4)
     plt.margins(0.1)
     plt.grid()
     plt.xticks(np.arange(0, 40, 1))
@@ -71,7 +72,7 @@ def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_mas
     zakonczenie_zadan_1[arg_kolejnosc[0]] = arg_czas_na_maszynie_1[arg_kolejnosc[0]]
     for i in range(1, n):
         zakonczenie_zadan_1[arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i - 1]] + \
-                                                    arg_czas_na_maszynie_1[arg_kolejnosc[i]]
+                                                arg_czas_na_maszynie_1[arg_kolejnosc[i]]
     zakonczenie_zadan_2[arg_kolejnosc[0]] = zakonczenie_zadan_1[arg_kolejnosc[0]] + arg_czas_na_maszynie_2[
         arg_kolejnosc[0]]
     for i in range(1, n):
@@ -79,11 +80,11 @@ def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_mas
         if (zakonczenie_zadan_1[arg_kolejnosc[i]] < zakonczenie_zadan_2[
             arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
             zakonczenie_zadan_2[arg_kolejnosc[i]] = zakonczenie_zadan_2[arg_kolejnosc[i - 1]] + \
-                                                        arg_czas_na_maszynie_2[
-                                                            arg_kolejnosc[i]]
+                                                    arg_czas_na_maszynie_2[
+                                                        arg_kolejnosc[i]]
         else:
             zakonczenie_zadan_2[arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i]] + \
-                                                        arg_czas_na_maszynie_2[arg_kolejnosc[i]]
+                                                    arg_czas_na_maszynie_2[arg_kolejnosc[i]]
     ret_cmax = zakonczenie_zadan_2[arg_kolejnosc[4]]
     for k in range(0, n):
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
@@ -112,7 +113,7 @@ najlepszaKolejnosc = [0, 0, 0, 0, 0]
 
 for p in permutacje:
     cmax = przegladKolejnosci(5, p, czas_na_maszynie_1, czas_na_maszynie_2)
-    wizualizacjaDwochMaszyn(zakonczenie_zadan_1, zakonczenie_zadan_2, czas_na_maszynie_2, kolejnosc, wykres, cmax)
+    wizualizacjaDwochMaszyn(czas_na_maszynie_2, p, wykres, cmax)
     wykres += 1
     if cmax < mincmax:
         mincmax = cmax
@@ -133,7 +134,7 @@ czas = 0
 
 # algorytm Johnsona dla wariantu 2-maszynowego
 n = zadania  # zadania
-czas1 = czas_na_maszynie_1.copy()# czas zadan na m1
+czas1 = czas_na_maszynie_1.copy()  # czas zadan na m1
 czas2 = czas_na_maszynie_2.copy()  # czas zadan na m2
 m1 = n  # zadania na maszynie1
 m2 = n  # zadania na maszynie2
@@ -159,10 +160,10 @@ for k in a:
 
 # print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
-#przegladKolejnosci(5,najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2)
+# przegladKolejnosci(5,najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2)
 print("algorytm Johnsona dla 2 maszyn: ", najkrotsza)
-#print("debug stack", "czas1=", czas_na_maszynie_1, "czas2=",czas_na_maszynie_2, "zak1=",zakonczenie_zadan_1, "zak2",zakonczenie_zadan_2)
-print("cmax=",przegladKolejnosci(5,najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
+# print("debug stack", "czas1=", czas_na_maszynie_1, "czas2=",czas_na_maszynie_2, "zak1=",zakonczenie_zadan_1, "zak2",zakonczenie_zadan_2)
+print("cmax=", przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
 
 # Algorytm dla 3 maszyn
 n = [1, 2, 3, 4]  # zadania
@@ -174,12 +175,12 @@ czas3 = [3, 2, 5, 7]  # czas zadan na m3
 # m2[n,czas3]
 czasw1 = (czas1 + czas2)
 czasw2 = (czas3 + czas2)
-#print("czasw1", czasw1, " |||| czasw2", czasw2)
+# print("czasw1", czasw1, " |||| czasw2", czasw2)
 ##mw1=[n, czasw1] #wirtualna maszyna 1
 ##mw2=[n, czasw2] #wirtualna maszyna 2
 
 # algorytm Johnsona dla wariantu 2-maszynowego
-#n = zadania  # zadania
+# n = zadania  # zadania
 # czas1 = czas_na_maszynie_1  # czas zadan na m1
 # czas2 = czas_na_maszynie_2  # czas zadan na m2
 # m1 = n  # zadania na maszynie1
@@ -209,6 +210,6 @@ for k in a:
 
 # Jeśli oba są na maszynie 2,
 # wybierz najpierw tę z dłuższą operacją 1.
-#print("l1=", l1, " || l2=", l2)
+# print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
-print("algorytm johnsona dla 3 maszyn",najkrotsza)
+print("algorytm johnsona dla 3 maszyn", najkrotsza)
