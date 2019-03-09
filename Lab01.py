@@ -116,20 +116,9 @@ for p in permutacje:
     if cmax < mincmax:
         mincmax = cmax
         najlepszaKolejnosc = p
-    #print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
-    #time.sleep(1)
+    print("kolejnosc=", p, " || cmax=", cmax)
 
-print("najlepsza konfiguracja przeplywowego", najlepszaKolejnosc, "cmax", mincmax)
-
-#dane
-#zadania = [1, 2, 3, 4, 5]
-#czas_na_maszynie_1 = [4, 4, 10, 6, 2]
-#czas_na_maszynie_2 = [5, 1, 4, 10, 3]
-#zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
-#zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
-#liczba_maszyn = 2
-#liczba_zadan = 5
-#czas = 0
+print("1) Najlepsza kolejnosc z przegladu zupelnego:", najlepszaKolejnosc, "cmax", mincmax)
 
 # algorytm Johnsona dla wariantu 2-maszynowego
 n = zadania  # zadania
@@ -158,7 +147,7 @@ for k in a:
         czas2.remove(Min2)
 
 najkrotsza = l1 + l2
-print("algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=",
+print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=",
       przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
 
 # Algorytm dla 3 maszyn
@@ -168,7 +157,7 @@ czas2 = [5, 5, 4, 5]  # czas zadan na m2
 czas3 = [3, 2, 5, 7]  # czas zadan na m3
 czasw1 = (czas1 + czas2)
 czasw2 = (czas3 + czas2)
-#print("czasw1", czasw1, " |||| czasw2", czasw2)
+# print("czasw1", czasw1, " |||| czasw2", czasw2)
 
 # algorytm Johnsona dla wariantu 2-maszynowego
 a = list(n)  # tworzenie listy do n zadan
@@ -192,4 +181,4 @@ for k in a:
         czasw2.remove(Min2)
 
 najkrotsza = l1 + l2
-print("algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", przegladKolejnosci(4, najkrotsza, czasw1, czasw2))
+print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", przegladKolejnosci(4, najkrotsza, czasw1, czasw2))
