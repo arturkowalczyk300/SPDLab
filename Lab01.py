@@ -1,6 +1,8 @@
 # Sterowanie procesami dyskretnymi, laboratorium 1, 2019
 # todo(1) - refaktoryzacja - mniej wywolan zmienionej kolejnosci
 # todo(2) - algorytm johnsona (2) - lepsze wyszukiwanie minimum i iterowanie po petli
+# todo(3) - wizualizacje dla 3 maszyn
+# todo(4) - liczenie cmax dla johnsona
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -60,6 +62,32 @@ def wizualizacjaDwochMaszyn(arg_zakonczenie_zadan_1, arg_zakonczenie_zadan_2, ar
     plt.savefig("wykresy/" + str(arg_nazwa_pliku))
 
 
+def przegladKolejnosci(arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2, arg_zakonczenie_zadan_1,
+                       arg_zakonczenie_zadan_2):
+    for k in range(0, 5):
+        arg_kolejnosc[k] = arg_kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
+    arg_zakonczenie_zadan_1[arg_kolejnosc[0]] = arg_czas_na_maszynie_1[arg_kolejnosc[0]]
+    for i in range(1, 5):
+        arg_zakonczenie_zadan_1[arg_kolejnosc[i]] = arg_zakonczenie_zadan_1[arg_kolejnosc[i - 1]] + \
+                                                    arg_czas_na_maszynie_1[arg_kolejnosc[i]]
+    arg_zakonczenie_zadan_2[arg_kolejnosc[0]] = arg_zakonczenie_zadan_1[arg_kolejnosc[0]] + arg_czas_na_maszynie_2[
+        arg_kolejnosc[0]]
+    for i in range(1, 5):
+        # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
+        if (arg_zakonczenie_zadan_1[arg_kolejnosc[i]] < arg_zakonczenie_zadan_2[
+            arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
+            arg_zakonczenie_zadan_2[arg_kolejnosc[i]] = arg_zakonczenie_zadan_2[arg_kolejnosc[i - 1]] + \
+                                                        arg_czas_na_maszynie_2[
+                                                            arg_kolejnosc[i]]
+        else:
+            arg_zakonczenie_zadan_2[arg_kolejnosc[i]] = arg_zakonczenie_zadan_1[arg_kolejnosc[i]] + \
+                                                        arg_czas_na_maszynie_2[arg_kolejnosc[i]]
+    ret_cmax = arg_zakonczenie_zadan_2[arg_kolejnosc[4]]
+    for k in range(0, 5):
+        arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
+    return ret_cmax
+
+
 # przykladowa konfiguracja
 zadania = [1, 2, 3, 4, 5]
 czas_na_maszynie_1 = [4, 4, 10, 6, 2]
@@ -82,30 +110,12 @@ mincmax = 10000
 najlepszaKolejnosc = [0, 0, 0, 0, 0]
 
 for p in permutacje:
-    kolejnosc = p
-    for k in range(0, 5):
-        kolejnosc[k] = kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
-    zakonczenie_zadan_1[kolejnosc[0]] = czas_na_maszynie_1[kolejnosc[0]]
-    for i in range(1, 5):
-        zakonczenie_zadan_1[kolejnosc[i]] = zakonczenie_zadan_1[kolejnosc[i - 1]] + czas_na_maszynie_1[kolejnosc[i]]
-    zakonczenie_zadan_2[kolejnosc[0]] = zakonczenie_zadan_1[kolejnosc[0]] + czas_na_maszynie_2[kolejnosc[0]]
-    for i in range(1, 5):
-        # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
-        if (zakonczenie_zadan_1[kolejnosc[i]] < zakonczenie_zadan_2[
-            kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
-            zakonczenie_zadan_2[kolejnosc[i]] = zakonczenie_zadan_2[kolejnosc[i - 1]] + czas_na_maszynie_2[
-                kolejnosc[i]]
-        else:
-            zakonczenie_zadan_2[kolejnosc[i]] = zakonczenie_zadan_1[kolejnosc[i]] + czas_na_maszynie_2[kolejnosc[i]]
-    cmax = zakonczenie_zadan_2[kolejnosc[4]]
-    for k in range(0, 5):
-        kolejnosc[k] = kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
-    if cmax < mincmax:
-        mincmax = cmax
-        najlepszaKolejnosc = kolejnosc
-
+    cmax = przegladKolejnosci(p, czas_na_maszynie_1, czas_na_maszynie_2, zakonczenie_zadan_1, zakonczenie_zadan_2)
     wizualizacjaDwochMaszyn(zakonczenie_zadan_1, zakonczenie_zadan_2, czas_na_maszynie_2, kolejnosc, wykres, cmax)
     wykres += 1
+    if cmax < mincmax:
+        mincmax = cmax
+        najlepszaKolejnosc = p
     print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
 
 print("najlepsza konfiguracja przeplywowego", najlepszaKolejnosc, "cmax", mincmax)
@@ -146,9 +156,10 @@ for k in a:
         czas1.remove(Min1)
         czas2.remove(Min2)
 
-#print("l1=", l1, " || l2=", l2)
+# print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
 print("algorytm Johnsona dla 2 maszyn: ", najkrotsza)
+#print("cmax=",przegladKolejnosci(najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2, zakonczenie_zadan_1, zakonczenie_zadan_2))
 
 # Algorytm dla 3 maszyn
 n = [1, 2, 3, 4]  # zadania
@@ -160,12 +171,12 @@ czas3 = [3, 2, 5, 7]  # czas zadan na m3
 # m2[n,czas3]
 czasw1 = (czas1 + czas2)
 czasw2 = (czas3 + czas2)
-print("czasw1", czasw1, " |||| czasw2", czasw2)
+#print("czasw1", czasw1, " |||| czasw2", czasw2)
 ##mw1=[n, czasw1] #wirtualna maszyna 1
 ##mw2=[n, czasw2] #wirtualna maszyna 2
 
 # algorytm Johnsona dla wariantu 2-maszynowego
-n = zadania  # zadania
+#n = zadania  # zadania
 # czas1 = czas_na_maszynie_1  # czas zadan na m1
 # czas2 = czas_na_maszynie_2  # czas zadan na m2
 # m1 = n  # zadania na maszynie1
@@ -195,6 +206,6 @@ for k in a:
 
 # Jeśli oba są na maszynie 2,
 # wybierz najpierw tę z dłuższą operacją 1.
-print("l1=", l1, " || l2=", l2)
+#print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
-print(najkrotsza)
+print("algorytm johnsona dla 3 maszyn",najkrotsza)
