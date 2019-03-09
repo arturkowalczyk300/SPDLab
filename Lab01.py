@@ -26,6 +26,7 @@ def permutacja(liczba):
 def wizualizacjaDwochMaszyn(arg_zakonczenie_zadan_1, arg_zakonczenie_zadan_2, arg_czas_na_maszynie_2, arg_kolejnosc,
                             arg_nazwa_pliku, arg_cmax):
     plt.figure(figsize=(20, 7))
+    # wizualizacja maszyny pierwszej
     plt.hlines(-1, 0, arg_zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
     plt.hlines(-1, arg_zakonczenie_zadan_1[arg_kolejnosc[0] - 1], arg_zakonczenie_zadan_1[arg_kolejnosc[1] - 1],
                colors=kolory[1],
@@ -74,20 +75,13 @@ permutacje = []
 # wyswietla wszystkie permutacje
 for p in permutacja(zadania):
     permutacje.append(p)
-    #   print(p)
 
-# print(permutacje)
-# naturalna kolejnosc (1,2,3,4,5)
-naturalnakolejnosc = [0, 1, 2, 3, 4]
 kolejnosc = [0, 0, 0, 0, 0]
 wykres = 0
-# permutacje.clear()
-# permutacje.append([1, 2, 3, 4, 5])
 mincmax = 10000
 najlepszaKolejnosc = [0, 0, 0, 0, 0]
 
 for p in permutacje:
-    # kolejnosc = p
     kolejnosc = p
     for k in range(0, 5):
         kolejnosc[k] = kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
@@ -109,7 +103,7 @@ for p in permutacje:
     if cmax < mincmax:
         mincmax = cmax
         najlepszaKolejnosc = kolejnosc
-    # wizualizacja maszyny pierwszej
+
     wizualizacjaDwochMaszyn(zakonczenie_zadan_1, zakonczenie_zadan_2, czas_na_maszynie_2, kolejnosc, wykres, cmax)
     wykres += 1
     print("kolejnosc=", p, " || cmax=", cmax, " || uk.1", zakonczenie_zadan_1, " || uk.2", zakonczenie_zadan_2)
@@ -152,14 +146,9 @@ for k in a:
         czas1.remove(Min1)
         czas2.remove(Min2)
 
-# Jeśli obie opcje znajdują się na komputerze 1,
-# wybierz najpierw tę z dłuższą operacją 2
-
-# Jeśli oba są na maszynie 2,
-# wybierz najpierw tę z dłuższą operacją 1.
-print("l1=", l1, " || l2=", l2)
+#print("l1=", l1, " || l2=", l2)
 najkrotsza = l1 + l2
-print(najkrotsza)
+print("algorytm Johnsona dla 2 maszyn: ", najkrotsza)
 
 # Algorytm dla 3 maszyn
 n = [1, 2, 3, 4]  # zadania
