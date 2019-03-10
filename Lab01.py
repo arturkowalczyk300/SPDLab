@@ -6,8 +6,27 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 
-#sekcja z danymi
+#konfiguracja dla 2 maszyn
+dwie_zadania = [1, 2, 3, 4, 5]
+dwie_czas_na_maszynie_1 = [4, 4, 10, 6, 2]
+dwie_czas_na_maszynie_2 = [5, 1, 4, 10, 3]
+dwie_liczba_maszyn = 2
 
+
+#konfiguracja dla 3 maszyn
+trzy_zadania = [1, 2, 3, 4]
+trzy_czas_na_maszynie_1 = [5, 4, 4, 3]  # czas zadan na m1
+trzy_czas_na_maszynie_2 = [5, 5, 4, 5]  # czas zadan na m2
+trzy_czas_na_maszynie_3 = [3, 2, 5, 7]  # czas zadan na m3
+trzy_liczba_maszyn = 3
+
+n = [1, 2, 3, 4]  # zadania
+czas1 = [5, 4, 4, 3]  # czas zadan na m1
+czas2 = [5, 5, 4, 5]  # czas zadan na m2
+czas3 = [3, 2, 5, 7]  # czas zadan na m3
+
+
+#sekcja z danymi
 kolory = ["red", "green", "blue", "cyan", "magenta"]
 zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
 zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
@@ -30,6 +49,44 @@ def permutacja(liczba):
 
 
 def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
+                            arg_nazwa_pliku, arg_cmax):
+    plt.figure(figsize=(20, 7))
+    # wizualizacja maszyny pierwszej
+    plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], zakonczenie_zadan_1[arg_kolejnosc[1] - 1],
+               colors=kolory[1],
+               lw=4)
+    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[1] - 1], zakonczenie_zadan_1[arg_kolejnosc[2] - 1],
+               colors=kolory[2],
+               lw=4)
+    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[2] - 1], zakonczenie_zadan_1[arg_kolejnosc[3] - 1],
+               colors=kolory[3],
+               lw=4)
+    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[3] - 1], zakonczenie_zadan_1[arg_kolejnosc[4] - 1],
+               colors=kolory[4],
+               lw=4)
+    # wizualizacja maszyny drugiej
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[0] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[0] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[1] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[1] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[1] - 1], colors=kolory[1], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[2] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[2] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[2] - 1], colors=kolory[2], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[3] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[3] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[3] - 1], colors=kolory[3], lw=4)
+    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[4] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[4] - 1],
+               zakonczenie_zadan_2[arg_kolejnosc[4] - 1], colors=kolory[4], lw=4)
+    plt.margins(0.1)
+    plt.grid()
+    plt.xticks(np.arange(0, 40, 1))
+    plt.yticks(np.arange(0, -3, -1))
+    plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
+    # plt.show()
+    plt.savefig("wykresy/" + str(arg_nazwa_pliku))
+    plt.close()
+
+
+def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
                             arg_nazwa_pliku, arg_cmax):
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
@@ -92,14 +149,13 @@ def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_mas
     return ret_cmax
 
 
-#konfiguracja dla dwoch maszyn
-zadania = [1, 2, 3, 4, 5]
-czas_na_maszynie_1 = [4, 4, 10, 6, 2]
-czas_na_maszynie_2 = [5, 1, 4, 10, 3]
-liczba_maszyn = 2
-liczba_zadan = 5
+#wczytaj konfiguracje dla dwoch maszyn
+zadania = dwie_zadania
+czas_na_maszynie_1 = dwie_czas_na_maszynie_1
+czas_na_maszynie_2 = dwie_czas_na_maszynie_2
+liczba_maszyn = dwie_liczba_maszyn
+liczba_zadan = len(zadania)
 czas = 0
-
 permutacje = []
 
 # wyswietla wszystkie permutacje
@@ -152,11 +208,11 @@ najkrotsza = l1 + l2
 print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=",
       przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
 
-# Algorytm dla 3 maszyn
-n = [1, 2, 3, 4]  # zadania
-czas1 = [5, 4, 4, 3]  # czas zadan na m1
-czas2 = [5, 5, 4, 5]  # czas zadan na m2
-czas3 = [3, 2, 5, 7]  # czas zadan na m3
+#wcyztaj konfiguracje dla 3 maszyn
+n = trzy_zadania # zadania
+czas1 = trzy_czas_na_maszynie_1
+czas2 = trzy_czas_na_maszynie_2
+czas3 = trzy_czas_na_maszynie_3
 czasw1 = (czas1 + czas2) #laczymy czasy wykonywania sie na maszynach 1 i 2 w jeden czas
 czasw2 = (czas3 + czas2) #analogicznie dla maszyn 2 i 3
 # print("czasw1", czasw1, " |||| czasw2", czasw2)
