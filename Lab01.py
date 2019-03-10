@@ -5,31 +5,41 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 
-# konfiguracja dla 2 maszyn
+## konfiguracja dla 2 maszyn
 dwie_zadania = [1, 2, 3, 4, 5]
 dwie_czas_na_maszynie_1 = [4, 4, 10, 6, 2]
 dwie_czas_na_maszynie_2 = [5, 1, 4, 10, 3]
 dwie_liczba_maszyn = 2
+dwie_liczba_zadan = len(dwie_zadania)
+# inna konfiguracja dla 2 maszyn
+#dwie_zadania = [1, 2, 3]
+#dwie_czas_na_maszynie_1 = [4, 4, 10]
+#dwie_czas_na_maszynie_2 = [5, 1, 4]
+#dwie_liczba_maszyn = 2
+#dwi#e_liczba_zadan = len(dwie_zadania)
 
 # konfiguracja dla 3 maszyn
-trzy_zadania = [1, 2, 3, 4]
-trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
-trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
-trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
-trzy_liczba_maszyn = 3
+#trzy_zadania = [1, 2, 3, 4]
+#trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
+#trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
+#trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
+#trzy_liczba_maszyn = 3
 
 # instancja t000
-#trzy_zadania = [1, 2, 3, 4]
-#trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
-#trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
-#trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
-#trzy_liczba_maszyn = 3
+trzy_zadania = [1, 2, 3, 4]
+trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
+trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
+trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
+trzy_liczba_maszyn = 3
 
 # sekcja z danymi
 kolory = ["red", "green", "blue", "cyan", "magenta"]
 zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
 zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
 zakonczenie_zadan_3 = [0, 0, 0, 0, 0]
+
+def wczytajDaneZPliku(nazwaPliku):
+    print("wczytywanie")
 
 def permutacja(liczba):
     dlugosc = len(liczba)
@@ -52,12 +62,12 @@ def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
     plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    for i in range(0, len(arg_kolejnosc)-1):
-        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i]-1], zakonczenie_zadan_1[arg_kolejnosc[i+1]-1],
-                   colors=kolory[i+1],
+    for i in range(0, len(arg_kolejnosc) - 1):
+        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i] - 1], zakonczenie_zadan_1[arg_kolejnosc[i + 1] - 1],
+                   colors=kolory[i + 1],
                    lw=4)
     # wizualizacja maszyny drugiej
-    for i in range(0,len(czas_na_maszynie_2)):
+    for i in range(0, len(czas_na_maszynie_2)):
         plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[i] - 1],
                    zakonczenie_zadan_2[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
 
@@ -70,14 +80,15 @@ def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
     plt.savefig(arg_nazwa_pliku)
     plt.close()
 
-def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2,arg_czas_na_maszynie_3, arg_kolejnosc,
+
+def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2, arg_czas_na_maszynie_3, arg_kolejnosc,
                              arg_nazwa_pliku, arg_cmax):
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
     plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
     for i in range(0, len(arg_kolejnosc) - 1):
-        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i] - 1], zakonczenie_zadan_1[arg_kolejnosc[i+1] - 1],
-                   colors=kolory[i+1],
+        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i] - 1], zakonczenie_zadan_1[arg_kolejnosc[i + 1] - 1],
+                   colors=kolory[i + 1],
                    lw=4)
 
     # wizualizacja maszyny drugiej
@@ -85,7 +96,7 @@ def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2,arg_czas_na_maszynie_3, arg_
         plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[i] - 1],
                    zakonczenie_zadan_2[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
 
-    #wizualizacja maszyny trzeciej
+    # wizualizacja maszyny trzeciej
     for i in range(0, len(arg_kolejnosc)):
         plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[i] - 1],
                    zakonczenie_zadan_3[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
@@ -125,10 +136,11 @@ def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_mas
     return ret_cmax
 
 
-def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2, arg_czas_na_maszynie_3):  # n zadan
+def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2,
+                                   arg_czas_na_maszynie_3):  # n zadan
     for k in range(0, n):
         arg_kolejnosc[k] = arg_kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
-    zakonczenie_zadan_1[arg_kolejnosc[0]] = arg_czas_na_maszynie_1[arg_kolejnosc[0]] #zaczyna sie w t=0
+    zakonczenie_zadan_1[arg_kolejnosc[0]] = arg_czas_na_maszynie_1[arg_kolejnosc[0]]  # zaczyna sie w t=0
     for i in range(1, n):
         zakonczenie_zadan_1[arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i - 1]] + \
                                                 arg_czas_na_maszynie_1[arg_kolejnosc[i]]
@@ -164,6 +176,7 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     return ret_cmax
 
+
 # wczytaj konfiguracje dla dwoch maszyn
 zadania = dwie_zadania
 czas_na_maszynie_1 = dwie_czas_na_maszynie_1.copy()
@@ -178,14 +191,14 @@ print("Przeglad zupelny wszystkich permutacji:")
 for p in permutacja(zadania):
     permutacje.append(p)
 
-kolejnosc = [0, 0, 0, 0, 0]
+kolejnosc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] #maksymalnie 10 zadan
 wykres = 0
 mincmax = 10000
-najlepszaKolejnosc = [0, 0, 0, 0, 0]
+najlepszaKolejnosc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 for p in permutacje:
-    cmax = przegladKolejnosci(5, p, czas_na_maszynie_1, czas_na_maszynie_2)
-    wizualizacjaDwochMaszyn(czas_na_maszynie_2, p, "wykresy/przeglad_zupelny/"+str(wykres), cmax)
+    cmax = przegladKolejnosci(dwie_liczba_zadan, p, czas_na_maszynie_1, czas_na_maszynie_2)
+    wizualizacjaDwochMaszyn(czas_na_maszynie_2, p, "wykresy/przeglad_zupelny/" + str(wykres), cmax)
     wykres += 1
     if cmax < mincmax:
         mincmax = cmax
@@ -193,7 +206,7 @@ for p in permutacje:
     print("kolejnosc=", p, " || cmax=", cmax)
 
 print("1) Najlepsza kolejnosc z przegladu zupelnego:", najlepszaKolejnosc, "cmax", mincmax)
-cmax = przegladKolejnosci(5, najlepszaKolejnosc, czas_na_maszynie_1, czas_na_maszynie_2)
+cmax = przegladKolejnosci(dwie_liczba_zadan, najlepszaKolejnosc, czas_na_maszynie_1, czas_na_maszynie_2)
 wizualizacjaDwochMaszyn(czas_na_maszynie_2, najlepszaKolejnosc, "wykresy/przeglad_zupelny/najlepszaKolejnosc", mincmax)
 
 # algorytm Johnsona dla wariantu 2-maszynowego
@@ -206,34 +219,34 @@ a = list(n)  # tworzenie listy do n zadan
 l1 = []  # scheduler1
 l2 = []  # scheduler2
 najkrotsza = []
-for k in range(0,len(n)):
+for k in range(0, len(n)):
     Min1 = min(czas1)
     Min2 = min(czas2)  # znajdujemy zadanie o najkrotszym czasie wykonywania
-    index1=czas1.index(Min1)
-    index2=czas2.index(Min2)
-    #teraz musze znalezc indeksy minimow
+    index1 = czas1.index(Min1)
+    index2 = czas2.index(Min2)
+    # teraz musze znalezc indeksy minimow
     if Min1 < Min2:  # jesli najkrotsze bedzie na maszynie1, to dodaj je na poczatek
-        l1.append(index1+1)
-        czas1[index1]=1000000 #zamiast usuwania
-        czas2[index1]=1000000
+        l1.append(index1 + 1)
+        czas1[index1] = 1000000  # zamiast usuwania
+        czas2[index1] = 1000000
     elif Min1 > Min2:  # jesli najkrotsze bedzie na maszynie drugiej to dodaj je na koniec
-        l2.insert(0, index2+1)
-        czas1[index2]=1000000
-        czas2[index2]=1000000
+        l2.insert(0, index2 + 1)
+        czas1[index2] = 1000000
+        czas2[index2] = 1000000
     elif Min1 == Min2:
-        #wycieramy pierwsze zadanie (o mniejszym indeksie_
-        if(index1>index2):
-            l2.insert(0, index2+1)  # mozna wybrac losowo
+        # wycieramy pierwsze zadanie (o mniejszym indeksie_
+        if (index1 > index2):
+            l2.insert(0, index2 + 1)  # mozna wybrac losowo
             czas1[index2] = 10000000
             czas2[index2] = 10000000
         else:
-            l1.append(index1+1)
+            l1.append(index1 + 1)
             czas1[index1] = 10000000
             czas2[index1] = 10000000
 
 najkrotsza = l1 + l2
-cmax=przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2)
-print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=",cmax)
+cmax = przegladKolejnosci(dwie_liczba_zadan, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2)
+print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=", cmax)
 wizualizacjaDwochMaszyn(czas_na_maszynie_2, najkrotsza, "wykresy/Johnson_2maszyny/wykres", cmax)
 
 # wczytaj konfiguracje dla 3 maszyn
@@ -241,18 +254,18 @@ n = trzy_zadania  # zadania
 czas1 = trzy_czas_na_maszynie_1.copy()
 czas2 = trzy_czas_na_maszynie_2.copy()
 czas3 = trzy_czas_na_maszynie_3.copy()
-czasw1=czas1.copy() #tylko do deklaracji
-czasw2=czas2.copy() #tylko do deklaracji
-for i in range(0,len(czas1)):
-    czasw1[i]=czas1[i]+czas2[i]
+czasw1 = czas1.copy()  # tylko do deklaracji
+czasw2 = czas2.copy()  # tylko do deklaracji
+for i in range(0, len(czas1)):
+    czasw1[i] = czas1[i] + czas2[i]
 
-for i in range(0,len(czas2)):
-    czasw2[i]=czas2[i]+czas3[i]
+for i in range(0, len(czas2)):
+    czasw2[i] = czas2[i] + czas3[i]
 
-    czasw1Org=czasw1.copy()
-    czasw2Org=czasw2.copy()
-#czasw1 = (czas1 + czas2)  # laczymy czasy wykonywania sie na maszynach 1 i 2 w jeden czas
-#czasw2 = (czas3 + czas2)  # analogicznie dla maszyn 2 i 3
+    czasw1Org = czasw1.copy()
+    czasw2Org = czasw2.copy()
+# czasw1 = (czas1 + czas2)  # laczymy czasy wykonywania sie na maszynach 1 i 2 w jeden czas
+# czasw2 = (czas3 + czas2)  # analogicznie dla maszyn 2 i 3
 # print("czasw1", czasw1, " |||| czasw2", czasw2)
 
 # w tej chwili mamy obliczone czasy dla dwoch wirtualnych maszyn, wiec mozna uzyc zwyklego algorytmu Johnsona dla dwoch maszyn
@@ -260,40 +273,41 @@ a = list(n)  # tworzenie listy do n zadan#
 l1 = []  # scheduler1
 l2 = []  # scheduler2
 najkrotsza = []
-for k in range(0,len(n)):
+for k in range(0, len(n)):
     Min1 = min(czasw1)
     Min2 = min(czasw2)  # znajdujemy zadanie o najkrotszym czasie wykonywania
-    index1=czasw1.index(Min1)
-    index2=czasw2.index(Min2)
-    #teraz musze znalezc indeksy minimow
+    index1 = czasw1.index(Min1)
+    index2 = czasw2.index(Min2)
+    # teraz musze znalezc indeksy minimow
     if Min1 < Min2:  # jesli najkrotsze bedzie na maszynie1, to dodaj je na poczatek
-        l1.append(index1+1)
-        czasw1[index1]=1000000 #zamiast usuwania
-        czasw2[index1]=1000000
+        l1.append(index1 + 1)
+        czasw1[index1] = 1000000  # zamiast usuwania
+        czasw2[index1] = 1000000
     elif Min1 > Min2:  # jesli najkrotsze bedzie na maszynie drugiej to dodaj je na koniec
-        l2.insert(0, index2+1)
-        czasw1[index2]=1000000
-        czasw2[index2]=1000000
+        l2.insert(0, index2 + 1)
+        czasw1[index2] = 1000000
+        czasw2[index2] = 1000000
     elif Min1 == Min2:
-        #wycieramy pierwsze zadanie (o mniejszym indeksie_
-        if(index1>index2):
-            l2.insert(0, index2+1)  # mozna wybrac losowo
+        # wycieramy pierwsze zadanie (o mniejszym indeksie_
+        if (index1 > index2):
+            l2.insert(0, index2 + 1)  # mozna wybrac losowo
             czasw1[index2] = 10000000
             czasw2[index2] = 10000000
         else:
-            l1.append(index1+1)
+            l1.append(index1 + 1)
             czasw1[index1] = 10000000
             czasw2[index1] = 10000000
 
-czasw1=czasw1Org
-czasw2=czasw2Org
+czasw1 = czasw1Org
+czasw2 = czasw2Org
 
 najkrotsza = l1 + l2
 taa = [1, 4, 3, 2]
-#najkrotsza = taa
-#najkrotsza=[3,4,1,2]
+# najkrotsza = taa
+# najkrotsza=[3,4,1,2]
 przegladKolejnosci(4, najkrotsza, czasw1, czasw2)
-cmax= przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3)
-print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=",cmax)
-#print("czas na maszynie 1", trzy_czas_na_maszynie_1, "czas na maszynie 2", trzy_czas_na_maszynie_2, "zakonczenie zadan 1", zakonczenie_zadan_1, "zakonczenie zadan 2", zakonczenie_zadan_2)
-wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza, 'wykresy/Johnson_3maszyny/wykres', cmax)
+cmax = przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2,
+                                      trzy_czas_na_maszynie_3)
+print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", cmax)
+wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza,
+                         'wykresy/Johnson_3maszyny/wykres', cmax)
