@@ -3,6 +3,7 @@
 # todo (6) - johnson dla 2 maszyn w osobnej funkcji
 # todo(7) - liczenie cmax dla 3 maszyn
 # todo (8) - naprawa sztywnej kolejnosci w wizualizacji
+# todo (9) - dlaczego zamiast 3412 liczy 3421 dluzsze o sekunde
 import matplotlib.pyplot as plt
 import numpy as np
 import time
@@ -14,18 +15,18 @@ dwie_czas_na_maszynie_2 = [5, 1, 4, 10, 3]
 dwie_liczba_maszyn = 2
 
 # konfiguracja dla 3 maszyn
-# trzy_zadania = [1, 2, 3, 4]
-# trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
-# trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
-# trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
-# trzy_liczba_maszyn = 3
+trzy_zadania = [1, 2, 3, 4]
+trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
+trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
+trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
+trzy_liczba_maszyn = 3
 
 # instancja t000
-trzy_zadania = [1, 2, 3, 4]
-trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
-trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
-trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
-trzy_liczba_maszyn = 3
+#trzy_zadania = [1, 2, 3, 4]
+#trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
+#trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
+#trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
+#trzy_liczba_maszyn = 3
 
 # sekcja z danymi
 kolory = ["red", "green", "blue", "cyan", "magenta"]
@@ -285,10 +286,12 @@ for k in a:
         czasw1.remove(Min1)
         czasw2.remove(Min2)
 
-# najkrotsza = l1 + l2
+najkrotsza = l1 + l2
 taa = [1, 4, 3, 2]
-najkrotsza = taa
+#najkrotsza = taa
+#najkrotsza=[3,4,1,2]
 przegladKolejnosci(4, najkrotsza, czasw1, czasw2)
 print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3))
 print("czas na maszynie 1", trzy_czas_na_maszynie_1, "czas na maszynie 2", trzy_czas_na_maszynie_2, "zakonczenie zadan 1", zakonczenie_zadan_1, "zakonczenie zadan 2", zakonczenie_zadan_2)
 wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza, 'XD', 100)
+#
