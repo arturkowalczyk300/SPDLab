@@ -261,8 +261,18 @@ n = trzy_zadania  # zadania
 czas1 = trzy_czas_na_maszynie_1.copy()
 czas2 = trzy_czas_na_maszynie_2.copy()
 czas3 = trzy_czas_na_maszynie_3.copy()
-czasw1 = (czas1 + czas2)  # laczymy czasy wykonywania sie na maszynach 1 i 2 w jeden czas
-czasw2 = (czas3 + czas2)  # analogicznie dla maszyn 2 i 3
+czasw1=czas1.copy() #tylko do deklaracji
+czasw2=czas2.copy() #tylko do deklaracji
+for i in range(0,len(czas1)):
+    czasw1[i]=czas1[i]+czas2[i]
+
+for i in range(0,len(czas2)):
+    czasw2[i]=czas2[i]+czas3[i]
+
+    czasw1Org=czasw1.copy()
+    czasw2Org=czasw2.copy()
+#czasw1 = (czas1 + czas2)  # laczymy czasy wykonywania sie na maszynach 1 i 2 w jeden czas
+#czasw2 = (czas3 + czas2)  # analogicznie dla maszyn 2 i 3
 # print("czasw1", czasw1, " |||| czasw2", czasw2)
 
 # w tej chwili mamy obliczone czasy dla dwoch wirtualnych maszyn, wiec mozna uzyc zwyklego algorytmu Johnsona dla dwoch maszyn
@@ -286,10 +296,13 @@ for k in a:
         czasw1.remove(Min1)
         czasw2.remove(Min2)
 
+czasw1=czasw1Org
+czasw2=czasw2Org
+
 najkrotsza = l1 + l2
 taa = [1, 4, 3, 2]
 #najkrotsza = taa
-#najkrotsza=[3,4,1,2]
+najkrotsza=[3,4,1,2]
 przegladKolejnosci(4, najkrotsza, czasw1, czasw2)
 print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3))
 print("czas na maszynie 1", trzy_czas_na_maszynie_1, "czas na maszynie 2", trzy_czas_na_maszynie_2, "zakonczenie zadan 1", zakonczenie_zadan_1, "zakonczenie zadan 2", zakonczenie_zadan_2)
