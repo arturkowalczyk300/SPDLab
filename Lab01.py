@@ -15,18 +15,18 @@ dwie_czas_na_maszynie_2 = [5, 1, 4, 10, 3]
 dwie_liczba_maszyn = 2
 
 # konfiguracja dla 3 maszyn
-trzy_zadania = [1, 2, 3, 4]
-trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
-trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
-trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
-trzy_liczba_maszyn = 3
+#trzy_zadania = [1, 2, 3, 4]
+#trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
+#trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
+#trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
+#trzy_liczba_maszyn = 3
 
 # instancja t000
-#trzy#_zadania = [1, 2, 3, 4]
-#trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
-#trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
-#trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
-#trzy_liczba_maszyn = 3
+trzy_zadania = [1, 2, 3, 4]
+trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
+trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
+trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
+trzy_liczba_maszyn = 3
 
 # sekcja z danymi
 kolory = ["red", "green", "blue", "cyan", "magenta"]
@@ -236,21 +236,30 @@ a = list(n)  # tworzenie listy do n zadan
 l1 = []  # scheduler1
 l2 = []  # scheduler2
 najkrotsza = []
-for k in a:
-    Min1 = czas1[0]
-    Min2 = czas2[0]  # znajdujemy zadanie o najkrotszym czasie wykonywania
+for k in range(0,len(n)):
+    Min1 = min(czas1)
+    Min2 = min(czas2)  # znajdujemy zadanie o najkrotszym czasie wykonywania
+    index1=czas1.index(Min1)
+    index2=czas2.index(Min2)
+    #teraz musze znalezc indeksy minimow
     if Min1 < Min2:  # jesli najkrotsze bedzie na maszynie1, to dodaj je na poczatek
-        l1.append(k)
-        czas1.remove(Min1)
-        czas2.remove(Min2)
+        l1.append(index1+1)
+        czas1[index1]=1000000 #zamiast usuwania
+        czas2[index1]=1000000
     elif Min1 > Min2:  # jesli najkrotsze bedzie na maszynie drugiej to dodaj je na koniec
-        l2.insert(0, k)
-        czas1.remove(Min1)
-        czas2.remove(Min2)
+        l2.insert(0, index2+1)
+        czas1[index2]=1000000
+        czas2[index2]=1000000
     elif Min1 == Min2:
-        l1.insert(0, k)  # mozna wybrac losowo
-        czas1.remove(Min1)
-        czas2.remove(Min2)
+        #wycieramy pierwsze zadanie (o mniejszym indeksie_
+        if(index1>index2):
+            l2.insert(0, index2+1)  # mozna wybrac losowo
+            czas1[index2] = 10000000
+            czas2[index2] = 10000000
+        else:
+            l1.append(index1+1)
+            czas1[index1] = 10000000
+            czas2[index1] = 10000000
 
 najkrotsza = l1 + l2
 print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=",
