@@ -22,7 +22,7 @@ trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
 trzy_liczba_maszyn = 3
 
 # instancja t000
-#trzy_zadania = [1, 2, 3, 4]
+#trzy#_zadania = [1, 2, 3, 4]
 #trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
 #trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
 #trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
@@ -280,21 +280,30 @@ a = list(n)  # tworzenie listy do n zadan#
 l1 = []  # scheduler1
 l2 = []  # scheduler2
 najkrotsza = []
-for k in a:
-    Min1 = czasw1[0]
-    Min2 = czasw2[0]  # znajdujemy zadanie o najkrotszym czasie wykonywania
+for k in range(0,len(n)):
+    Min1 = min(czasw1)
+    Min2 = min(czasw2)  # znajdujemy zadanie o najkrotszym czasie wykonywania
+    index1=czasw1.index(Min1)
+    index2=czasw2.index(Min2)
+    #teraz musze znalezc indeksy minimow
     if Min1 < Min2:  # jesli najkrotsze bedzie na maszynie1, to dodaj je na poczatek
-        l1.append(k)
-        czasw1.remove(Min1)
-        czasw2.remove(Min2)
+        l1.append(index1+1)
+        czasw1[index1]=1000000 #zamiast usuwania
+        czasw2[index1]=1000000
     elif Min1 > Min2:  # jesli najkrotsze bedzie na maszynie drugiej to dodaj je na koniec
-        l2.insert(0, k)
-        czasw1.remove(Min1)
-        czasw2.remove(Min2)
+        l2.insert(0, index2+1)
+        czasw1[index2]=1000000
+        czasw2[index2]=1000000
     elif Min1 == Min2:
-        l1.insert(0, k)  # mozna wybrac losowo
-        czasw1.remove(Min1)
-        czasw2.remove(Min2)
+        #wycieramy pierwsze zadanie (o mniejszym indeksie_
+        if(index1>index2):
+            l2.insert(0, index2+1)  # mozna wybrac losowo
+            czasw1[index2] = 10000000
+            czasw2[index2] = 10000000
+        else:
+            l1.append(index1+1)
+            czasw1[index1] = 10000000
+            czasw2[index1] = 10000000
 
 czasw1=czasw1Org
 czasw2=czasw2Org
@@ -302,9 +311,9 @@ czasw2=czasw2Org
 najkrotsza = l1 + l2
 taa = [1, 4, 3, 2]
 #najkrotsza = taa
-najkrotsza=[3,4,1,2]
+#najkrotsza=[3,4,1,2]
 przegladKolejnosci(4, najkrotsza, czasw1, czasw2)
 print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3))
 print("czas na maszynie 1", trzy_czas_na_maszynie_1, "czas na maszynie 2", trzy_czas_na_maszynie_2, "zakonczenie zadan 1", zakonczenie_zadan_1, "zakonczenie zadan 2", zakonczenie_zadan_2)
-wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza, 'XD', 100)
+wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza, 'Johnson3', 100)
 #
