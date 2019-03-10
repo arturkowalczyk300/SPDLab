@@ -15,18 +15,18 @@ dwie_czas_na_maszynie_2 = [5, 1, 4, 10, 3]
 dwie_liczba_maszyn = 2
 
 # konfiguracja dla 3 maszyn
-#trzy_zadania = [1, 2, 3, 4]
-#trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
-#trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
-#trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
-#trzy_liczba_maszyn = 3
+trzy_zadania = [1, 2, 3, 4]
+trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
+trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
+trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
+trzy_liczba_maszyn = 3
 
 # instancja t000
-trzy_zadania = [1, 2, 3, 4]
-trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
-trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
-trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
-trzy_liczba_maszyn = 3
+#trzy_zadania = [1, 2, 3, 4]
+#trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
+#trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
+#trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
+#trzy_liczba_maszyn = 3
 
 # sekcja z danymi
 kolory = ["red", "green", "blue", "cyan", "magenta"]
@@ -84,7 +84,7 @@ def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
     plt.yticks(np.arange(0, -3, -1))
     plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
     # plt.show()
-    plt.savefig("wykresy/" + str(arg_nazwa_pliku))
+    plt.savefig(arg_nazwa_pliku)
     plt.close()
 
 
@@ -129,7 +129,7 @@ def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2,arg_czas_na_maszynie_3, arg_
     plt.yticks(np.arange(0, -4, -1))
     plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
     # plt.show()
-    plt.savefig("wykresy/" + str(arg_nazwa_pliku))
+    plt.savefig(arg_nazwa_pliku)
     plt.close()
 
 
@@ -206,6 +206,7 @@ liczba_zadan = len(zadania)
 czas = 0
 permutacje = []
 
+print("Przeglad zupelny wszystkich permutacji:")
 # wyswietla wszystkie permutacje
 for p in permutacja(zadania):
     permutacje.append(p)
@@ -217,7 +218,7 @@ najlepszaKolejnosc = [0, 0, 0, 0, 0]
 
 for p in permutacje:
     cmax = przegladKolejnosci(5, p, czas_na_maszynie_1, czas_na_maszynie_2)
-    wizualizacjaDwochMaszyn(czas_na_maszynie_2, p, wykres, cmax)
+    wizualizacjaDwochMaszyn(czas_na_maszynie_2, p, "wykresy/przeglad_zupelny/"+str(wykres), cmax)
     wykres += 1
     if cmax < mincmax:
         mincmax = cmax
@@ -225,6 +226,8 @@ for p in permutacje:
     print("kolejnosc=", p, " || cmax=", cmax)
 
 print("1) Najlepsza kolejnosc z przegladu zupelnego:", najlepszaKolejnosc, "cmax", mincmax)
+cmax = przegladKolejnosci(5, najlepszaKolejnosc, czas_na_maszynie_1, czas_na_maszynie_2)
+wizualizacjaDwochMaszyn(czas_na_maszynie_2, najlepszaKolejnosc, "wykresy/przeglad_zupelny/najlepszaKolejnosc", mincmax)
 
 # algorytm Johnsona dla wariantu 2-maszynowego
 n = zadania  # zadania
@@ -262,8 +265,9 @@ for k in range(0,len(n)):
             czas2[index1] = 10000000
 
 najkrotsza = l1 + l2
-print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=",
-      przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
+cmax=przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2)
+print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=",cmax)
+wizualizacjaDwochMaszyn(czas_na_maszynie_2, najkrotsza, "wykresy/Johnson_2maszyny/wykres", cmax)
 
 # wczytaj konfiguracje dla 3 maszyn
 n = trzy_zadania  # zadania
@@ -322,7 +326,7 @@ taa = [1, 4, 3, 2]
 #najkrotsza = taa
 #najkrotsza=[3,4,1,2]
 przegladKolejnosci(4, najkrotsza, czasw1, czasw2)
-print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3))
-print("czas na maszynie 1", trzy_czas_na_maszynie_1, "czas na maszynie 2", trzy_czas_na_maszynie_2, "zakonczenie zadan 1", zakonczenie_zadan_1, "zakonczenie zadan 2", zakonczenie_zadan_2)
-wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza, 'Johnson3', 100)
-#
+cmax= przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3)
+print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=",cmax)
+#print("czas na maszynie 1", trzy_czas_na_maszynie_1, "czas na maszynie 2", trzy_czas_na_maszynie_2, "zakonczenie zadan 1", zakonczenie_zadan_1, "zakonczenie zadan 2", zakonczenie_zadan_2)
+wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza, 'wykresy/Johnson_3maszyny/wykres', cmax)
