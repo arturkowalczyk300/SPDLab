@@ -15,15 +15,17 @@ dwie_liczba_maszyn = 2
 
 #konfiguracja dla 3 maszyn
 trzy_zadania = [1, 2, 3, 4]
-trzy_czas_na_maszynie_1 = [5, 4, 4, 3]  # czas zadan na m1
-trzy_czas_na_maszynie_2 = [5, 5, 4, 5]  # czas zadan na m2
-trzy_czas_na_maszynie_3 = [3, 2, 5, 7]  # czas zadan na m3
+trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
+trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
+trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
 trzy_liczba_maszyn = 3
 
-n = [1, 2, 3, 4]  # zadania
-czas1 = [5, 4, 4, 3]  # czas zadan na m1
-czas2 = [5, 5, 4, 5]  # czas zadan na m2
-czas3 = [3, 2, 5, 7]  # czas zadan na m3
+#instancja t000
+#trzy_zadania = [1, 2, 3, 4]
+#trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
+#trzy_czas_na_maszynie_2 = [3, 3, 8,8]
+#trzy_czas_na_maszynie_3 = [8,5,7,6]
+#trzy_liczba_maszyn = 3
 
 
 #sekcja z danymi
@@ -208,7 +210,7 @@ najkrotsza = l1 + l2
 print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=",
       przegladKolejnosci(5, najkrotsza, czas_na_maszynie_1, czas_na_maszynie_2))
 
-#wcyztaj konfiguracje dla 3 maszyn
+#wczytaj konfiguracje dla 3 maszyn
 n = trzy_zadania # zadania
 czas1 = trzy_czas_na_maszynie_1
 czas2 = trzy_czas_na_maszynie_2
