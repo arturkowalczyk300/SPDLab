@@ -24,14 +24,14 @@ dwie_liczba_maszyn = 2
 trzy_zadania = [1, 2, 3, 4]
 trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
 trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
-trzy_czas_na_maszynie_3 = [8, 5, 7, 6]
+trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
 trzy_liczba_maszyn = 3
 
 # sekcja z danymi
 kolory = ["red", "green", "blue", "cyan", "magenta"]
 zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
 zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
-
+zakonczenie_zadan_3 = [0, 0, 0, 0, 0]
 
 def permutacja(liczba):
     dlugosc = len(liczba)
@@ -87,7 +87,7 @@ def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
     plt.close()
 
 
-def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
+def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2,arg_czas_na_maszynie_3, arg_kolejnosc,
                              arg_nazwa_pliku, arg_cmax):
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
@@ -111,10 +111,21 @@ def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
                zakonczenie_zadan_2[arg_kolejnosc[2] - 1], colors=kolory[2], lw=4)
     plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[3] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[3] - 1],
                zakonczenie_zadan_2[arg_kolejnosc[3] - 1], colors=kolory[3], lw=4)
+
+    #wizualizacja maszyny trzeciej
+    plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[0] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[0] - 1],
+               zakonczenie_zadan_3[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[1] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[1] - 1],
+               zakonczenie_zadan_3[arg_kolejnosc[1] - 1], colors=kolory[1], lw=4)
+    plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[2] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[2] - 1],
+               zakonczenie_zadan_3[arg_kolejnosc[2] - 1], colors=kolory[2], lw=4)
+    plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[3] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[3] - 1],
+               zakonczenie_zadan_3[arg_kolejnosc[3] - 1], colors=kolory[3], lw=4)
+
     plt.margins(0.1)
     plt.grid()
     plt.xticks(np.arange(0, 40, 1))
-    plt.yticks(np.arange(0, -3, -1))
+    plt.yticks(np.arange(0, -4, -1))
     plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
     # plt.show()
     plt.savefig("wykresy/" + str(arg_nazwa_pliku))
@@ -145,6 +156,45 @@ def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_mas
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     return ret_cmax
 
+
+def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2, arg_czas_na_maszynie_3):  # n zadan
+    for k in range(0, n):
+        arg_kolejnosc[k] = arg_kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
+    zakonczenie_zadan_1[arg_kolejnosc[0]] = arg_czas_na_maszynie_1[arg_kolejnosc[0]] #zaczyna sie w t=0
+    for i in range(1, n):
+        zakonczenie_zadan_1[arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i - 1]] + \
+                                                arg_czas_na_maszynie_1[arg_kolejnosc[i]]
+    zakonczenie_zadan_2[arg_kolejnosc[0]] = zakonczenie_zadan_1[arg_kolejnosc[0]] + arg_czas_na_maszynie_2[
+        arg_kolejnosc[0]]
+    for i in range(1, n):
+        # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
+        if (zakonczenie_zadan_1[arg_kolejnosc[i]] < zakonczenie_zadan_2[
+            arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
+            zakonczenie_zadan_2[arg_kolejnosc[i]] = zakonczenie_zadan_2[arg_kolejnosc[i - 1]] + \
+                                                    arg_czas_na_maszynie_2[
+                                                        arg_kolejnosc[i]]
+        else:
+            zakonczenie_zadan_2[arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i]] + \
+                                                    arg_czas_na_maszynie_2[arg_kolejnosc[i]]
+
+    ############
+    zakonczenie_zadan_3[arg_kolejnosc[0]] = zakonczenie_zadan_2[arg_kolejnosc[0]] + arg_czas_na_maszynie_3[
+        arg_kolejnosc[0]]
+    for i in range(1, n):
+        # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
+        if (zakonczenie_zadan_2[arg_kolejnosc[i]] < zakonczenie_zadan_3[
+            arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
+            zakonczenie_zadan_3[arg_kolejnosc[i]] = zakonczenie_zadan_3[arg_kolejnosc[i - 1]] + \
+                                                    arg_czas_na_maszynie_3[
+                                                        arg_kolejnosc[i]]
+        else:
+            zakonczenie_zadan_3[arg_kolejnosc[i]] = zakonczenie_zadan_2[arg_kolejnosc[i]] + \
+                                                    arg_czas_na_maszynie_3[arg_kolejnosc[i]]
+
+    ret_cmax = zakonczenie_zadan_3[arg_kolejnosc[n - 1]]
+    for k in range(0, n):
+        arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
+    return ret_cmax
 
 # wczytaj konfiguracje dla dwoch maszyn
 zadania = dwie_zadania
@@ -239,6 +289,6 @@ for k in a:
 taa = [1, 4, 3, 2]
 najkrotsza = taa
 print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", przegladKolejnosci(4, najkrotsza, czasw1, czasw2))
-przegladKolejnosci(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2)
+przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3)
 print("czas na maszynie 1", trzy_czas_na_maszynie_1, "czas na maszynie 2", trzy_czas_na_maszynie_2, "zakonczenie zadan 1", zakonczenie_zadan_1, "zakonczenie zadan 2", zakonczenie_zadan_2)
-wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, najkrotsza, 'XD', 100)
+wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza, 'XD', 100)
