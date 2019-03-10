@@ -1,9 +1,6 @@
 # Sterowanie procesami dyskretnymi, laboratorium 1, 2019
-# todo(3) - wizualizacje dla 3 maszyn
 # todo (6) - johnson dla 2 maszyn w osobnej funkcji
-# todo(7) - liczenie cmax dla 3 maszyn
 # todo (8) - naprawa sztywnej kolejnosci w wizualizacji
-# todo (9) - dlaczego zamiast 3412 liczy 3421 dluzsze o sekunde
 import matplotlib.pyplot as plt
 import numpy as np
 import time
@@ -55,29 +52,15 @@ def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
     plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], zakonczenie_zadan_1[arg_kolejnosc[1] - 1],
-               colors=kolory[1],
-               lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[1] - 1], zakonczenie_zadan_1[arg_kolejnosc[2] - 1],
-               colors=kolory[2],
-               lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[2] - 1], zakonczenie_zadan_1[arg_kolejnosc[3] - 1],
-               colors=kolory[3],
-               lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[3] - 1], zakonczenie_zadan_1[arg_kolejnosc[4] - 1],
-               colors=kolory[4],
-               lw=4)
+    for i in range(0, len(czas_na_maszynie_2)-1):
+        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i]-1], zakonczenie_zadan_1[arg_kolejnosc[i+1]-1],
+                   colors=kolory[i+1],
+                   lw=4)
     # wizualizacja maszyny drugiej
-    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[0] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[0] - 1],
-               zakonczenie_zadan_2[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[1] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[1] - 1],
-               zakonczenie_zadan_2[arg_kolejnosc[1] - 1], colors=kolory[1], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[2] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[2] - 1],
-               zakonczenie_zadan_2[arg_kolejnosc[2] - 1], colors=kolory[2], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[3] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[3] - 1],
-               zakonczenie_zadan_2[arg_kolejnosc[3] - 1], colors=kolory[3], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[4] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[4] - 1],
-               zakonczenie_zadan_2[arg_kolejnosc[4] - 1], colors=kolory[4], lw=4)
+    for i in range(0,len(czas_na_maszynie_2)):
+        plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[i] - 1],
+                   zakonczenie_zadan_2[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
+
     plt.margins(0.1)
     plt.grid()
     plt.xticks(np.arange(0, 40, 1))
@@ -86,7 +69,6 @@ def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
     # plt.show()
     plt.savefig(arg_nazwa_pliku)
     plt.close()
-
 
 def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2,arg_czas_na_maszynie_3, arg_kolejnosc,
                              arg_nazwa_pliku, arg_cmax):
