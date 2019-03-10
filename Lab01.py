@@ -52,7 +52,7 @@ def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
     plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    for i in range(0, len(czas_na_maszynie_2)-1):
+    for i in range(0, len(arg_kolejnosc)-1):
         plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i]-1], zakonczenie_zadan_1[arg_kolejnosc[i+1]-1],
                    colors=kolory[i+1],
                    lw=4)
@@ -75,35 +75,20 @@ def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2,arg_czas_na_maszynie_3, arg_
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
     plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], zakonczenie_zadan_1[arg_kolejnosc[1] - 1],
-               colors=kolory[1],
-               lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[1] - 1], zakonczenie_zadan_1[arg_kolejnosc[2] - 1],
-               colors=kolory[2],
-               lw=4)
-    plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[2] - 1], zakonczenie_zadan_1[arg_kolejnosc[3] - 1],
-               colors=kolory[3],
-               lw=4)
+    for i in range(0, len(arg_kolejnosc) - 1):
+        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i] - 1], zakonczenie_zadan_1[arg_kolejnosc[i+1] - 1],
+                   colors=kolory[i+1],
+                   lw=4)
 
     # wizualizacja maszyny drugiej
-    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[0] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[0] - 1],
-               zakonczenie_zadan_2[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[1] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[1] - 1],
-               zakonczenie_zadan_2[arg_kolejnosc[1] - 1], colors=kolory[1], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[2] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[2] - 1],
-               zakonczenie_zadan_2[arg_kolejnosc[2] - 1], colors=kolory[2], lw=4)
-    plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[3] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[3] - 1],
-               zakonczenie_zadan_2[arg_kolejnosc[3] - 1], colors=kolory[3], lw=4)
+    for i in range(0, len(arg_kolejnosc)):
+        plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[i] - 1],
+                   zakonczenie_zadan_2[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
 
     #wizualizacja maszyny trzeciej
-    plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[0] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[0] - 1],
-               zakonczenie_zadan_3[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[1] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[1] - 1],
-               zakonczenie_zadan_3[arg_kolejnosc[1] - 1], colors=kolory[1], lw=4)
-    plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[2] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[2] - 1],
-               zakonczenie_zadan_3[arg_kolejnosc[2] - 1], colors=kolory[2], lw=4)
-    plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[3] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[3] - 1],
-               zakonczenie_zadan_3[arg_kolejnosc[3] - 1], colors=kolory[3], lw=4)
+    for i in range(0, len(arg_kolejnosc)):
+        plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[i] - 1],
+                   zakonczenie_zadan_3[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
 
     plt.margins(0.1)
     plt.grid()
