@@ -42,6 +42,7 @@ zakonczenie_zadan_3 = [0, 0, 0, 0, 0]
 wczytane=[]
 
 def wczytajDaneZPliku(nazwaPliku):
+    wczytane.clear()
     print("wczytywanie")
     plik_zadania = []
     if os.path.isfile(nazwaPliku):
@@ -53,7 +54,7 @@ def wczytajDaneZPliku(nazwaPliku):
                 if iterator != 0:
                     #plik_zadania.append(linia)
                     plik_czasy_trwania=[int(s) for s in linia.split() if s.isdigit()]
-                    print("czasy trwania", plik_czasy_trwania)
+                    #print("czasy trwania", plik_czasy_trwania)
                     plik_zadania.append([])
                     plik_zadania[iterator-1]=plik_czasy_trwania.copy()
                 else:
@@ -61,8 +62,8 @@ def wczytajDaneZPliku(nazwaPliku):
                     plik_liczba_zadan=ustawienia[0]
                     plik_liczba_maszyn=ustawienia[1]
                 iterator = iterator + 1
-                print(linia)
-        print("to co ma byc", plik_zadania)
+                #print(linia)
+        #print("to co ma byc", plik_zadania)
     else:
         print("plik nie istnieje!!!")
 
@@ -214,6 +215,16 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
 
 
 # wczytaj konfiguracje dla dwoch maszyn
+wczytajDaneZPliku("dwie.txt")
+print("wcyztane dla 2 maszyn", wczytane)
+
+dwie_zadania=list(range(1,wczytane[0][0]+1))
+print("dwiezadania", dwie_zadania)
+for i in range(0, wczytane[0][0]):
+    dwie_czas_na_maszynie_1[i] = wczytane[1][i][0]
+    dwie_czas_na_maszynie_2[i] = wczytane[1][i][1]
+
+
 zadania = dwie_zadania
 czas_na_maszynie_1 = dwie_czas_na_maszynie_1.copy()
 czas_na_maszynie_2 = dwie_czas_na_maszynie_2.copy()
@@ -286,9 +297,8 @@ print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=", cmax)
 wizualizacjaDwochMaszyn(czas_na_maszynie_2, najkrotsza, "wykresy/Johnson_2maszyny/wykres", cmax)
 
 # wczytaj konfiguracje dla 3 maszyn
-wczytajDaneZPliku("neh.txt")
-
-print("WAZNE", wczytane)
+wczytajDaneZPliku("trzy.txt")
+print("wczytane dla 3 maszyn", wczytane)
 trzy_zadania=range(1,wczytane[0][0]+1)
 for i in range(0, wczytane[0][0]):
     trzy_czas_na_maszynie_1[i] = wczytane[1][i][0]
