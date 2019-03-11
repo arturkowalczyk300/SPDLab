@@ -3,6 +3,7 @@
 # todo (8) - naprawa sztywnej kolejnosci w wizualizacji
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 import time
 
 ## konfiguracja dla 2 maszyn
@@ -12,25 +13,25 @@ dwie_czas_na_maszynie_2 = [5, 1, 4, 10, 3]
 dwie_liczba_maszyn = 2
 dwie_liczba_zadan = len(dwie_zadania)
 # inna konfiguracja dla 2 maszyn
-#dwie_zadania = [1, 2, 3]
-#dwie_czas_na_maszynie_1 = [4, 4, 10]
-#dwie_czas_na_maszynie_2 = [5, 1, 4]
-#dwie_liczba_maszyn = 2
-#dwi#e_liczba_zadan = len(dwie_zadania)
+# dwie_zadania = [1, 2, 3]
+# dwie_czas_na_maszynie_1 = [4, 4, 10]
+# dwie_czas_na_maszynie_2 = [5, 1, 4]
+# dwie_liczba_maszyn = 2
+# dwi#e_liczba_zadan = len(dwie_zadania)
 
 # konfiguracja dla 3 maszyn
-#trzy_zadania = [1, 2, 3, 4]
-#trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
-#trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
-#trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
-#trzy_liczba_maszyn = 3
+trzy_zadania = [1, 2, 3, 4]
+trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
+trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
+trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
+trzy_liczba_maszyn = 3
 
 # instancja t000
-trzy_zadania = [1, 2, 3, 4]
-trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
-trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
-trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
-trzy_liczba_maszyn = 3
+#trzy_zadania = [1, 2, 3, 4]
+#trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
+#trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
+#trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
+#trzy_liczba_maszyn = 3
 
 # sekcja z danymi
 kolory = ["red", "green", "blue", "cyan", "magenta"]
@@ -38,8 +39,40 @@ zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
 zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
 zakonczenie_zadan_3 = [0, 0, 0, 0, 0]
 
+wczytane=[]
+
 def wczytajDaneZPliku(nazwaPliku):
     print("wczytywanie")
+    plik_zadania = []
+    if os.path.isfile(nazwaPliku):
+        with open(nazwaPliku, "r") as tekst:
+            iterator = 0
+            for linia in tekst:
+                linia = linia.replace("\n", "")
+                linia = linia.replace("\r", "")
+                if iterator != 0:
+                    #plik_zadania.append(linia)
+                    plik_czasy_trwania=[int(s) for s in linia.split() if s.isdigit()]
+                    print("czasy trwania", plik_czasy_trwania)
+                    plik_zadania.append([])
+                    plik_zadania[iterator-1]=plik_czasy_trwania.copy()
+                else:
+                    ustawienia=[int(s) for s in linia.split() if s.isdigit()]
+                    plik_liczba_zadan=ustawienia[0]
+                    plik_liczba_maszyn=ustawienia[1]
+                iterator = iterator + 1
+                print(linia)
+        print("to co ma byc", plik_zadania)
+    else:
+        print("plik nie istnieje!!!")
+
+    wczytane.append(ustawienia)
+    wczytane.append(plik_zadania)
+    trzy_zadania=range(1,plik_liczba_zadan+1)
+    trzy_liczba_maszyn=plik_liczba_maszyn
+    trzy_czas_na_maszynie_1=plik_zadania[0].copy()
+    trzy_czas_na_maszynie_2=plik_zadania[1].copy()
+    trzy_czas_na_maszynie_3=plik_zadania[2].copy()
 
 def permutacja(liczba):
     dlugosc = len(liczba)
@@ -177,6 +210,9 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
     return ret_cmax
 
 
+
+
+
 # wczytaj konfiguracje dla dwoch maszyn
 zadania = dwie_zadania
 czas_na_maszynie_1 = dwie_czas_na_maszynie_1.copy()
@@ -191,7 +227,7 @@ print("Przeglad zupelny wszystkich permutacji:")
 for p in permutacja(zadania):
     permutacje.append(p)
 
-kolejnosc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] #maksymalnie 10 zadan
+kolejnosc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # maksymalnie 10 zadan
 wykres = 0
 mincmax = 10000
 najlepszaKolejnosc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -250,6 +286,8 @@ print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=", cmax)
 wizualizacjaDwochMaszyn(czas_na_maszynie_2, najkrotsza, "wykresy/Johnson_2maszyny/wykres", cmax)
 
 # wczytaj konfiguracje dla 3 maszyn
+wczytajDaneZPliku("neh.txt")
+print("WAZNE", wczytane)
 n = trzy_zadania  # zadania
 czas1 = trzy_czas_na_maszynie_1.copy()
 czas2 = trzy_czas_na_maszynie_2.copy()
@@ -311,3 +349,5 @@ cmax = przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, tr
 print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", cmax)
 wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza,
                          'wykresy/Johnson_3maszyny/wykres', cmax)
+
+
