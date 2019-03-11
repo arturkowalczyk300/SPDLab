@@ -360,8 +360,8 @@ najkrotsza = l1 + l2
 taa = [1, 4, 3, 2]
 # najkrotsza = taa
 # najkrotsza=[3,4,1,2]
-przegladKolejnosci(4, najkrotsza, czasw1, czasw2)
-cmax = przegladKolejnosciTrzechMaszyn(4, najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2,
+przegladKolejnosci(len(trzy_zadania), najkrotsza, czasw1, czasw2)
+cmax = przegladKolejnosciTrzechMaszyn(len(trzy_zadania), najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2,
                                       trzy_czas_na_maszynie_3)
 print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", cmax)
 wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza,
