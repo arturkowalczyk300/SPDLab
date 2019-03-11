@@ -6,44 +6,31 @@ import numpy as np
 import os
 import time
 
-## konfiguracja dla 2 maszyn
-dwie_zadania = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
-dwie_czas_na_maszynie_1 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
-dwie_czas_na_maszynie_2 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
+# inicjalizacja struktur danych dla 2 maszyn
+dwie_zadania = [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000]
+dwie_czas_na_maszynie_1 = [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000]
+dwie_czas_na_maszynie_2 = [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000]
 dwie_liczba_maszyn = 2
 dwie_liczba_zadan = len(dwie_zadania)
-# inna konfiguracja dla 2 maszyn
-# dwie_zadania = [1, 2, 3]
-# dwie_czas_na_maszynie_1 = [4, 4, 10]
-# dwie_czas_na_maszynie_2 = [5, 1, 4]
-# dwie_liczba_maszyn = 2
-# dwi#e_liczba_zadan = len(dwie_zadania)
 
-# konfiguracja dla 3 maszyn
-trzy_zadania = [0,0,0,0,0,0,0,0,0,0]
-trzy_czas_na_maszynie_1 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
-trzy_czas_na_maszynie_2 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
-trzy_czas_na_maszynie_3 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
+# inicjalizacja struktur danych dla 3 maszyn
+trzy_zadania = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+trzy_czas_na_maszynie_1 = [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000]
+trzy_czas_na_maszynie_2 = [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000]
+trzy_czas_na_maszynie_3 = [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000]
 trzy_liczba_maszyn = 3
 
-# instancja t000
-#trzy_zadania = [1, 2, 3, 4]
-#trzy_czas_na_maszynie_1 = [1, 9, 7, 4]
-#trzy_czas_na_maszynie_2 = [3, 3, 8, 8]
-#trzy_czas_na_maszynie_3 = [8, 5, 6, 7]
-#trzy_liczba_maszyn = 3
-
 # sekcja z danymi
-kolory = ["red", "green", "blue", "cyan", "magenta","red", "green", "blue", "cyan", "magenta"]
-zakonczenie_zadan_1 = [0, 0, 0, 0, 0,0, 0, 0, 0, 0]
-zakonczenie_zadan_2 = [0, 0, 0, 0, 0,0, 0, 0, 0, 0]
-zakonczenie_zadan_3 = [0, 0, 0, 0, 0,0, 0, 0, 0, 0]
+kolory = ["red", "green", "blue", "cyan", "magenta", "red", "green", "blue", "cyan", "magenta"]
+zakonczenie_zadan_1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+zakonczenie_zadan_2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+zakonczenie_zadan_3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-wczytane=[]
+wczytane = []
+
 
 def wczytajDaneZPliku(nazwaPliku):
     wczytane.clear()
-    #print("wczytywanie")
     plik_zadania = []
     if os.path.isfile(nazwaPliku):
         with open(nazwaPliku, "r") as tekst:
@@ -52,28 +39,25 @@ def wczytajDaneZPliku(nazwaPliku):
                 linia = linia.replace("\n", "")
                 linia = linia.replace("\r", "")
                 if iterator != 0:
-                    #plik_zadania.append(linia)
-                    plik_czasy_trwania=[int(s) for s in linia.split() if s.isdigit()]
-                    #print("czasy trwania", plik_czasy_trwania)
+                    plik_czasy_trwania = [int(s) for s in linia.split() if s.isdigit()]
                     plik_zadania.append([])
-                    plik_zadania[iterator-1]=plik_czasy_trwania.copy()
+                    plik_zadania[iterator - 1] = plik_czasy_trwania.copy()
                 else:
-                    ustawienia=[int(s) for s in linia.split() if s.isdigit()]
-                    plik_liczba_zadan=ustawienia[0]
-                    plik_liczba_maszyn=ustawienia[1]
+                    ustawienia = [int(s) for s in linia.split() if s.isdigit()]
+                    plik_liczba_zadan = ustawienia[0]
+                    plik_liczba_maszyn = ustawienia[1]
                 iterator = iterator + 1
-                #print(linia)
-        #print("to co ma byc", plik_zadania)
     else:
         print("plik nie istnieje!!!")
 
     wczytane.append(ustawienia)
     wczytane.append(plik_zadania)
-    trzy_zadania=range(1,plik_liczba_zadan+1)
-    trzy_liczba_maszyn=plik_liczba_maszyn
-    trzy_czas_na_maszynie_1=plik_zadania[0].copy()
-    trzy_czas_na_maszynie_2=plik_zadania[1].copy()
-    trzy_czas_na_maszynie_3=plik_zadania[2].copy()
+    trzy_zadania = range(1, plik_liczba_zadan + 1)
+    trzy_liczba_maszyn = plik_liczba_maszyn
+    trzy_czas_na_maszynie_1 = plik_zadania[0].copy()
+    trzy_czas_na_maszynie_2 = plik_zadania[1].copy()
+    trzy_czas_na_maszynie_3 = plik_zadania[2].copy()
+
 
 def permutacja(liczba):
     dlugosc = len(liczba)
@@ -155,7 +139,7 @@ def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_mas
     zakonczenie_zadan_2[arg_kolejnosc[0]] = zakonczenie_zadan_1[arg_kolejnosc[0]] + arg_czas_na_maszynie_2[
         arg_kolejnosc[0]]
     for i in range(1, n):
-        # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
+        # jesli zadanie i sie zakonczylo na maszynie pierwszej to zalaczam je na drugiej. jesli nie, czekam do jego konca.
         if (zakonczenie_zadan_1[arg_kolejnosc[i]] < zakonczenie_zadan_2[
             arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
             zakonczenie_zadan_2[arg_kolejnosc[i]] = zakonczenie_zadan_2[arg_kolejnosc[i - 1]] + \
@@ -181,7 +165,7 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
     zakonczenie_zadan_2[arg_kolejnosc[0]] = zakonczenie_zadan_1[arg_kolejnosc[0]] + arg_czas_na_maszynie_2[
         arg_kolejnosc[0]]
     for i in range(1, n):
-        # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
+        # jesli zadanie i sie zakonczylo na maszynie pierwszej to zalaczam je na drugiej. jesli nie, czekam do jego konca.
         if (zakonczenie_zadan_1[arg_kolejnosc[i]] < zakonczenie_zadan_2[
             arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
             zakonczenie_zadan_2[arg_kolejnosc[i]] = zakonczenie_zadan_2[arg_kolejnosc[i - 1]] + \
@@ -211,19 +195,13 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
     return ret_cmax
 
 
-
-
-
 # wczytaj konfiguracje dla dwoch maszyn
 wczytajDaneZPliku("dwie.txt")
-#print("wcyztane dla 2 maszyn", wczytane)
-
-dwie_zadania=list(range(1,wczytane[0][0]+1))
-#print("dwiezadania", dwie_zadania)
+dwie_zadania = list(range(1, wczytane[0][0] + 1))
 for i in range(0, wczytane[0][0]):
     dwie_czas_na_maszynie_1[i] = wczytane[1][i][0]
     dwie_czas_na_maszynie_2[i] = wczytane[1][i][1]
-dwie_liczba_zadan=wczytane[0][0]
+dwie_liczba_zadan = wczytane[0][0]
 
 zadania = dwie_zadania
 czas_na_maszynie_1 = dwie_czas_na_maszynie_1.copy()
@@ -298,8 +276,7 @@ wizualizacjaDwochMaszyn(czas_na_maszynie_2, najkrotsza, "wykresy/Johnson_2maszyn
 
 # wczytaj konfiguracje dla 3 maszyn
 wczytajDaneZPliku("trzy.txt")
-#print("wczytane dla 3 maszyn", wczytane)
-trzy_zadania=range(1,wczytane[0][0]+1)
+trzy_zadania = range(1, wczytane[0][0] + 1)
 for i in range(0, wczytane[0][0]):
     trzy_czas_na_maszynie_1[i] = wczytane[1][i][0]
     trzy_czas_na_maszynie_2[i] = wczytane[1][i][1]
@@ -343,7 +320,7 @@ for k in range(0, len(n)):
         czasw1[index2] = 1000000
         czasw2[index2] = 1000000
     elif Min1 == Min2:
-        # wycieramy pierwsze zadanie (o mniejszym indeksie_
+        # wycieramy pierwsze zadanie (o mniejszym indeksie)
         if (index1 > index2):
             l2.insert(0, index2 + 1)  # mozna wybrac losowo
             czasw1[index2] = 10000000
@@ -357,14 +334,9 @@ czasw1 = czasw1Org
 czasw2 = czasw2Org
 
 najkrotsza = l1 + l2
-taa = [1, 4, 3, 2]
-# najkrotsza = taa
-# najkrotsza=[3,4,1,2]
 przegladKolejnosci(len(trzy_zadania), najkrotsza, czasw1, czasw2)
 cmax = przegladKolejnosciTrzechMaszyn(len(trzy_zadania), najkrotsza, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2,
                                       trzy_czas_na_maszynie_3)
 print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", cmax)
 wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza,
                          'wykresy/Johnson_3maszyny/wykres', cmax)
-
-
