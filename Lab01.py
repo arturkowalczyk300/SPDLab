@@ -7,9 +7,9 @@ import os
 import time
 
 ## konfiguracja dla 2 maszyn
-dwie_zadania = [1, 2, 3, 4, 5]
-dwie_czas_na_maszynie_1 = [4, 4, 10, 6, 2]
-dwie_czas_na_maszynie_2 = [5, 1, 4, 10, 3]
+dwie_zadania = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
+dwie_czas_na_maszynie_1 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
+dwie_czas_na_maszynie_2 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
 dwie_liczba_maszyn = 2
 dwie_liczba_zadan = len(dwie_zadania)
 # inna konfiguracja dla 2 maszyn
@@ -34,16 +34,16 @@ trzy_liczba_maszyn = 3
 #trzy_liczba_maszyn = 3
 
 # sekcja z danymi
-kolory = ["red", "green", "blue", "cyan", "magenta"]
-zakonczenie_zadan_1 = [0, 0, 0, 0, 0]
-zakonczenie_zadan_2 = [0, 0, 0, 0, 0]
-zakonczenie_zadan_3 = [0, 0, 0, 0, 0]
+kolory = ["red", "green", "blue", "cyan", "magenta","red", "green", "blue", "cyan", "magenta"]
+zakonczenie_zadan_1 = [0, 0, 0, 0, 0,0, 0, 0, 0, 0]
+zakonczenie_zadan_2 = [0, 0, 0, 0, 0,0, 0, 0, 0, 0]
+zakonczenie_zadan_3 = [0, 0, 0, 0, 0,0, 0, 0, 0, 0]
 
 wczytane=[]
 
 def wczytajDaneZPliku(nazwaPliku):
     wczytane.clear()
-    print("wczytywanie")
+    #print("wczytywanie")
     plik_zadania = []
     if os.path.isfile(nazwaPliku):
         with open(nazwaPliku, "r") as tekst:
@@ -101,7 +101,7 @@ def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
                    colors=kolory[i + 1],
                    lw=4)
     # wizualizacja maszyny drugiej
-    for i in range(0, len(czas_na_maszynie_2)):
+    for i in range(0, len(arg_kolejnosc)):
         plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[i] - 1],
                    zakonczenie_zadan_2[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
 
@@ -216,14 +216,14 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
 
 # wczytaj konfiguracje dla dwoch maszyn
 wczytajDaneZPliku("dwie.txt")
-print("wcyztane dla 2 maszyn", wczytane)
+#print("wcyztane dla 2 maszyn", wczytane)
 
 dwie_zadania=list(range(1,wczytane[0][0]+1))
-print("dwiezadania", dwie_zadania)
+#print("dwiezadania", dwie_zadania)
 for i in range(0, wczytane[0][0]):
     dwie_czas_na_maszynie_1[i] = wczytane[1][i][0]
     dwie_czas_na_maszynie_2[i] = wczytane[1][i][1]
-
+dwie_liczba_zadan=wczytane[0][0]
 
 zadania = dwie_zadania
 czas_na_maszynie_1 = dwie_czas_na_maszynie_1.copy()
@@ -298,7 +298,7 @@ wizualizacjaDwochMaszyn(czas_na_maszynie_2, najkrotsza, "wykresy/Johnson_2maszyn
 
 # wczytaj konfiguracje dla 3 maszyn
 wczytajDaneZPliku("trzy.txt")
-print("wczytane dla 3 maszyn", wczytane)
+#print("wczytane dla 3 maszyn", wczytane)
 trzy_zadania=range(1,wczytane[0][0]+1)
 for i in range(0, wczytane[0][0]):
     trzy_czas_na_maszynie_1[i] = wczytane[1][i][0]
