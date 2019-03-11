@@ -287,7 +287,14 @@ wizualizacjaDwochMaszyn(czas_na_maszynie_2, najkrotsza, "wykresy/Johnson_2maszyn
 
 # wczytaj konfiguracje dla 3 maszyn
 wczytajDaneZPliku("neh.txt")
+
 print("WAZNE", wczytane)
+trzy_zadania=range(1,wczytane[0][0]+1)
+for i in range(0, wczytane[0][0]):
+    trzy_czas_na_maszynie_1[i] = wczytane[1][i][0]
+    trzy_czas_na_maszynie_2[i] = wczytane[1][i][1]
+    trzy_czas_na_maszynie_3[i] = wczytane[1][i][2]
+
 n = trzy_zadania  # zadania
 czas1 = trzy_czas_na_maszynie_1.copy()
 czas2 = trzy_czas_na_maszynie_2.copy()
