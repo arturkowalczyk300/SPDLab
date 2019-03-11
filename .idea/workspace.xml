@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48a7de22-6b68-4bb9-91b0-e626d30205da" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dwie - Copy.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dwie.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dwie.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nehtrzy.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trzy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/trzy.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy/Johnson_2maszyny/wykres.png" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy/Johnson_2maszyny/wykres.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy/Johnson_3maszyny/wykres.png" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy/Johnson_3maszyny/wykres.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy/przeglad_zupelny/0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy/przeglad_zupelny/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy/przeglad_zupelny/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy/przeglad_zupelny/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy/przeglad_zupelny/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy/przeglad_zupelny/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/najlepszaKolejnosc.png" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy/przeglad_zupelny/najlepszaKolejnosc.png" afterDir="false" />
-    </list>
+    <list default="true" id="48a7de22-6b68-4bb9-91b0-e626d30205da" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Lab01.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="341" column="39" selection-start-line="341" selection-start-column="39" selection-end-line="341" selection-end-column="39" />
+            <state relative-caret-position="192">
+              <caret line="331" lean-forward="true" selection-start-line="331" selection-end-line="331" />
               <folding>
                 <element signature="n#!!doc" />
               </folding>
@@ -204,12 +188,12 @@
       <workItem from="1552227094853" duration="10655000" />
       <workItem from="1552240326034" duration="12249000" />
       <workItem from="1552283403310" duration="5648000" />
-      <workItem from="1552296434250" duration="4686000" />
+      <workItem from="1552296434250" duration="4790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80691000" />
+    <option name="totallyTimeSpent" value="80795000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -287,8 +271,8 @@
     <entry file="file://E:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64/Lib/codecs.py" />
     <entry file="file://$PROJECT_DIR$/Lab01.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="341" column="39" selection-start-line="341" selection-start-column="39" selection-end-line="341" selection-end-column="39" />
+        <state relative-caret-position="192">
+          <caret line="331" lean-forward="true" selection-start-line="331" selection-end-line="331" />
           <folding>
             <element signature="n#!!doc" />
           </folding>
