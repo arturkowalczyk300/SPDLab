@@ -20,10 +20,10 @@ dwie_liczba_zadan = len(dwie_zadania)
 # dwi#e_liczba_zadan = len(dwie_zadania)
 
 # konfiguracja dla 3 maszyn
-trzy_zadania = [1, 2, 3, 4]
-trzy_czas_na_maszynie_1 = [5, 4, 4, 3]
-trzy_czas_na_maszynie_2 = [5, 5, 4, 5]
-trzy_czas_na_maszynie_3 = [3, 2, 5, 7]
+trzy_zadania = [0,0,0,0,0,0,0,0,0,0]
+trzy_czas_na_maszynie_1 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
+trzy_czas_na_maszynie_2 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
+trzy_czas_na_maszynie_3 = [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
 trzy_liczba_maszyn = 3
 
 # instancja t000
