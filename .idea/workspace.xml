@@ -1,7 +1,216 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48a7de22-6b68-4bb9-91b0-e626d30205da" name="Default Changelist" comment="" />
+    <list default="true" id="48a7de22-6b68-4bb9-91b0-e626d30205da" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/Johnson_2maszyny/wykres.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/Johnson_3maszyny/wykres.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/101.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/102.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/103.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/104.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/105.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/106.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/107.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/108.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/109.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/110.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/111.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/112.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/113.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/114.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/115.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/116.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/117.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/118.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/119.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/120.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/121.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/122.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/123.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/124.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/125.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/126.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/127.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/129.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/130.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/131.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/132.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/133.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/134.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/135.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/136.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/137.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/138.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/139.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/140.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/141.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/142.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/143.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/144.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/145.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/146.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/147.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/148.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/149.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/150.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/151.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/152.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/153.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/154.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/155.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/156.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/157.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/158.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/159.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/160.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/161.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/162.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/163.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/164.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/165.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/166.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/167.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/168.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/169.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/170.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/171.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/172.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/173.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/174.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/175.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/176.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/177.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/178.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/179.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/180.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/181.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/182.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/183.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/184.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/185.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/186.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/187.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/188.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/189.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/190.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/191.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/193.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/194.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/195.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/196.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/197.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/198.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/199.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/201.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/202.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/51.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/52.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/53.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/54.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/55.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/56.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/58.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/59.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/61.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/62.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/63.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/65.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/66.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/67.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/68.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/69.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/70.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/71.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/72.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/73.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/74.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/75.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/76.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/77.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/78.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/79.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/80.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/81.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/82.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/83.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/84.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/85.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/86.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/87.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/88.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/89.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/90.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/91.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/92.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/93.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/94.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/95.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/96.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/97.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/98.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/99.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wykresy/przeglad_zupelny/najlepszaKolejnosc.png" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,15 +218,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SPDLab$Lab01.coverage" NAME="Lab01 Coverage Results" MODIFIED="1552302259557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SPDLab$Lab01.coverage" NAME="Lab01 Coverage Results" MODIFIED="1552309180547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Lab01.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="331" lean-forward="true" selection-start-line="331" selection-end-line="331" />
+            <state>
+              <caret lean-forward="true" />
               <folding>
                 <element signature="n#!!doc" />
               </folding>
@@ -29,8 +238,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>range</find>
-      <find>`</find>
       <find>i</find>
       <find>[o</find>
       <find>[i]</find>
@@ -58,6 +265,9 @@
       <find>wczy</find>
       <find>johnson</find>
       <find>0</find>
+      <find>.txt</find>
+      <find>nazwaPliku</find>
+      <find>dwie_nazwa</find>
     </findStrings>
     <replaceStrings>
       <replace>calakolejnosc[0]</replace>
@@ -188,23 +398,24 @@
       <workItem from="1552227094853" duration="10655000" />
       <workItem from="1552240326034" duration="12249000" />
       <workItem from="1552283403310" duration="5648000" />
-      <workItem from="1552296434250" duration="4790000" />
+      <workItem from="1552296434250" duration="5071000" />
+      <workItem from="1552306857505" duration="3016000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80795000" />
+    <option name="totallyTimeSpent" value="84092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22617246" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22919819" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4750378" visible="true" weight="0.22913256" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4742814" visible="true" weight="0.22913256" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.47806355" weight="0.3927987" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -212,7 +423,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5249622" side_tool="true" visible="true" weight="0.22913256" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5257186" side_tool="true" visible="true" weight="0.22913256" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49946696" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -260,19 +471,13 @@
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1170276995/builtins.py" />
     <entry file="file://$PROJECT_DIR$/wykres.png" />
-    <entry file="file://$PROJECT_DIR$/johnsons2machines.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/johnsons2machines.py" />
     <entry file="file://E:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64/Lib/site-packages/matplotlib/pyplot.py" />
     <entry file="file://E:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64/Lib/codecs.py" />
     <entry file="file://$PROJECT_DIR$/Lab01.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="331" lean-forward="true" selection-start-line="331" selection-end-line="331" />
+        <state>
+          <caret lean-forward="true" />
           <folding>
             <element signature="n#!!doc" />
           </folding>

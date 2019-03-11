@@ -6,6 +6,10 @@ import numpy as np
 import os
 import time
 
+#pliki do wczytania
+dwie_nazwaPliku="pdf_2maszyny.txt"
+trzy_nazwaPliku="pdf_3maszyny.txt"
+
 # inicjalizacja struktur danych dla 2 maszyn
 dwie_zadania = [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000]
 dwie_czas_na_maszynie_1 = [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000]
@@ -196,7 +200,7 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
 
 
 # wczytaj konfiguracje dla dwoch maszyn
-wczytajDaneZPliku("dwie.txt")
+wczytajDaneZPliku("dane/"+dwie_nazwaPliku)
 dwie_zadania = list(range(1, wczytane[0][0] + 1))
 for i in range(0, wczytane[0][0]):
     dwie_czas_na_maszynie_1[i] = wczytane[1][i][0]
@@ -275,7 +279,7 @@ print("2) Algorytm Johnsona dla 2 maszyn: ", najkrotsza, "cmax=", cmax)
 wizualizacjaDwochMaszyn(czas_na_maszynie_2, najkrotsza, "wykresy/Johnson_2maszyny/wykres", cmax)
 
 # wczytaj konfiguracje dla 3 maszyn
-wczytajDaneZPliku("trzy.txt")
+wczytajDaneZPliku("dane/"+trzy_nazwaPliku)
 trzy_zadania = range(1, wczytane[0][0] + 1)
 for i in range(0, wczytane[0][0]):
     trzy_czas_na_maszynie_1[i] = wczytane[1][i][0]
