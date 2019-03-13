@@ -343,4 +343,4 @@ cmax = przegladKolejnosciTrzechMaszyn(len(trzy_zadania), najkrotsza, trzy_czas_n
                                       trzy_czas_na_maszynie_3)
 print("3) Algorytm Johnsona dla 3 maszyn: ", najkrotsza, "cmax=", cmax)
 wizualizacjaTrzechMaszyn(trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3, najkrotsza,
-                         'wykresy/Johnson_3maszyny/wykres', cmax)
+                         'wykresy/Johnson_3maszyny/wykres', cmax) 
