@@ -17,14 +17,6 @@ trzy_czas_na_maszynie_2 = [6, 12, 3, 1]
 trzy_czas_na_maszynie_3 = [4, 11, 2, 18]
 trzy_liczba_maszyn = 3
 
-# w(j) = suma czasow 3 maszyn
-n = trzy_zadania  # zadania
-czas1 = trzy_czas_na_maszynie_1.copy()
-czas2 = trzy_czas_na_maszynie_2.copy()
-czas3 = trzy_czas_na_maszynie_3.copy()
-czas_wszystkich_zadan_3 = czas1.copy()
-for i in range(0, len(czas1)):
-    czas_wszystkich_zadan_3[i] = czas1[i] + czas2[i] + czas3[i]
 # w(j) = suma czasow 2 maszyn
 n = dwie_zadania
 czas1 = dwie_czas_na_maszynie_1.copy()
@@ -44,7 +36,7 @@ for k in range(0, len(n)):
 
 print(posortowana)
 
-#sortowanie zadań malejąco po w(j) przy 3 maszynach
+#w(j) = suma czasow 3 maszyn
 
 n = trzy_zadania
 czas1 = trzy_czas_na_maszynie_1.copy()
