@@ -2,9 +2,6 @@
 #Algorytm NEH
 
 
-
-
-
 #krok 1: wyzancz w(j)
 
 # inicjalizacja struktur danych dla 2 maszyn
@@ -49,7 +46,6 @@ def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_mas
     for k in range(0, n):
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     return ret_cmax
-#cmax = przegladKolejnosci(dwie_liczba_zadan, posortowana, czas_na_maszynie_1, czas_na_maszynie_2)
 
 def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2,
                                    arg_czas_na_maszynie_3):  # n zadan
@@ -91,27 +87,56 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     return ret_cmax
 
-#cmax = przegladKolejnosciTrzechMaszyn(len(trzy_zadania), posortowana, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3)
 
 # w(j) = suma czasow 2 maszyn
 n = dwie_zadania
 czas1 = dwie_czas_na_maszynie_1.copy()
 czas2 = dwie_czas_na_maszynie_2.copy()
 czas_wszystkich_zadan_2 = czas1.copy()
+
 for i in range(0, len(czas1)):
     czas_wszystkich_zadan_2[i] = czas1[i] + czas2[i]
 #sortowanie zadań majejąco po w(j) przy 2 maszynach
 a = list(n)  # tworzenie listy do n zadan#
 posortowana=[]
-print(czas_wszystkich_zadan_2)
+
 for k in range(0, len(n)):
     Max2 = max(czas_wszystkich_zadan_2)
     index2 = czas_wszystkich_zadan_2.index(Max2)
     posortowana.append(index2 + 1)
     czas_wszystkich_zadan_2[index2] = 0
 cmax = przegladKolejnosci(dwie_liczba_zadan, posortowana, dwie_czas_na_maszynie_1, dwie_czas_na_maszynie_2)
-print(posortowana)
-print(cmax)
+print("Posortowana lista dla 2 maszyn: ",posortowana)
+print("Cmax = ",cmax)
+
+
+#liczenie cmax wedlug algorytmu NEH dla 2 maszyn
+l1=[]
+l2=[]
+l3=[]
+m=11111
+for i in posortowana:
+    m=1111
+    for j in range(0, posortowana.index(i)+1):
+     l1=[]
+     l1=l1+l2
+     l1.insert(j,i)
+     print("nana=",l1)
+     d = przegladKolejnosci(posortowana.index(i)+1, l1, trzy_czas_na_maszynie_1,
+                                    trzy_czas_na_maszynie_2)
+     if(m > d):
+         m = d
+         l3 = l1
+         print(m)
+    l2 = l3
+
+print("Najlepsza kolejnosc = ",l2)
+print("Cmax = ",m)
+
+
+
+
+
 #w(j) = suma czasow 3 maszyn
 
 n = trzy_zadania
@@ -124,15 +149,39 @@ for i in range(0, len(czas1)):
 #sortowanie zadań majejąco po w(j) przy 3 maszynach
 a = list(n)  # tworzenie listy do n zadan#
 posortowana=[]
-print(czas_wszystkich_zadan_3)
+
 for k in range(0, len(n)):
     Max3 = max(czas_wszystkich_zadan_3)
     index3 = czas_wszystkich_zadan_3.index(Max3)
     posortowana.append(index3 + 1)
     czas_wszystkich_zadan_3[index3] = 0
 
-print(posortowana)
+print("Posortowana lista dla 3 maszyn: ",posortowana)
 
 cmax3 = przegladKolejnosciTrzechMaszyn(len(trzy_zadania), posortowana, trzy_czas_na_maszynie_1, trzy_czas_na_maszynie_2,
                                       trzy_czas_na_maszynie_3)
 print("Cmax=", cmax3)
+
+
+#liczenie cmax wedlug algorytmu NEH dla 3 maszyn
+l1=[]
+l2=[]
+l3=[]
+m=11111
+for i in posortowana:
+    m=1111
+    for j in range(0, posortowana.index(i)+1):
+     l1=[]
+     l1=l1+l2
+     l1.insert(j,i)
+     print("nana=",l1)
+     d = przegladKolejnosciTrzechMaszyn(posortowana.index(i)+1, l1, trzy_czas_na_maszynie_1,
+                                    trzy_czas_na_maszynie_2, trzy_czas_na_maszynie_3)
+     if(m > d):
+         m = d
+         l3 = l1
+         print(m)
+    l2 = l3
+
+print("Najlepsza kolejnosc = ",l2)
+print("Cmax = ",m)
