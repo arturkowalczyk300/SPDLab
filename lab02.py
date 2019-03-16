@@ -1,26 +1,61 @@
 # Sterowanie procesami dyskretnymi, laboratorium 2, 2019
 #Algorytm NEH
-
+import os
+dwie_nazwaPliku="dwie.txt"
+trzy_nazwaPliku="trzy.txt"
 
 #krok 1: wyzancz w(j)
 
 # inicjalizacja struktur danych dla 2 maszyn
 dwie_zadania = [10000, 10000, 10000, 10000]
-dwie_czas_na_maszynie_1 = [10, 20, 2, 1]
-dwie_czas_na_maszynie_2 = [10, 18, 3, 3]
+dwie_czas_na_maszynie_1 = [10, 20, 2, 1, 0, 0, 0,0 ,0 ,0] #maksymalnie 10 zadan || TODO (1): dynamiczna alokacja rozmiaru tablicy
+dwie_czas_na_maszynie_2 = [10, 18, 3, 3, 0, 0, 0,0 ,0 ,0] #maksymalnie 10 zadan
 dwie_liczba_maszyn = 2
 dwie_liczba_zadan = len(dwie_zadania)
 
 # inicjalizacja struktur danych dla 3 maszyn
 trzy_zadania = [1000, 1000, 1000, 1000]
-trzy_czas_na_maszynie_1 = [1, 7, 6, 8]
-trzy_czas_na_maszynie_2 = [6, 12, 3, 1]
-trzy_czas_na_maszynie_3 = [4, 11, 8, 18]
+trzy_czas_na_maszynie_1 = [1, 7, 6, 8, 0, 0, 0,0 ,0 ,0]
+trzy_czas_na_maszynie_2 = [6, 12, 3, 1, 0, 0, 0,0 ,0 ,0]
+trzy_czas_na_maszynie_3 = [4, 11, 8, 18, 0, 0, 0,0 ,0 ,0]
 trzy_liczba_maszyn = 3
 
 zakonczenie_zadan_1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 zakonczenie_zadan_2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 zakonczenie_zadan_3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+
+wczytane = []
+
+def wczytajDaneZPliku(nazwaPliku):
+    wczytane.clear()
+    plik_zadania = []
+    if os.path.isfile(nazwaPliku):
+        with open(nazwaPliku, "r") as tekst:
+            iterator = 0
+            for linia in tekst:
+                linia = linia.replace("\n", "")
+                linia = linia.replace("\r", "")
+                if iterator != 0:
+                    plik_czasy_trwania = [int(s) for s in linia.split() if s.isdigit()]
+                    plik_zadania.append([])
+                    plik_zadania[iterator - 1] = plik_czasy_trwania.copy()
+                else:
+                    ustawienia = [int(s) for s in linia.split() if s.isdigit()]
+                    plik_liczba_zadan = ustawienia[0]
+                    plik_liczba_maszyn = ustawienia[1]
+                iterator = iterator + 1
+    else:
+        print("plik nie istnieje!!!")
+
+    wczytane.append(ustawienia)
+    wczytane.append(plik_zadania)
+    trzy_zadania = range(1, plik_liczba_zadan + 1)
+    trzy_liczba_maszyn = plik_liczba_maszyn
+    trzy_czas_na_maszynie_1 = plik_zadania[0].copy()
+    trzy_czas_na_maszynie_2 = plik_zadania[1].copy()
+    trzy_czas_na_maszynie_3 = plik_zadania[2].copy()
+
 
 #liczenie Cmax
 def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2):  # n zadan
@@ -53,7 +88,7 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
         arg_kolejnosc[k] = arg_kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
     zakonczenie_zadan_1[arg_kolejnosc[0]] = arg_czas_na_maszynie_1[arg_kolejnosc[0]]  # zaczyna sie w t=0
     for i in range(1, n):
-        zakonczenie_zadan_1[arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i - 1]] + \
+        zakonczenie_zadan_1 [arg_kolejnosc[i]] = zakonczenie_zadan_1[arg_kolejnosc[i - 1]] + \
                                                 arg_czas_na_maszynie_1[arg_kolejnosc[i]]
     zakonczenie_zadan_2[arg_kolejnosc[0]] = zakonczenie_zadan_1[arg_kolejnosc[0]] + arg_czas_na_maszynie_2[
         arg_kolejnosc[0]]
@@ -86,6 +121,15 @@ def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg
     for k in range(0, n):
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     return ret_cmax
+
+#wczytywanie do pliku
+wczytajDaneZPliku("daneLab2/"+dwie_nazwaPliku)
+dwie_zadania = list(range(1, wczytane[0][0] + 1))
+for i in range(0, wczytane[0][0]):
+    dwie_czas_na_maszynie_1[i] = wczytane[1][i][0]
+    dwie_czas_na_maszynie_2[i] = wczytane[1][i][1]
+dwie_liczba_zadan = wczytane[0][0]
+
 
 
 # w(j) = suma czasow 2 maszyn
@@ -134,6 +178,14 @@ print("Najlepsza kolejnosc = ",l2)
 print("Cmax = ",m)
 
 
+
+#wczytanie do pliku
+wczytajDaneZPliku("daneLab2/"+trzy_nazwaPliku)
+trzy_zadania = range(1, wczytane[0][0] + 1)
+for i in range(0, wczytane[0][0]):
+    trzy_czas_na_maszynie_1[i] = wczytane[1][i][0]
+    trzy_czas_na_maszynie_2[i] = wczytane[1][i][1]
+    trzy_czas_na_maszynie_3[i] = wczytane[1][i][2]
 
 
 
