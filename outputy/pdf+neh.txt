@@ -1,1 +1,0 @@
-3) Algorytm Johnsona dla 3 maszyn:  [1, 4, 3, 2] cmax= 32
