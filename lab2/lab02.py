@@ -135,28 +135,27 @@ cmax = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn,  posortowana)
 print("Posortowana lista dla", m_liczbaMaszyn,  "maszyn: ", posortowana)
 print("Cmax = ", cmax)
 
-# # liczenie cmax wedlug algorytmu NEH dla 2 maszyn
-# l1 = []
-# l2 = []
-# l3 = []
-# m = 11111
-# for i in posortowana:
-#     m = 1111
-#     for j in range(0, posortowana.index(i) + 1):
-#         l1 = []
-#         l1 = l1 + l2
-#         l1.insert(j, i)
-#         print("nana=", l1)
-#         d = przegladKolejnosci(posortowana.index(i) + 1, l1, trzy_czas_na_maszynie_1,
-#                                trzy_czas_na_maszynie_2)
-#         if (m > d):
-#             m = d
-#             l3 = l1
-#             print(m)
-#     l2 = l3
-#
-# print("Najlepsza kolejnosc = ", l2)
-# print("Cmax = ", m)
+# liczenie cmax wedlug algorytmu NEH dla 2 maszyn
+l1 = []
+l2 = []
+l3 = []
+m = 11111
+for i in posortowana:
+    m = 1111
+    for j in range(0, posortowana.index(i) + 1):
+        l1 = []
+        l1 = l1 + l2
+        l1.insert(j, i) #kolejnosc
+        print("nana=", l1)
+        #d = przegladKolejnosci(posortowana.index(i) + 1, m_liczbaMaszyn)
+        d = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, posortowana)
+        if (m > d):
+            m = d
+            l3 = l1
+            print(m)
+    l2 = l3
+print("Najlepsza kolejnosc = ", l2)
+print("Cmax = ", m)
 #
 # # wczytanie do pliku
 # wczytajDaneZPliku("daneLab2/" + trzy_nazwaPliku)
