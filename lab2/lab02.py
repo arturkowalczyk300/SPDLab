@@ -11,12 +11,15 @@ import os
 dwie_nazwaPliku = "dwie.txt"
 trzy_nazwaPliku = "trzy.txt"
 
-############################################
+#######global #####################################
 # NOWE STRUKTURY
 ###########################################
 l_czasTrwania = []  # lista zawierajaca czasy trwania na n maszynach (wiec lista dwuwymiarowa)
 l_czasZakonczenia = []
+
+
 m_liczbaMaszyn=0
+m_liczbaZadan=0
 l_zadania=[]
 # krok 1: wyzancz w(j)
 
@@ -48,78 +51,61 @@ def wczytajDaneZPliku(nazwaPliku):
     wczytane.append(plik_zadania)
     #NOWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE wczytywanie do pliku
     l_zadania = list(range(1, wczytane[0][0] + 1))
-    m_liczbaMaszyn = wczytane[0][0]
+    global m_liczbaMaszyn
+    global m_liczbaZadan
+    m_liczbaMaszyn = wczytane[0][1]
+    m_liczbaZadan = wczytane[0][0]
     #przygotowanie rozmiaru struktur danych, WAZNE
     for i in range(0,m_liczbaMaszyn):
         l_czasTrwania.append([])
         l_czasZakonczenia.append([])
 
-    for i in range(0, m_liczbaMaszyn):
-        l_czasTrwania[i]=wczytane[1][i][0]
+    for k in range(0, m_liczbaMaszyn):
+        templista=[]
+        for i in range(0, m_liczbaZadan):
+            #l_czasTrwania[i]=wczytane[1][i][0]
+            templista.append(wczytane[1][i][k])
+        l_czasTrwania[k]=templista
+
+    l_zadania=range(1,m_liczbaZadan+1)
+    print(l_czasTrwania)
+    print("liczba maszyn", m_liczbaMaszyn)
 
 # liczenie Cmax
-def przegladKolejnosci(n, arg_kolejnosc, arg_czas_na_maszynie_1, arg_czas_na_maszynie_2):  # n zadan
-    for k in range(0, n):
-        arg_kolejnosc[k] = arg_kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
-    l_czasZakonczenia[0][arg_kolejnosc[0]] = arg_czas_na_maszynie_1[arg_kolejnosc[0]]
-    for i in range(1, n):
-        l_czasZakonczenia[0][arg_kolejnosc[i]] = l_czasZakonczenia[0][arg_kolejnosc[i - 1]] + \
-                                                 arg_czas_na_maszynie_1[arg_kolejnosc[i]]
-    l_czasZakonczenia[1][arg_kolejnosc[0]] = l_czasZakonczenia[0][arg_kolejnosc[0]] + arg_czas_na_maszynie_2[
-        arg_kolejnosc[0]]
-    for i in range(1, n):
-        # jesli zadanie i sie zakonczylo na maszynie pierwszej to zalaczam je na drugiej. jesli nie, czekam do jego konca.
-        if (l_czasZakonczenia[0][arg_kolejnosc[i]] < l_czasZakonczenia[1][
-            arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
-            l_czasZakonczenia[1][arg_kolejnosc[i]] = l_czasZakonczenia[1][arg_kolejnosc[i - 1]] + \
-                                                     arg_czas_na_maszynie_2[
-                                                         arg_kolejnosc[i]]
-        else:
-            l_czasZakonczenia[1][arg_kolejnosc[i]] = l_czasZakonczenia[0][arg_kolejnosc[i]] + \
-                                                     arg_czas_na_maszynie_2[arg_kolejnosc[i]]
-    ret_cmax = l_czasZakonczenia[1][arg_kolejnosc[n - 1]]
-    for k in range(0, n):
-        arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
-    return ret_cmax
 
-
-def przegladKolejnosciTrzechMaszyn(n, arg_kolejnosc):  # n zadan
-    for k in range(0, n):
+def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n zadan
+    for k in range(0, arg_liczbaZadan):
         arg_kolejnosc[k] = arg_kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
+
+    #utworzenie listy do czasu zakonczenia
+    for i in range(0,arg_liczbaMaszyn):
+        l_czasZakonczenia.append([])
+        l_czasZakonczenia[i]=[None]*arg_liczbaZadan
+
     l_czasZakonczenia[0][arg_kolejnosc[0]] = l_czasTrwania[0][arg_kolejnosc[0]]  # zaczyna sie w t=0
-    for i in range(1, n):
+    for i in range(1, arg_liczbaZadan):
         l_czasZakonczenia[0][arg_kolejnosc[i]] = l_czasZakonczenia[0][arg_kolejnosc[i - 1]] + \
                                                  l_czasTrwania[0][arg_kolejnosc[i]]
-    l_czasZakonczenia[1][arg_kolejnosc[0]] = l_czasZakonczenia[0][arg_kolejnosc[0]] + l_czasTrwania[1][
-        arg_kolejnosc[0]]
-    for i in range(1, n):
-        # jesli zadanie i sie zakonczylo na maszynie pierwszej to zalaczam je na drugiej. jesli nie, czekam do jego konca.
-        if (l_czasZakonczenia[0][arg_kolejnosc[i]] < l_czasZakonczenia[1][
-            arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
-            l_czasZakonczenia[1][arg_kolejnosc[i]] = l_czasZakonczenia[1][arg_kolejnosc[i - 1]] + \
-                                                     l_czasTrwania[1][
-                                                         arg_kolejnosc[i]]
-        else:
-            l_czasZakonczenia[1][arg_kolejnosc[i]] = l_czasZakonczenia[0][arg_kolejnosc[i]] + \
-                                                     l_czasTrwania[1][arg_kolejnosc[i]]
 
-    ############
-    l_czasZakonczenia[2][arg_kolejnosc[0]] = l_czasZakonczenia[1][arg_kolejnosc[0]] + l_czasTrwania[2][
-        arg_kolejnosc[0]]
-    for i in range(1, n):
-        # jesli zadanie i sie zakonczylo na maszynie pierwszej to odpalam je na drugiej. jesli nie, czekam do jego konca.
-        if (l_czasZakonczenia[1][arg_kolejnosc[i]] < l_czasZakonczenia[2][
-            arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
-            l_czasZakonczenia[2][arg_kolejnosc[i]] = l_czasZakonczenia[2][arg_kolejnosc[i - 1]] + \
-                                                     l_czasTrwania[2][
-                                                         arg_kolejnosc[i]]
-        else:
-            l_czasZakonczenia[2][arg_kolejnosc[i]] = l_czasZakonczenia[1][arg_kolejnosc[i]] + \
-                                                     l_czasTrwania[2][arg_kolejnosc[i]]
+    #kolejne maszyny
+    liczbaMaszyn=arg_liczbaMaszyn
+    for k in range(1,liczbaMaszyn):
+        l_czasZakonczenia[k][arg_kolejnosc[0]] = l_czasZakonczenia[k-1][arg_kolejnosc[0]] + l_czasTrwania[k][
+            arg_kolejnosc[0]]
+        for i in range(1, arg_liczbaZadan):
+            # jesli zadanie i sie zakonczylo na maszynie pierwszej to zalaczam je na drugiej. jesli nie, czekam do jego konca.
+            if (l_czasZakonczenia[k-1][arg_kolejnosc[i]] < l_czasZakonczenia[k][
+                arg_kolejnosc[i - 1]]):  # jesli zakonczenie zadania nastapilo wczesniej
+                l_czasZakonczenia[k][arg_kolejnosc[i]] = l_czasZakonczenia[k][arg_kolejnosc[i - 1]] + \
+                                                         l_czasTrwania[k][
+                                                             arg_kolejnosc[i]]
+            else:
+                l_czasZakonczenia[k][arg_kolejnosc[i]] = l_czasZakonczenia[k-1][arg_kolejnosc[i]] + \
+                                                         l_czasTrwania[k][arg_kolejnosc[i]]
 
-    ret_cmax = l_czasZakonczenia[2][arg_kolejnosc[n - 1]]
+    ret_cmax = l_czasZakonczenia[arg_liczbaMaszyn-1][arg_kolejnosc[arg_liczbaZadan - 1]]
 
-    for k in range(0, n):
+    for k in range(0, arg_liczbaZadan):
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     return ret_cmax
 
@@ -129,6 +115,7 @@ wczytajDaneZPliku("daneLab2/" + dwie_nazwaPliku)
 
 # w(j) = suma czasow 2 maszyn
 n = m_liczbaMaszyn
+print("liczba maszyn", n)
 czas1 = l_czasTrwania[0].copy()
 czas2 = l_czasTrwania[1].copy()
 czas_wszystkich_zadan_2 = czas1.copy()
@@ -136,16 +123,16 @@ czas_wszystkich_zadan_2 = czas1.copy()
 for i in range(0, len(czas1)):
     czas_wszystkich_zadan_2[i] = czas1[i] + czas2[i]
 # sortowanie zadań majejąco po w(j) przy 2 maszynach
-a = list(n)  # tworzenie listy do n zadan#
+a = l_zadania  # tworzenie listy do n zadan#
 posortowana = []
 
-for k in range(0, len(n)):
+for k in range(0, m_liczbaZadan):
     Max2 = max(czas_wszystkich_zadan_2)
     index2 = czas_wszystkich_zadan_2.index(Max2)
     posortowana.append(index2 + 1)
     czas_wszystkich_zadan_2[index2] = 0
-cmax = przegladKolejnosci(m_liczbaMaszyn, posortowana)
-print("Posortowana lista dla 2 maszyn: ", posortowana)
+cmax = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn,  posortowana)
+print("Posortowana lista dla", m_liczbaMaszyn,  "maszyn: ", posortowana)
 print("Cmax = ", cmax)
 
 # # liczenie cmax wedlug algorytmu NEH dla 2 maszyn
