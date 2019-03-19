@@ -69,8 +69,8 @@ def wczytajDaneZPliku(nazwaPliku):
         l_czasTrwania[k]=templista
 
     l_zadania=range(1,m_liczbaZadan+1)
-    print(l_czasTrwania)
-    print("liczba maszyn", m_liczbaMaszyn)
+    #print(l_czasTrwania)
+    #print("liczba maszyn", m_liczbaMaszyn)
 
 # liczenie Cmax
 
@@ -116,8 +116,7 @@ for nazwaPliku in l_nazwyPlikow:
     wczytajDaneZPliku("daneLab2/" + nazwaPliku)
 
     # w(j) = suma czasow 2 maszyn
-    n = m_liczbaMaszyn
-    print("liczba maszyn", n)
+    print("liczba maszyn", m_liczbaMaszyn)
     czas1 = l_czasTrwania[0].copy()
     czas2 = l_czasTrwania[1].copy()
     czas_wszystkich_zadan_2 = czas1.copy()
@@ -134,10 +133,12 @@ for nazwaPliku in l_nazwyPlikow:
         posortowana.append(index2 + 1)
         czas_wszystkich_zadan_2[index2] = 0
     cmax = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn,  posortowana)
-    print("Posortowana lista dla", m_liczbaMaszyn,  "maszyn: ", posortowana)
-    print("Cmax = ", cmax)
+    print("--Posortowana lista dla", m_liczbaMaszyn,  "maszyn: ", posortowana)
+    print("--Cmax = ", cmax)
+    print("--------------")
 
-    # liczenie cmax wedlug algorytmu NEH dla 2 maszyn
+    #liczenie cmax wedlug algorytmu NEH
+    print("Algorytm NEH")
     l1 = []
     l2 = []
     l3 = []
@@ -148,14 +149,13 @@ for nazwaPliku in l_nazwyPlikow:
             l1 = []
             l1 = l1 + l2
             l1.insert(j, i) #kolejnosc
-            print("nana=", l1)
-            #d = przegladKolejnosci(posortowana.index(i) + 1, m_liczbaMaszyn)
+            #print("nana=", l1)
             d = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, posortowana)
             if (m > d):
                 m = d
                 l3 = l1
-                print(m)
+                #print(m)
         l2 = l3
-    print("Najlepsza kolejnosc = ", l2)
-    print("Cmax = ", m)
+    print("--Najlepsza kolejnosc = ", l2)
+    print("--Cmax = ", m)
 
