@@ -10,7 +10,7 @@ import numpy as np
 import time
 
 l_nazwyPlikow=["dwie.txt", "trzy.txt"]
-
+#l_nazwyPlikow=["trzy.txt"]
 
 dwie_nazwaPliku = "dwie.txt"
 trzy_nazwaPliku = "trzy.txt"
@@ -29,55 +29,55 @@ l_zadania=[]
 
 wczytane = []
 
-def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
-                            arg_nazwa_pliku, arg_cmax):
+kolory = ["red", "green", "blue", "cyan", "magenta", "red", "green", "blue", "cyan", "magenta"]  #todo: poprawic
+
+def wizualizacja(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc, arg_nazwa_pliku):
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
-    plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    plt.hlines(-1, 0, l_czasZakonczenia[0][arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
     for i in range(0, len(arg_kolejnosc) - 1):
-        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i] - 1], zakonczenie_zadan_1[arg_kolejnosc[i + 1] - 1],
+        plt.hlines(-1, l_czasZakonczenia[0][arg_kolejnosc[i] - 1], l_czasZakonczenia[0][arg_kolejnosc[i + 1] - 1],
                    colors=kolory[i + 1],
                    lw=4)
-    # wizualizacja maszyny drugiej
-    for i in range(0, len(arg_kolejnosc)):
-        plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[i] - 1],
-                   zakonczenie_zadan_2[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
+
+    liczbaMaszyn = arg_liczbaMaszyn
+    for k in range(1, liczbaMaszyn):
+        # wizualizacja maszyny drugiej i kazdej kolejnej
+        for i in range(0, len(arg_kolejnosc)):
+            plt.hlines(-k-1, l_czasZakonczenia[k][arg_kolejnosc[i] - 1] - l_czasTrwania[k][arg_kolejnosc[i] - 1],
+                       l_czasZakonczenia[k][arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
 
     plt.margins(0.1)
     plt.grid()
     plt.xticks(np.arange(0, 40, 1))
     plt.yticks(np.arange(0, -3, -1))
-    plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
+   # plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
     # plt.show()
     plt.savefig(arg_nazwa_pliku)
     plt.close()
 
-
-def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2, arg_czas_na_maszynie_3, arg_kolejnosc,
-                             arg_nazwa_pliku, arg_cmax):
+def wizualizacjaTrzechMaszyn(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc, arg_nazwa_pliku):
     plt.figure(figsize=(20, 7))
     # wizualizacja maszyny pierwszej
-    plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    plt.hlines(-1, 0, l_czasZakonczenia[0][arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
     for i in range(0, len(arg_kolejnosc) - 1):
-        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i] - 1], zakonczenie_zadan_1[arg_kolejnosc[i + 1] - 1],
+        plt.hlines(-1, l_czasZakonczenia[0][arg_kolejnosc[i] - 1], l_czasZakonczenia[0][arg_kolejnosc[i + 1] - 1],
                    colors=kolory[i + 1],
                    lw=4)
-
     # wizualizacja maszyny drugiej
     for i in range(0, len(arg_kolejnosc)):
-        plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[i] - 1],
-                   zakonczenie_zadan_2[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
-
+        plt.hlines(-2, l_czasZakonczenia[1][arg_kolejnosc[i] - 1] - l_czasTrwania[1][arg_kolejnosc[i] - 1],
+                   l_czasZakonczenia[1][arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
     # wizualizacja maszyny trzeciej
     for i in range(0, len(arg_kolejnosc)):
-        plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[i] - 1],
-                   zakonczenie_zadan_3[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
+        plt.hlines(-3, l_czasZakonczenia[2][arg_kolejnosc[i] - 1] - l_czasTrwania[2][arg_kolejnosc[i] - 1],
+                   l_czasZakonczenia[2][arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
 
     plt.margins(0.1)
     plt.grid()
     plt.xticks(np.arange(0, 40, 1))
     plt.yticks(np.arange(0, -4, -1))
-    plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
+   #plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
     # plt.show()
     plt.savefig(arg_nazwa_pliku)
     plt.close()
@@ -194,7 +194,7 @@ for nazwaPliku in l_nazwyPlikow:
     print("--Posortowana lista dla", m_liczbaMaszyn,  "maszyn: ", posortowana)
     print("--Cmax = ", cmax)
     print("--------------")
-
+    wizualizacja(m_liczbaZadan, m_liczbaMaszyn, posortowana, nazwaPliku.replace(".txt","")+".png")
     #liczenie cmax wedlug algorytmu NEH
     print("Algorytm NEH")
     l1 = []
@@ -216,4 +216,4 @@ for nazwaPliku in l_nazwyPlikow:
         l2 = l3
     print("--Najlepsza kolejnosc = ", l2)
     print("--Cmax = ", m)
-
+    wizualizacja(m_liczbaZadan, m_liczbaMaszyn, l2, nazwaPliku.replace(".txt","")+"neh.png")
