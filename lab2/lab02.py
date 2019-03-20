@@ -5,6 +5,9 @@
 #todo (2): algorytmy w funkcjach
 
 import os
+import matplotlib.pyplot as plt
+import numpy as np
+import time
 
 l_nazwyPlikow=["dwie.txt", "trzy.txt"]
 
@@ -25,6 +28,60 @@ l_zadania=[]
 # krok 1: wyzancz w(j)
 
 wczytane = []
+
+def wizualizacjaDwochMaszyn(arg_czas_na_maszynie_2, arg_kolejnosc,
+                            arg_nazwa_pliku, arg_cmax):
+    plt.figure(figsize=(20, 7))
+    # wizualizacja maszyny pierwszej
+    plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    for i in range(0, len(arg_kolejnosc) - 1):
+        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i] - 1], zakonczenie_zadan_1[arg_kolejnosc[i + 1] - 1],
+                   colors=kolory[i + 1],
+                   lw=4)
+    # wizualizacja maszyny drugiej
+    for i in range(0, len(arg_kolejnosc)):
+        plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[i] - 1],
+                   zakonczenie_zadan_2[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
+
+    plt.margins(0.1)
+    plt.grid()
+    plt.xticks(np.arange(0, 40, 1))
+    plt.yticks(np.arange(0, -3, -1))
+    plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
+    # plt.show()
+    plt.savefig(arg_nazwa_pliku)
+    plt.close()
+
+
+def wizualizacjaTrzechMaszyn(arg_czas_na_maszynie_2, arg_czas_na_maszynie_3, arg_kolejnosc,
+                             arg_nazwa_pliku, arg_cmax):
+    plt.figure(figsize=(20, 7))
+    # wizualizacja maszyny pierwszej
+    plt.hlines(-1, 0, zakonczenie_zadan_1[arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
+    for i in range(0, len(arg_kolejnosc) - 1):
+        plt.hlines(-1, zakonczenie_zadan_1[arg_kolejnosc[i] - 1], zakonczenie_zadan_1[arg_kolejnosc[i + 1] - 1],
+                   colors=kolory[i + 1],
+                   lw=4)
+
+    # wizualizacja maszyny drugiej
+    for i in range(0, len(arg_kolejnosc)):
+        plt.hlines(-2, zakonczenie_zadan_2[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_2[arg_kolejnosc[i] - 1],
+                   zakonczenie_zadan_2[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
+
+    # wizualizacja maszyny trzeciej
+    for i in range(0, len(arg_kolejnosc)):
+        plt.hlines(-3, zakonczenie_zadan_3[arg_kolejnosc[i] - 1] - arg_czas_na_maszynie_3[arg_kolejnosc[i] - 1],
+                   zakonczenie_zadan_3[arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
+
+    plt.margins(0.1)
+    plt.grid()
+    plt.xticks(np.arange(0, 40, 1))
+    plt.yticks(np.arange(0, -4, -1))
+    plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
+    # plt.show()
+    plt.savefig(arg_nazwa_pliku)
+    plt.close()
+
 
 
 def wczytajDaneZPliku(nazwaPliku):
@@ -126,6 +183,7 @@ for nazwaPliku in l_nazwyPlikow:
     # sortowanie zadań majejąco po w(j) przy 2 maszynach
     a = l_zadania  # tworzenie listy do n zadan#
     posortowana = []
+
 
     for k in range(0, m_liczbaZadan):
         Max2 = max(czas_wszystkich_zadan_2)
