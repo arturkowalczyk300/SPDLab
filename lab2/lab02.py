@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 
-l_nazwyPlikow=["dwie.txt", "trzy.txt"]
-#l_nazwyPlikow=["trzy.txt"]
+#l_nazwyPlikow=["dwie.txt", "trzy.txt"]
+l_nazwyPlikow=["trzy.txt"]
 
 dwie_nazwaPliku = "dwie.txt"
 trzy_nazwaPliku = "trzy.txt"
@@ -55,33 +55,6 @@ def wizualizacja(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc, arg_nazwa_pli
     # plt.show()
     plt.savefig(arg_nazwa_pliku)
     plt.close()
-
-def wizualizacjaTrzechMaszyn(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc, arg_nazwa_pliku):
-    plt.figure(figsize=(20, 7))
-    # wizualizacja maszyny pierwszej
-    plt.hlines(-1, 0, l_czasZakonczenia[0][arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
-    for i in range(0, len(arg_kolejnosc) - 1):
-        plt.hlines(-1, l_czasZakonczenia[0][arg_kolejnosc[i] - 1], l_czasZakonczenia[0][arg_kolejnosc[i + 1] - 1],
-                   colors=kolory[i + 1],
-                   lw=4)
-    # wizualizacja maszyny drugiej
-    for i in range(0, len(arg_kolejnosc)):
-        plt.hlines(-2, l_czasZakonczenia[1][arg_kolejnosc[i] - 1] - l_czasTrwania[1][arg_kolejnosc[i] - 1],
-                   l_czasZakonczenia[1][arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
-    # wizualizacja maszyny trzeciej
-    for i in range(0, len(arg_kolejnosc)):
-        plt.hlines(-3, l_czasZakonczenia[2][arg_kolejnosc[i] - 1] - l_czasTrwania[2][arg_kolejnosc[i] - 1],
-                   l_czasZakonczenia[2][arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
-
-    plt.margins(0.1)
-    plt.grid()
-    plt.xticks(np.arange(0, 40, 1))
-    plt.yticks(np.arange(0, -4, -1))
-   #plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
-    # plt.show()
-    plt.savefig(arg_nazwa_pliku)
-    plt.close()
-
 
 
 def wczytajDaneZPliku(nazwaPliku):
@@ -184,12 +157,31 @@ for nazwaPliku in l_nazwyPlikow:
     a = l_zadania  # tworzenie listy do n zadan#
     posortowana = []
 
+    #tworzenie wektora zsumowanych czasow trwania
+    l_sumaTrwania=[]
+    for z in range(0, m_liczbaZadan):
+        l_sumaTrwania.append(0)
+        for m in range(0, m_liczbaMaszyn):
+            l_sumaTrwania[z]+=l_czasTrwania[m][z]
 
-    for k in range(0, m_liczbaZadan):
-        Max2 = max(czas_wszystkich_zadan_2)
-        index2 = czas_wszystkich_zadan_2.index(Max2)
-        posortowana.append(index2 + 1)
-        czas_wszystkich_zadan_2[index2] = 0
+    print("Suma czasow trwania", l_sumaTrwania)
+
+    posortowana=[]
+    temp=l_sumaTrwania.copy()
+    # sortowania czasow trwania
+    for i in range(0,len(l_sumaTrwania)):
+        tempmax=max(temp)
+        tempindex = temp.index(tempmax)
+        temp[temp.index(tempmax)]=-1000000 # zeby powtornie nie znalazlo tej wartosci
+        posortowana.append(tempindex+1)
+
+    print("posortowana liszta", posortowana)
+
+    # for k in range(0, m_liczbaZadan):
+    #     Max2 = max(czas_wszystkich_zadan_2)
+    #     index2 = czas_wszystkich_zadan_2.index(Max2)
+    #     posortowana.append(index2 + 1)
+    #     czas_wszystkich_zadan_2[index2] = 0
     cmax = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn,  posortowana)
     print("--Posortowana lista dla", m_liczbaMaszyn,  "maszyn: ", posortowana)
     print("--Cmax = ", cmax)
