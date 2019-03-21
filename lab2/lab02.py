@@ -9,8 +9,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 
-l_nazwyPlikow=["dwie.txt", "trzy.txt", "neh.txt"]
 
+nazwaKatalogu="daneLab2" #od teraz bedzie wczytywac wszystkie instancje z katalogu
+l_nazwyPlikow=["dwie.txt", "trzy.txt", "neh.txt"]
 
 #######global #####################################
 # NOWE STRUKTURY
@@ -27,6 +28,10 @@ l_zadania=[]
 wczytane = []
 
 kolory = ["red", "green", "blue", "cyan", "magenta", "red", "green", "blue", "cyan", "magenta", "red", "green", "blue", "cyan", "magenta"]  #todo: poprawic
+
+def wczytajDaneZFolderu(nazwaFolderu):
+    for tempNazwaPliku in os.listdir(nazwaFolderu):
+        l_nazwyPlikow.append(tempNazwaPliku)
 
 def wizualizacja(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc, arg_nazwa_pliku):
     plt.figure(figsize=(20, 7))
@@ -137,6 +142,10 @@ def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n z
     for k in range(0, arg_liczbaZadan):
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
     return ret_cmax
+
+#glowna czesc
+print("SPDLab 2")
+wczytajDaneZFolderu(nazwaKatalogu)
 
 for nazwaPliku in l_nazwyPlikow:
     print("#####Plik: ", nazwaPliku,"#####")
