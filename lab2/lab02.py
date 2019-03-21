@@ -199,12 +199,12 @@ for nazwaPliku in l_nazwyPlikow:
             l1 = []
             l1 = l1 + l2
             l1.insert(j, i) #kolejnosc
-            #print("nana=", l1)
+            print("nana=", l1)
             d = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, posortowana)
             if (m > d):
                 m = d
                 l3 = l1
-                #print(m)
+                print(m)
         l2 = l3
     print("--Najlepsza kolejnosc = ", l2)
     print("--Cmax = ", m)
