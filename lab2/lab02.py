@@ -55,7 +55,7 @@ def wizualizacja(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc, arg_nazwa_pli
     plt.yticks(np.arange(0, -3, -1))
    # plt.text(0, 0, "kolejnosc: " + str(arg_kolejnosc) + " || cmax=" + str(arg_cmax))
     # plt.show()
-    plt.savefig(arg_nazwa_pliku)
+    plt.savefig("wykresy/"+arg_nazwa_pliku)
     plt.close()
 
 
@@ -148,7 +148,7 @@ print("SPDLab 2")
 wczytajDaneZFolderu(nazwaKatalogu)
 
 for nazwaPliku in l_nazwyPlikow:
-    print("#####Plik: ", nazwaPliku,"#####")
+    print("#####Plik: ", nazwaPliku,"##############################################################")
     # wczytywanie do pliku
     wczytajDaneZPliku("daneLab2/" + nazwaPliku)
 
@@ -192,7 +192,7 @@ for nazwaPliku in l_nazwyPlikow:
     cmax = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn,  posortowana)
     print("--Posortowana lista dla", m_liczbaMaszyn,  "maszyn: ", posortowana)
     print("--Cmax = ", cmax)
-    print("--------------")
+    print("-------------------------------------------------------------------------------------------")
     wizualizacja(m_liczbaZadan, m_liczbaMaszyn, posortowana, nazwaPliku.replace(".txt","")+".png")
 
     #funkcja testujaca
@@ -211,12 +211,12 @@ for nazwaPliku in l_nazwyPlikow:
             l1 = l1 + l2
             l1.insert(j, i) #kolejnosc
             #print("nana=", l1)
-            print("d1", posortowana.index(i)+1, "d2", len(l1))
+           # print("d1", posortowana.index(i)+1, "d2", len(l1))
             d = przegladKolejnosci(posortowana.index(i)+1, m_liczbaMaszyn, l1)
             if (m > d):
                 m = d
                 l3 = l1
-                print(m)
+                #print(m)
         l2 = l3
     print("--Najlepsza kolejnosc = ", l2)
     print("--Cmax = ", m)
