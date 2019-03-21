@@ -27,7 +27,7 @@ l_zadania=[]
 
 wczytane = []
 
-kolory = ["red", "green", "blue", "cyan", "magenta", "red", "green", "blue", "cyan", "magenta", "red", "green", "blue", "cyan", "magenta"]  #todo: poprawic
+kolory = ["red", "green", "blue", "cyan", "magenta"]
 
 def wczytajDaneZFolderu(nazwaFolderu):
     for tempNazwaPliku in os.listdir(nazwaFolderu):
@@ -39,7 +39,7 @@ def wizualizacja(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc, arg_nazwa_pli
     plt.hlines(-1, 0, l_czasZakonczenia[0][arg_kolejnosc[0] - 1], colors=kolory[0], lw=4)
     for i in range(0, len(arg_kolejnosc) - 1):
         plt.hlines(-1, l_czasZakonczenia[0][arg_kolejnosc[i] - 1], l_czasZakonczenia[0][arg_kolejnosc[i + 1] - 1],
-                   colors=kolory[i + 1],
+                   colors=kolory[(i + 1)%5],
                    lw=4)
 
     liczbaMaszyn = arg_liczbaMaszyn
@@ -47,7 +47,7 @@ def wizualizacja(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc, arg_nazwa_pli
         # wizualizacja maszyny drugiej i kazdej kolejnej
         for i in range(0, len(arg_kolejnosc)):
             plt.hlines(-k-1, l_czasZakonczenia[k][arg_kolejnosc[i] - 1] - l_czasTrwania[k][arg_kolejnosc[i] - 1],
-                       l_czasZakonczenia[k][arg_kolejnosc[i] - 1], colors=kolory[i], lw=4)
+                       l_czasZakonczenia[k][arg_kolejnosc[i] - 1], colors=kolory[i%5], lw=4)
 
     plt.margins(0.1)
     plt.grid()
