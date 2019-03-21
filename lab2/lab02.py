@@ -29,6 +29,15 @@ wczytane = []
 
 kolory = ["red", "green", "blue", "cyan", "magenta"]
 
+def usunStareWykresy():
+    folder="wykresy"
+    for plik in os.listdir(folder):
+        sciezka=os.path.join(folder,plik)
+        try:
+            if os.path.isfile(sciezka):
+                os.unlink(sciezka)
+        except Exception as e:
+            print(e)
 def wczytajDaneZFolderu(nazwaFolderu):
     for tempNazwaPliku in os.listdir(nazwaFolderu):
         l_nazwyPlikow.append(tempNazwaPliku)
@@ -145,6 +154,7 @@ def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n z
 
 #glowna czesc
 print("SPDLab 2")
+usunStareWykresy()
 wczytajDaneZFolderu(nazwaKatalogu)
 
 for nazwaPliku in l_nazwyPlikow:
