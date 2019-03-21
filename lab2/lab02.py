@@ -11,7 +11,7 @@ import time
 
 
 nazwaKatalogu="daneLab2" #od teraz bedzie wczytywac wszystkie instancje z katalogu
-l_nazwyPlikow=["dwie.txt", "trzy.txt", "neh.txt"]
+l_nazwyPlikow=[]
 
 #######global #####################################
 # NOWE STRUKTURY
@@ -203,19 +203,20 @@ for nazwaPliku in l_nazwyPlikow:
     l1 = []
     l2 = []
     l3 = []
-    m = 11111
+    m = 11111111111111111
     for i in posortowana:
-        m = 1111
+        m = 11111111111111111
         for j in range(0, posortowana.index(i) + 1):
             l1 = []
             l1 = l1 + l2
             l1.insert(j, i) #kolejnosc
             #print("nana=", l1)
+            print("d1", posortowana.index(i)+1, "d2", len(l1))
             d = przegladKolejnosci(posortowana.index(i)+1, m_liczbaMaszyn, l1)
             if (m > d):
                 m = d
                 l3 = l1
-                #print(m)
+                print(m)
         l2 = l3
     print("--Najlepsza kolejnosc = ", l2)
     print("--Cmax = ", m)
