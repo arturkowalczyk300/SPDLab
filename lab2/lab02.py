@@ -9,11 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 
-#l_nazwyPlikow=["dwie.txt", "trzy.txt"]
-l_nazwyPlikow=["trzy.txt"]
+l_nazwyPlikow=["dwie.txt", "trzy.txt", "neh.txt"]
 
-dwie_nazwaPliku = "dwie.txt"
-trzy_nazwaPliku = "trzy.txt"
 
 #######global #####################################
 # NOWE STRUKTURY
@@ -29,7 +26,7 @@ l_zadania=[]
 
 wczytane = []
 
-kolory = ["red", "green", "blue", "cyan", "magenta", "red", "green", "blue", "cyan", "magenta"]  #todo: poprawic
+kolory = ["red", "green", "blue", "cyan", "magenta", "red", "green", "blue", "cyan", "magenta", "red", "green", "blue", "cyan", "magenta"]  #todo: poprawic
 
 def wizualizacja(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc, arg_nazwa_pliku):
     plt.figure(figsize=(20, 7))
@@ -111,9 +108,10 @@ def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n z
     #utworzenie listy do czasu zakonczenia
     for i in range(0,arg_liczbaMaszyn):
         l_czasZakonczenia.append([])
-        l_czasZakonczenia[i]=[None]*arg_liczbaZadan
+        l_czasZakonczenia[i]=[None]*m_liczbaZadan
+        #l_czasZakonczenia[i] = [None] * arg_liczbaZadan
 
-    l_czasZakonczenia[0][arg_kolejnosc[0]] = l_czasTrwania[0][arg_kolejnosc[0]]  # zaczyna sie w t=0
+    l_czasZakonczenia[0][arg_kolejnosc[0]] = l_czasTrwania[0][arg_kolejnosc[0]]  # zaczyna sie w t=0 >>>>>>> TU JEST BLAD, dla mniejszej liczby zadan nie ma pelnej listy
     for i in range(1, arg_liczbaZadan):
         l_czasZakonczenia[0][arg_kolejnosc[i]] = l_czasZakonczenia[0][arg_kolejnosc[i - 1]] + \
                                                  l_czasTrwania[0][arg_kolejnosc[i]]
@@ -187,6 +185,10 @@ for nazwaPliku in l_nazwyPlikow:
     print("--Cmax = ", cmax)
     print("--------------")
     wizualizacja(m_liczbaZadan, m_liczbaMaszyn, posortowana, nazwaPliku.replace(".txt","")+".png")
+
+    #funkcja testujaca
+    cmax10=przegladKolejnosci(1, m_liczbaMaszyn, [2])
+   # print("UDALO SIE")
     #liczenie cmax wedlug algorytmu NEH
     print("Algorytm NEH")
     l1 = []
@@ -199,13 +201,14 @@ for nazwaPliku in l_nazwyPlikow:
             l1 = []
             l1 = l1 + l2
             l1.insert(j, i) #kolejnosc
-            print("nana=", l1)
-            d = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, posortowana)
+            #print("nana=", l1)
+            d = przegladKolejnosci(posortowana.index(i)+1, m_liczbaMaszyn, l1)
             if (m > d):
                 m = d
                 l3 = l1
-                print(m)
+                #print(m)
         l2 = l3
     print("--Najlepsza kolejnosc = ", l2)
     print("--Cmax = ", m)
     wizualizacja(m_liczbaZadan, m_liczbaMaszyn, l2, nazwaPliku.replace(".txt","")+"neh.png")
+
