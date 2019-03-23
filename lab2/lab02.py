@@ -192,7 +192,7 @@ for nazwaPliku in l_nazwyPlikow:
         temp[temp.index(tempmax)]=-1000000 # zeby powtornie nie znalazlo tej wartosci
         posortowana.append(tempindex+1)
 
-    print("posortowana liszta", posortowana)
+    print("posortowana lista", posortowana)
 
     # for k in range(0, m_liczbaZadan):
     #     Max2 = max(czas_wszystkich_zadan_2)
@@ -210,6 +210,7 @@ for nazwaPliku in l_nazwyPlikow:
    # print("UDALO SIE")
     #liczenie cmax wedlug algorytmu NEH
     print("Algorytm NEH")
+    start = time.clock()
     l1 = []
     l2 = []
     l3 = []
@@ -228,7 +229,10 @@ for nazwaPliku in l_nazwyPlikow:
                 l3 = l1
                 #print(m)
         l2 = l3
+    end = time.clock()
+    total = end - start
+    print("Czas : ", "{0:02f}s".format(total))
     print("--Najlepsza kolejnosc = ", l2)
-    print("--Cmax = ", m)
+    print("--Cmax = ", m) 
     wizualizacja(m_liczbaZadan, m_liczbaMaszyn, l2, nazwaPliku.replace(".txt","")+"neh.png")
 
