@@ -23,11 +23,42 @@ l_czasZakonczenia = []
 m_liczbaMaszyn=0
 m_liczbaZadan=0
 l_zadania=[]
+
+czasNEHStandard=[] #lista czasow wykonania zadan w standardowej metodzie neh
+czasNEHZmodyfikowany=[] #lista czasow wykonania zadan w zmodyfikowanej metodzie neh
+
 # krok 1: wyzancz w(j)
+
+#STRUKTURY Z AKCELERACJI!
+poprzedniaKolejnosc=[]
+poprzedniCzasZakonczenia=[]
+
+
 
 wczytane = []
 
 kolory = ["red", "green", "blue", "cyan", "magenta"]
+
+def wspolnaCzesc(arg_listaDluzsza, arg_listaKrotsza):
+    koniecPodobienstwa=-1
+    #print("lista1", arg_listaDluzsza, "lista2", arg_listaKrotsza)
+    if((len(arg_listaKrotsza)>len(arg_listaDluzsza)) or len(arg_listaKrotsza)==0 or len(arg_listaDluzsza)==0):
+        return 0
+    #if(len(arg_listaDluzsza)!=len(arg_listaKrotsza)):
+        #print("LISTY MUSZA MIEC TAKA SAMA DLUGOSC")
+        #return 0
+    for i in range(0, len(arg_listaKrotsza)):
+        if(arg_listaDluzsza[i]!=arg_listaKrotsza[i]):
+            koniecPodobienstwa=i
+            break
+    if(koniecPodobienstwa==-1): # jesli wartosc nie zostala przypisana
+        koniecPodobienstwa=len(arg_listaKrotsza)
+
+   # if (koniecPodobienstwa != 0):
+    #    print("#MATCH#: czesc wspolna: ", arg_listaKrotsza[0:koniecPodobienstwa])
+    #print("KONIEC PODOBIENSTWA",koniecPodobienstwa)
+    return koniecPodobienstwa
+
 
 def usunStareWykresy():
     folder="wykresy"
@@ -97,6 +128,8 @@ def wczytajDaneZPliku(nazwaPliku):
     global m_liczbaZadan
     m_liczbaMaszyn = wczytane[0][1]
     m_liczbaZadan = wczytane[0][0]
+    l_czasZakonczenia.clear() #TODO: a
+    l_czasZakonczenia.clear() #TODO: b
     #przygotowanie rozmiaru struktur danych, WAZNE
     for i in range(0,m_liczbaMaszyn):
         l_czasTrwania.append([])
@@ -116,8 +149,12 @@ def wczytajDaneZPliku(nazwaPliku):
 # liczenie Cmax
 
 def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n zadan
-    for k in range(0, arg_liczbaZadan):
-        arg_kolejnosc[k] = arg_kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
+    global poprzedniaKolejnosc
+    global poprzedniCzasZakonczenia
+    # sprawdz wspolna czesc
+    #if (set(arg_kolejnosc) & set(poprzedniaKolejnosc)):
+    #    print("#WPSOLNA CZESC#", set(arg_kolejnosc) & set(poprzedniaKolejnosc))]
+    l_czasZakonczenia.clear()
 
     #utworzenie listy do czasu zakonczenia
     for i in range(0,arg_liczbaMaszyn):
@@ -125,7 +162,23 @@ def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n z
         l_czasZakonczenia[i]=[None]*m_liczbaZadan
         #l_czasZakonczenia[i] = [None] * arg_liczbaZadan
 
-    l_czasZakonczenia[0][arg_kolejnosc[0]] = l_czasTrwania[0][arg_kolejnosc[0]]  # zaczyna sie w t=0 >>>>>>> TU JEST BLAD, dla mniejszej liczby zadan nie ma pelnej listy
+
+    indexWspolny=wspolnaCzesc(arg_kolejnosc, poprzedniaKolejnosc)
+    if(indexWspolny!=0):
+        #print("#WSPOLNA CZESC#", arg_kolejnosc[0:indexWspolny])# czesc wlasciwa, kopiowanie czasu trwania
+        l_czasZakonczenia[0:indexWspolny]=poprzedniCzasZakonczenia[0:indexWspolny]
+
+    for k in range(0, arg_liczbaZadan):
+        arg_kolejnosc[k] = arg_kolejnosc[k] - 1  # zmiana indeksowania na zgodne z tablicami (numeracja od zera)
+
+
+
+
+
+#pierwsza maszyna
+    if(indexWspolny==0):#gdy nie znaleziono czesci wspolnej
+        l_czasZakonczenia[0][arg_kolejnosc[0]] = l_czasTrwania[0][arg_kolejnosc[0]]  # zaczyna sie w t=0
+
     for i in range(1, arg_liczbaZadan):
         l_czasZakonczenia[0][arg_kolejnosc[i]] = l_czasZakonczenia[0][arg_kolejnosc[i - 1]] + \
                                                  l_czasTrwania[0][arg_kolejnosc[i]]
@@ -148,9 +201,80 @@ def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n z
 
     ret_cmax = l_czasZakonczenia[arg_liczbaMaszyn-1][arg_kolejnosc[arg_liczbaZadan - 1]]
 
-    for k in range(0, arg_liczbaZadan):
+
+
+    for k in range(0, arg_liczbaZadan):  # juz niepotrzebne
         arg_kolejnosc[k] = arg_kolejnosc[k] + 1  # zmiana indeksowania na naturalne z powrotem
+    #poprzedniaKolejnosc = arg_kolejnosc.copy()
+    #poprzedniCzasZakonczenia = l_czasZakonczenia.copy()
+
+
+
     return ret_cmax
+
+def NEHStandardowy(check):
+    global poprzedniaKolejnosc
+    global poprzedniCzasZakonczenia
+    start = time.clock()
+    l1 = [] #kolejnosc biezaca
+    l2 = [] #
+    l3 = []
+    m = 11111111111111111
+    for i in posortowana:
+        m = 11111111111111111
+        #print("#Wstawiana cyfra#", i)
+        for j in range(0, posortowana.index(i) + 1):
+            l1 = []
+            l1 = l1 + l2
+            l1.insert(j, i) #kolejnosc   #krok3,4
+            #print("nana=", l1)
+            #print("d1", posortowana.index(i)+1, "d2", len(l1))
+            d = przegladKolejnosci(posortowana.index(i)+1, m_liczbaMaszyn, l1)
+            if (m > d): # wybrane najlepsze zadanie
+                m = d
+                l3 = l1
+                #print("m",m)
+
+        l2 = l3
+        #print("najlepsza kolejnosc", l2)
+        #print("=========================")
+        poprzedniaKolejnosc = l2.copy()
+        poprzedniCzasZakonczenia = l_czasZakonczenia.copy()
+    end = time.clock()
+    total = end - start
+    print("Czas : ", "{0:02f}s".format(total))
+    #print("--Najlepsza kolejnosc = ", l2)
+    print("--Cmax = ", m)
+    #wizualizacja(m_liczbaZadan, m_liczbaMaszyn, l2, nazwaPliku.replace(".txt","")+"neh.png")
+    czasNEHStandard.append(total) # todo: moze to przetworzyc bo pewnie jest w ms
+
+def NEHZmodyfikowany():
+    start = time.clock()
+    l1 = []
+    l2 = []
+    l3 = []
+    m = 11111111111111111
+    for i in posortowana:
+        m = 11111111111111111
+        for j in range(0, posortowana.index(i) + 1):
+            l1 = []
+            l1 = l1 + l2
+            l1.insert(j, i)  # kolejnosc
+            # print("nana=", l1)
+            # print("d1", posortowana.index(i)+1, "d2", len(l1))
+            d = przegladKolejnosci(posortowana.index(i) + 1, m_liczbaMaszyn, l1)
+            if (m > d):
+                m = d
+                l3 = l1
+                # print(m)
+        l2 = l3
+    end = time.clock()
+    total = end - start
+    print("Czas : ", "{0:02f}s".format(total))
+    print("--Najlepsza kolejnosc = ", l2)
+    print("--Cmax = ", m)
+    wizualizacja(m_liczbaZadan, m_liczbaMaszyn, l2, nazwaPliku.replace(".txt", "") + "neh.png")
+    czasNEHZmodyfikowany.append(total)  # todo: moze to przetworzyc bo pewnie jest w ms
 
 #glowna czesc
 print("SPDLab 2")
@@ -174,25 +298,25 @@ for nazwaPliku in l_nazwyPlikow:
     a = l_zadania  # tworzenie listy do n zadan#
     posortowana = []
 
-    #tworzenie wektora zsumowanych czasow trwania
+    #tworzenie wektora zsumowanych czasow trwania   #krok 1
     l_sumaTrwania=[]
     for z in range(0, m_liczbaZadan):
         l_sumaTrwania.append(0)
         for m in range(0, m_liczbaMaszyn):
             l_sumaTrwania[z]+=l_czasTrwania[m][z]
 
-    print("Suma czasow trwania", l_sumaTrwania)
+   # print("Suma czasow trwania", l_sumaTrwania)
 
     posortowana=[]
     temp=l_sumaTrwania.copy()
-    # sortowania czasow trwania
+    # sortowania czasow trwania #krok2
     for i in range(0,len(l_sumaTrwania)):
         tempmax=max(temp)
         tempindex = temp.index(tempmax)
         temp[temp.index(tempmax)]=-1000000 # zeby powtornie nie znalazlo tej wartosci
         posortowana.append(tempindex+1)
 
-    print("posortowana lista", posortowana)
+    #print("posortowana lista", posortowana)
 
     # for k in range(0, m_liczbaZadan):
     #     Max2 = max(czas_wszystkich_zadan_2)
@@ -200,39 +324,18 @@ for nazwaPliku in l_nazwyPlikow:
     #     posortowana.append(index2 + 1)
     #     czas_wszystkich_zadan_2[index2] = 0
     cmax = przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn,  posortowana)
-    print("--Posortowana lista dla", m_liczbaMaszyn,  "maszyn: ", posortowana)
+    #print("--Posortowana lista dla", m_liczbaMaszyn,  "maszyn: ", posortowana)
     print("--Cmax = ", cmax)
     print("-------------------------------------------------------------------------------------------")
-    wizualizacja(m_liczbaZadan, m_liczbaMaszyn, posortowana, nazwaPliku.replace(".txt","")+".png")
+    #wizualizacja(m_liczbaZadan, m_liczbaMaszyn, posortowana, nazwaPliku.replace(".txt","")+".png")
 
     #funkcja testujaca
-    cmax10=przegladKolejnosci(1, m_liczbaMaszyn, [2])
+   # cmax10=przegladKolejnosci(1, m_liczbaMaszyn, [2])
    # print("UDALO SIE")
     #liczenie cmax wedlug algorytmu NEH
     print("Algorytm NEH")
-    start = time.clock()
-    l1 = []
-    l2 = []
-    l3 = []
-    m = 11111111111111111
-    for i in posortowana:
-        m = 11111111111111111
-        for j in range(0, posortowana.index(i) + 1):
-            l1 = []
-            l1 = l1 + l2
-            l1.insert(j, i) #kolejnosc
-            #print("nana=", l1)
-           # print("d1", posortowana.index(i)+1, "d2", len(l1))
-            d = przegladKolejnosci(posortowana.index(i)+1, m_liczbaMaszyn, l1)
-            if (m > d):
-                m = d
-                l3 = l1
-                #print(m)
-        l2 = l3
-    end = time.clock()
-    total = end - start
-    print("Czas : ", "{0:02f}s".format(total))
-    print("--Najlepsza kolejnosc = ", l2)
-    print("--Cmax = ", m) 
-    wizualizacja(m_liczbaZadan, m_liczbaMaszyn, l2, nazwaPliku.replace(".txt","")+"neh.png")
-
+    NEHStandardowy("")
+#NEHZmodyfikowany()
+print("czas standard []s: calkowity",sum(czasNEHStandard), " poszczegolne", czasNEHStandard)
+print("czas zmodyfkowanego algorytmu calk", sum(czasNEHStandard), "poszczegolne", czasNEHZmodyfikowany)
+print("koniec programu!")
