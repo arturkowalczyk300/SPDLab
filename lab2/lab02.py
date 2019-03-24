@@ -173,7 +173,7 @@ def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n z
 
 
 
-
+ 
 
 #pierwsza maszyna
     if(indexWspolny==0):#gdy nie znaleziono czesci wspolnej
