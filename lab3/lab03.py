@@ -177,14 +177,17 @@ def symulowaneWyzarzanie():
 
     kolejnosc = rozwPocz
     #print("lZadan=", m_liczbaZadan, "kolejnosc=", kolejnosc)
-    r=random.choice(kolejnosc)
-    r1=random.choice(kolejnosc)
-    a, b = kolejnosc.index(r), kolejnosc.index(r1)
-    kolejnosc[b], kolejnosc[a] = kolejnosc[a], kolejnosc[b]
+    def zamiana():
+        r=random.choice(kolejnosc)
+        r1=random.choice(kolejnosc)
+        a, b = kolejnosc.index(r), kolejnosc.index(r1)
+        kolejnosc[b], kolejnosc[a] = kolejnosc[a], kolejnosc[b]
 
     while (T > Tk):
         # losowy ruch
         # cmax= # przelicz cmax
+        cmax_poprz=przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, kolejnosc)
+        zamiana()
         cmax=przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, kolejnosc)
         break #Temp
         if (cmax >= cmax_poprz):  # znaleziono gorsze rozw
@@ -196,7 +199,6 @@ def symulowaneWyzarzanie():
                 # znaleziono slaby ruch -> COFAM
         T = T * wsp
     print("     kolejnosc", kolejnosc, "cmax", cmax)
-
 # glowna czesc
 print("SPDLab 3")
 wczytajDaneZFolderu(nazwaKatalogu)
