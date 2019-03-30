@@ -18,7 +18,7 @@
 #         nie: STOP
 #
 import os
-
+import random
 print("SPD Lab 03")
 # zmienne poczatkowe
 T = 100000  # aktualna temperatura | inicjowana jako MAX
@@ -177,6 +177,10 @@ def symulowaneWyzarzanie():
 
     kolejnosc = rozwPocz
     #print("lZadan=", m_liczbaZadan, "kolejnosc=", kolejnosc)
+    r=random.choice(kolejnosc)
+    r1=random.choice(kolejnosc)
+    a, b = kolejnosc.index(r), kolejnosc.index(r1)
+    kolejnosc[b], kolejnosc[a] = kolejnosc[a], kolejnosc[b]
 
     while (T > Tk):
         # losowy ruch
