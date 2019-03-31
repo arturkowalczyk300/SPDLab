@@ -161,10 +161,12 @@ def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n z
 
 
 def symulowaneWyzarzanie():
+    najgorszyCmax=0
+    najlepszyCmax=1000000
     # zmienne poczatkowe
     T = 100000  # aktualna temperatura | inicjowana jako MAX
     Tk = 0.1  # temperatura koncowa
-    wsp = 0.9  # wspolczynnik wychladzania
+    wsp = 0.95  # wspolczynnik wychladzania
     rnd = 0  # liczba losowa z przedzialu (0,1)
     Fakt = 0  # wartosc funkcji celu(cmax) dla aktualnej permutacji
     Fpoprz = 0  # wartosc funkcji celu dla poprzedniej permutacji
@@ -183,8 +185,8 @@ def symulowaneWyzarzanie():
         r=random.choice(kolejnosc)
         r1=random.choice(kolejnosc)
         a, b = kolejnosc.index(r), kolejnosc.index(r1)
-        kolejnosc[b], kolejnosc[a] = kolejnosc[a], kolejnosc[b]
-
+        if(a!=b):
+            kolejnosc[b], kolejnosc[a] = kolejnosc[a], kolejnosc[b]
     poprzKolejnosc=[]
     while (T > Tk):
         cmax = 0
@@ -199,7 +201,7 @@ def symulowaneWyzarzanie():
         cmax=przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, kolejnosc)
 
         rnd = random.random()  # losuj randa
-
+        #print("#rand#",rnd)
         #wyliczanie prawdopodobienstaw
         if(cmax<cmax_poprz): #rozw lepsze od obecnego
             P=1
@@ -207,19 +209,26 @@ def symulowaneWyzarzanie():
             P=math.exp((cmax_poprz-cmax)/T)
             #print("P",P)
         # P= #wylicz prawdopodobenstwo
+       # rnd=0.6
         if (P >= rnd):
             x=0
             #print("dobry ruch, akceptuje")
         else:
             kolejnosc=poprzKolejnosc
             cmax=cmax_poprz
-            print("slaby ruch, cofam", kolejnosc, poprzKolejnosc)
+            #print("slaby ruch, cofam", kolejnosc, poprzKolejnosc)
+            #print("slaby ruch, cofam")
             # znaleziono slaby ruch -> COFAM
         T = T * wsp
+        if(cmax<najlepszyCmax):
+            najlepszyCmax=cmax
+        if(cmax>najgorszyCmax):
+            najgorszyCmax=cmax
         #print("     T=",T,"P=",P,"kolejnosc", kolejnosc, "cmax", cmax)
         #print("     T=", T, " || P=", P, " || cmax=", cmax, " || cmax_poprz=", cmax_poprz," || kolejnosc=" ,kolejnosc)
-        print("         cmax:", cmax)
-    print("     finalny cmax:", cmax)
+        #print("         cmax:", cmax)
+    print("     finalny cmax:", cmax, "najgorszy=",najgorszyCmax, "najlepszy=",najlepszyCmax)
+
 
 # glowna czesc
 print("SPDLab 3")
