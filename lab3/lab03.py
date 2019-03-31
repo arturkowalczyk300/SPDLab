@@ -19,18 +19,9 @@
 #
 import os
 import random
+import math
 print("SPD Lab 03")
-# zmienne poczatkowe
-T = 100000  # aktualna temperatura | inicjowana jako MAX
-Tk = 0  # temperatura koncowa
-wsp = 0  # wspolczynnik wychladzania
-rnd = 0  # liczba losowa z przedzialu (0,1)
-Fakt = 0  # wartosc funkcji celu(cmax) dla aktualnej permutacji
-Fpoprz = 0  # wartosc funkcji celu dla poprzedniej permutacji
-Fdelta = 0  # roznica funkcji celu (poprzednia minus aktualna)
-P = 0  # prawdopodobienstwo niekorzystnego ruchu
-cmax = 0
-cmax_poprz = 0
+
 
 nazwaKatalogu = "daneLab3"  # od teraz bedzie wczytywac wszystkie instancje z katalogu
 l_nazwyPlikow = []
@@ -170,7 +161,18 @@ def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n z
 
 
 def symulowaneWyzarzanie():
-    global T
+    # zmienne poczatkowe
+    T = 100000  # aktualna temperatura | inicjowana jako MAX
+    Tk = 0.1  # temperatura koncowa
+    wsp = 0.9  # wspolczynnik wychladzania
+    rnd = 0  # liczba losowa z przedzialu (0,1)
+    Fakt = 0  # wartosc funkcji celu(cmax) dla aktualnej permutacji
+    Fpoprz = 0  # wartosc funkcji celu dla poprzedniej permutacji
+    Fdelta = 0  # roznica funkcji celu (poprzednia minus aktualna)
+    P = 0  # prawdopodobienstwo niekorzystnego ruchu
+    cmax = 0
+    cmax_poprz = 0
+
     # print("witam w funkcji")
     rozwPocz = list(range(0,
                           m_liczbaZadan))  # krok1: wygeneruj rozwiazanie poczatkowe  . w tym przypadku bedzie to kolejnosc naturalna
@@ -184,21 +186,38 @@ def symulowaneWyzarzanie():
         kolejnosc[b], kolejnosc[a] = kolejnosc[a], kolejnosc[b]
 
     while (T > Tk):
+        cmax = 0
+        cmax_poprz = 0
         # losowy ruch
         # cmax= # przelicz cmax
+        poprzKolejnosc=kolejnosc
         cmax_poprz=przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, kolejnosc)
         zamiana()
         cmax=przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, kolejnosc)
-        break #Temp
-        if (cmax >= cmax_poprz):  # znaleziono gorsze rozw
-            rnd = 0  # losuj randa
-            P = 0
-            # P= #wylicz prawdopodobenstwo
-            if (rnd >= P):
-                print("slaby ruch")
-                # znaleziono slaby ruch -> COFAM
+
+        rnd = random.random()  # losuj randa
+
+        #wyliczanie prawdopodobienstaw
+        if(cmax<cmax_poprz): #rozw lepsze od obecnego
+            P=1
+        else:
+            P=math.exp((cmax_poprz-cmax)/T)
+            #print("P",P)
+        # P= #wylicz prawdopodobenstwo
+        if (P >= rnd):
+            x=0
+            #print("dobry ruch, akceptuje")
+        else:
+            kolejnosc=poprzKolejnosc
+            cmax=cmax_poprz
+            #print("slaby ruch, cofam")
+            # znaleziono slaby ruch -> COFAM
         T = T * wsp
-    print("     kolejnosc", kolejnosc, "cmax", cmax)
+        #print("     T=",T,"P=",P,"kolejnosc", kolejnosc, "cmax", cmax)
+        #print("     T=", T, " || P=", P, " || cmax=", cmax, " || cmax_poprz=", cmax_poprz," || kolejnosc=" ,kolejnosc)
+        print("         cmax:", cmax)
+    print("     finalny cmax:", cmax)
+
 # glowna czesc
 print("SPDLab 3")
 wczytajDaneZFolderu(nazwaKatalogu)
