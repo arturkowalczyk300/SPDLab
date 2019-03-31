@@ -185,11 +185,14 @@ def symulowaneWyzarzanie():
         a, b = kolejnosc.index(r), kolejnosc.index(r1)
         kolejnosc[b], kolejnosc[a] = kolejnosc[a], kolejnosc[b]
 
+    poprzKolejnosc=[]
     while (T > Tk):
         cmax = 0
         cmax_poprz = 0
         # losowy ruch
-        # cmax= # przelicz cmax
+        # cmax= # przelicz
+        #if(poprzKolejnosc==kolejnosc):
+            #print("#takie same#", kolejnosc, poprzKolejnosc)
         poprzKolejnosc=kolejnosc
         cmax_poprz=przegladKolejnosci(m_liczbaZadan, m_liczbaMaszyn, kolejnosc)
         zamiana()
@@ -210,7 +213,7 @@ def symulowaneWyzarzanie():
         else:
             kolejnosc=poprzKolejnosc
             cmax=cmax_poprz
-            #print("slaby ruch, cofam")
+            print("slaby ruch, cofam", kolejnosc, poprzKolejnosc)
             # znaleziono slaby ruch -> COFAM
         T = T * wsp
         #print("     T=",T,"P=",P,"kolejnosc", kolejnosc, "cmax", cmax)
