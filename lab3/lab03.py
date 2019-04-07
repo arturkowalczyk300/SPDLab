@@ -187,6 +187,13 @@ def symulowaneWyzarzanie():
         a, b = kolejnosc.index(r), kolejnosc.index(r1)
         if(a!=b):
             kolejnosc[b], kolejnosc[a] = kolejnosc[a], kolejnosc[b]
+     def insert():
+        a = random.randrange(0, m_liczbaZadan)
+        b = random.randrange(0, m_liczbaZadan)
+        nowa = kolejnosc[:]
+        nowa.remove(a)
+        nowa.insert(b, a)
+        return nowa        
     poprzKolejnosc=[]
     while (T > Tk):
         cmax = 0
