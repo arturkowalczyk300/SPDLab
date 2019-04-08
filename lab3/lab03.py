@@ -20,6 +20,7 @@
 import os
 import random
 import math
+import time
 print("SPD Lab 03")
 
 
@@ -38,6 +39,9 @@ l_czasTrwania = []  # lista zawierajaca czasy trwania na n maszynach (wiec lista
 l_czasZakonczenia = []
 
 wczytane = []
+
+#neh
+posortowana = []
 
 
 # kolory = ["red", "green", "blue", "cyan", "magenta"]
@@ -159,14 +163,52 @@ def przegladKolejnosci(arg_liczbaZadan, arg_liczbaMaszyn, arg_kolejnosc):  # n z
 
     return ret_cmax
 
+def NEHStandardowy(check):
+    global poprzedniaKolejnosc
+    global poprzedniCzasZakonczenia
+    #start = time.clock()
+    l1 = []  # kolejnosc biezaca
+    l2 = []  #
+    l3 = []
+    m = 11111111111111111
+    for i in posortowana:
+        m = 11111111111111111
+        # print("#Wstawiana cyfra#", i)
+        for j in range(0, posortowana.index(i) + 1):
+            l1 = []
+            l1 = l1 + l2
+            l1.insert(j, i)  # kolejnosc   #krok3,4
+            # print("nana=", l1)
+            # print("d1", posortowana.index(i)+1, "d2", len(l1))
+            d = przegladKolejnosci(posortowana.index(i) + 1, m_liczbaMaszyn, l1)
+            if (m > d):  # wybrane najlepsze zadanie
+                m = d
+                l3 = l1
+                # print("m",m)
+
+        l2 = l3
+        # print("najlepsza kolejnosc", l2)
+        # print("=========================")
+        poprzedniaKolejnosc = l2.copy()
+        poprzedniCzasZakonczenia = l_czasZakonczenia.copy()
+    #end = time.clock()
+   # total = end - start
+    #print("Czas : ", "{0:02f}s".format(total))
+    print("--Najlepsza kolejnosc NEH = ", l2)
+   # print("--Cmax NEH = ", m)
+    # wizualizacja(m_liczbaZadan, m_liczbaMaszyn, l2, nazwaPliku.replace(".txt","")+"neh.png")
+    #czasNEHStandard.append(total)  # todo: moze to przetworzyc bo pewnie jest w ms
+
 
 def symulowaneWyzarzanie():
+    pomiarCzasu=time.clock()
+
     najgorszyCmax=0
     najlepszyCmax=1000000
     # zmienne poczatkowe
     T = 100000  # aktualna temperatura | inicjowana jako MAX
     Tk = 0.1  # temperatura koncowa
-    wsp = 0.95  # wspolczynnik wychladzania
+    wsp = 0.99    # wspolczynnik wychladzania
     rnd = 0  # liczba losowa z przedzialu (0,1)
     Fakt = 0  # wartosc funkcji celu(cmax) dla aktualnej permutacji
     Fpoprz = 0  # wartosc funkcji celu dla poprzedniej permutacji
@@ -178,16 +220,19 @@ def symulowaneWyzarzanie():
     # print("witam w funkcji")
     rozwPocz = list(range(0,
                           m_liczbaZadan))  # krok1: wygeneruj rozwiazanie poczatkowe  . w tym przypadku bedzie to kolejnosc naturalna
+    rozwPocz=
+
 
     kolejnosc = rozwPocz
     #print("lZadan=", m_liczbaZadan, "kolejnosc=", kolejnosc)
-    def zamiana():
+    def zamiana(): #swap
         r=random.choice(kolejnosc)
         r1=random.choice(kolejnosc)
         a, b = kolejnosc.index(r), kolejnosc.index(r1)
         if(a!=b):
             kolejnosc[b], kolejnosc[a] = kolejnosc[a], kolejnosc[b]
-     def insert():
+
+    def insert():
         a = random.randrange(0, m_liczbaZadan)
         b = random.randrange(0, m_liczbaZadan)
         kolejnosc.remove(a)
@@ -215,10 +260,12 @@ def symulowaneWyzarzanie():
             P=math.exp((cmax_poprz-cmax)/T)
             #print("P",P)
         # P= #wylicz prawdopodobenstwo
-       # rnd=0.6
         if (P >= rnd):
             x=0
             #print("dobry ruch, akceptuje")
+        #elif(P==1): #modyfikacja algorytmu, odrzucam te z P=1
+        #    kolejnosc = poprzKolejnosc
+        #    cmax = cmax_poprz
         else:
             kolejnosc=poprzKolejnosc
             cmax=cmax_poprz
@@ -233,7 +280,8 @@ def symulowaneWyzarzanie():
         #print("     T=",T,"P=",P,"kolejnosc", kolejnosc, "cmax", cmax)
         #print("     T=", T, " || P=", P, " || cmax=", cmax, " || cmax_poprz=", cmax_poprz," || kolejnosc=" ,kolejnosc)
         #print("         cmax:", cmax)
-    print("     finalny cmax:", cmax, "najgorszy=",najgorszyCmax, "najlepszy=",najlepszyCmax)
+    print(cmax, time.clock()-pomiarCzasu)
+    #print("     finalny cmax:", cmax, "najgorszy=",najgorszyCmax, "najlepszy=",najlepszyCmax, "czas liczenia", time.clock()-pomiarCzasu)
 
 
 # glowna czesc
@@ -241,6 +289,7 @@ print("SPDLab 3")
 wczytajDaneZFolderu(nazwaKatalogu)
 
 for nazwaPliku in l_nazwyPlikow:
-    print("*nazwa przetwarzanego pliku", nazwaPliku)
+    #print("*nazwa przetwarzanego pliku", nazwaPliku)
     wczytajDaneZPliku("daneLab3/" + nazwaPliku)
     symulowaneWyzarzanie()
+print("gotowe")

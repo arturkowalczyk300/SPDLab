@@ -3,118 +3,124 @@
   <component name="ChangeListManager">
     <list default="true" id="d1ad149e-2c48-43a3-b386-5eac0638da8e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/Sterowanie procesami dyskretnymi.docx" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/Sterowanie procesami dyskretnymi.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/2_03.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/2_04.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/2_05.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/2_06.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/2_07.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/2_08.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/2_09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/2_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/3_04.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/3_05.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/3_06.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/3_07.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/3_08.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/3_09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/3_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/pdf.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta005.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta006.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta007.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta008.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta009.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta010.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta011.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta012.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta013.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta014.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta015.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta016.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta017.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta018.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta019.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta020.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta021.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta022.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta023.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta028.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta029.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta036.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta037.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta038.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta039.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta040.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta041.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta042.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta043.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta044.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta045.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta046.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta047.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta048.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta049.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta050.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta051.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta052.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta053.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta054.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta055.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta056.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta057.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta058.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta059.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta060.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta061.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta062.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta063.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta064.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta065.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta066.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta067.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta068.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta069.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta070.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta071.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta072.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta073.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta074.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta075.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta076.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta077.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta078.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta079.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta080.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta081.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta082.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta083.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta084.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta085.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta086.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta087.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta088.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta089.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta090.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta091.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta092.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta093.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta094.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta097.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta099.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta100.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta101.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta102.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta103.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta104.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta105.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta106.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta107.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta108.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta109.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta110.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta111.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta112.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta113.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta114.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta115.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta116.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/daneLab3/ta117.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/lab03.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/lab03.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta010.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta011.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta012.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta013.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta014.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta015.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta016.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta017.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta018.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta019.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta020.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta021.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta022.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta023.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta024.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta025.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta026.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta027.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta028.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta029.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta030.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta031.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta032.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta033.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta034.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta035.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta036.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta037.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta038.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta039.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta040.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta041.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta042.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta043.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta044.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta045.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta046.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta047.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta048.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta049.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta050.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta051.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta052.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta053.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta054.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta055.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta056.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta057.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta058.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta059.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta060.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta061.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta062.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta063.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta064.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta065.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta066.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta067.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta068.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta069.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta070.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta071.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta072.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta073.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta074.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta075.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta076.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta077.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta078.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta079.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta080.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta081.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta082.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta083.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta084.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta085.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta086.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta087.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta088.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta089.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta090.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta091.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta092.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta093.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta094.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta095.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta096.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta097.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta098.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta099.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta100.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta101.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta102.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta103.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta104.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta105.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta106.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta107.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta108.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta109.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta110.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta111.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta112.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta113.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta114.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta115.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta116.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta117.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta118.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta119.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/stare/ta120.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,17 +129,29 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SPDLab$lab03.coverage" NAME="lab03 Coverage Results" MODIFIED="1554052388060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab3" />
+    <SUITE FILE_PATH="coverage/SPDLab$lab03.coverage" NAME="lab03 Coverage Results" MODIFIED="1554683603588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab3" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lab3/lab03.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="174" column="12" lean-forward="true" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+            <state relative-caret-position="340">
+              <caret line="248" column="8" lean-forward="true" selection-start-line="248" selection-start-column="8" selection-end-line="248" selection-end-column="8" />
               <folding>
                 <element signature="e#444#453#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lab2/lab02.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="325" column="4" selection-start-line="325" selection-start-column="4" selection-end-line="325" selection-end-column="20" />
+              <folding>
+                <element signature="e#109#118#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -167,6 +185,10 @@
       <find>przeglad</find>
       <find>slaby ruc</find>
       <find>slaby</find>
+      <find>czas</find>
+      <find>time</find>
+      <find>neh</find>
+      <find>posortowana</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -189,7 +211,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,6 +243,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -288,23 +310,26 @@
       <updated>1553869105969</updated>
       <workItem from="1553869107780" duration="5698000" />
       <workItem from="1554022145000" duration="3522000" />
-      <workItem from="1554047807442" duration="3036000" />
+      <workItem from="1554047807442" duration="3654000" />
+      <workItem from="1554678371528" duration="620000" />
+      <workItem from="1554679228194" duration="3329000" />
+      <workItem from="1554701119538" duration="794000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12256000" />
+    <option name="totallyTimeSpent" value="17617000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17377399" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29577464" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29577464" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -328,30 +353,11 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lab3/daneLab3/pdf.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lab3/daneLab3/pdf.txt" />
     <entry file="file://$PROJECT_DIR$/lab1/Lab01.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="215" column="9" selection-start-line="215" selection-end-line="215" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lab2/lab02.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="17" selection-start-line="17" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lab3/lab03.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="174" column="12" lean-forward="true" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
-          <folding>
-            <element signature="e#444#453#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -366,6 +372,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab2/lab02.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="325" column="4" selection-start-line="325" selection-start-column="4" selection-end-line="325" selection-end-column="20" />
+          <folding>
+            <element signature="e#109#118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab3/lab03.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="248" column="8" lean-forward="true" selection-start-line="248" selection-start-column="8" selection-end-line="248" selection-end-column="8" />
+          <folding>
+            <element signature="e#444#453#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
