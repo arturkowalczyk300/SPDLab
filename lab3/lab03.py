@@ -1,22 +1,3 @@
-# Lista krokow:
-# 1. generuj rozwiazanie poczatkowe
-# 2. wykonaj losowy ruch
-# 3. przelicz cmax
-# 4. czy cmax jest mniejsze od poprzedniego?
-# tak:
-#     czy temperatura jest wieksza od Tk?
-#     tak: T=T*wsp, wroc do kroku 2
-#     nie: STOP
-# nie: losuj rnd
-# czy rnd < P?
-#     tak:
-#         nie rob nic
-#     nie:
-#         cofnij ruch
-#     czy temperatura jest wieksza od Tk?
-#         tak: T=T*wsp, wroc do kroku 2
-#         nie: STOP
-#
 import os
 import random
 import math
@@ -43,9 +24,6 @@ wczytane = []
 #neh
 posortowana = []
 
-
-# kolory = ["red", "green", "blue", "cyan", "magenta"]
-
 def permutacja(liczba):
     dlugosc = len(liczba)
     if dlugosc == 1:
@@ -65,7 +43,6 @@ def permutacja(liczba):
 def wczytajDaneZFolderu(nazwaFolderu):
     for tempNazwaPliku in os.listdir(nazwaFolderu):
         l_nazwyPlikow.append(tempNazwaPliku)
-
 
 def wczytajDaneZPliku(nazwaPliku):
     wczytane.clear()
@@ -180,7 +157,6 @@ def NEHStandardowy():
 
     global poprzedniaKolejnosc
     global poprzedniCzasZakonczenia
-    #start = time.clock()
     l1 = []  # kolejnosc biezaca
     l2 = []  #
     l3 = []
@@ -192,28 +168,14 @@ def NEHStandardowy():
             l1 = []
             l1 = l1 + l2
             l1.insert(j, i)  # kolejnosc   #krok3,4
-            # print("nana=", l1)
-            # print("d1", posortowana.index(i)+1, "d2", len(l1))
             d = przegladKolejnosci(posortowana.index(i) + 1, m_liczbaMaszyn, l1)
             if (m > d):  # wybrane najlepsze zadanie
                 m = d
                 l3 = l1
-                # print("m",m)
-
         l2 = l3
-        # print("najlepsza kolejnosc", l2)
-        # print("=========================")
         poprzedniaKolejnosc = l2.copy()
         poprzedniCzasZakonczenia = l_czasZakonczenia.copy()
-    #end = time.clock()
-   # total = end - start
-    #print("Czas : ", "{0:02f}s".format(total))
-    #print("--Najlepsza kolejnosc NEH = ", l2)
     return l2
-   # print("--Cmax NEH = ", m)
-    # wizualizacja(m_liczbaZadan, m_liczbaMaszyn, l2, nazwaPliku.replace(".txt","")+"neh.png")
-    #czasNEHStandard.append(total)  # todo: moze to przetworzyc bo pewnie jest w ms
-
 
 def symulowaneWyzarzanie():
     #pomiarCzasu=time.clock()
@@ -232,7 +194,6 @@ def symulowaneWyzarzanie():
     cmax = 0
     cmax_poprz = 0
 
-    # print("witam w funkcji")
     rozwPocz = list(range(0,
                           m_liczbaZadan))  # krok1: wygeneruj rozwiazanie poczatkowe  . w tym przypadku bedzie to kolejnosc naturalna
 
@@ -286,22 +247,14 @@ def symulowaneWyzarzanie():
         else:
             kolejnosc=poprzKolejnosc
             cmax=cmax_poprz
-            #print("slaby ruch, cofam", kolejnosc, poprzKolejnosc)
             #print("slaby ruch, cofam")
-            # znaleziono slaby ruch -> COFAM
         T = T * wsp
         if(cmax<najlepszyCmax):
             najlepszyCmax=cmax
         if(cmax>najgorszyCmax):
             najgorszyCmax=cmax
-        #print("     T=",T,"P=",P,"kolejnosc", kolejnosc, "cmax", cmax)
-        #print("     T=", T, " || P=", P, " || cmax=", cmax, " || cmax_poprz=", cmax_poprz," || kolejnosc=" ,kolejnosc)
-        #print("         cmax:", cmax)
     print(nazwaPliku, cmax, time.clock()-pomiarCzasu)
-    #print("     finalny cmax:", cmax, "najgorszy=",najgorszyCmax, "najlepszy=",najlepszyCmax, "czas liczenia", time.clock()-pomiarCzasu)
-
-
-# glowna czesc
+    # glowna czesc
 print("SPDLab 3")
 wczytajDaneZFolderu(nazwaKatalogu)
 
