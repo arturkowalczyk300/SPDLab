@@ -1,10 +1,11 @@
-print("Lab 4 - Schrage")
 import os
-import random
-import math
-import time
-print("SPD Lab 03")
 
+print("SPD Lab 04")
+
+# zmienne poczatkowe
+
+cmax = 0
+cmax_poprz = 0
 
 nazwaKatalogu = "daneLab4"  # od teraz bedzie wczytywac wszystkie instancje z katalogu
 l_nazwyPlikow = []
@@ -12,7 +13,7 @@ l_nazwyPlikow = []
 #######global #####################################
 # NOWE STRUKTURY
 ###########################################
-l_czasTrwania = []  # lista zawierajaca czasy trwania na n maszynach (wiec lista dwuwymiarowa)
+
 
 m_liczbaMaszyn = 0
 m_liczbaZadan = 0
@@ -22,8 +23,8 @@ l_czasZakonczenia = []
 
 wczytane = []
 
-#neh
-posortowana = []
+
+# kolory = ["red", "green", "blue", "cyan", "magenta"]
 
 def permutacja(liczba):
     dlugosc = len(liczba)
@@ -40,9 +41,11 @@ def permutacja(liczba):
                 wynik.append([a] + p)
         return wynik
 
+
 def wczytajDaneZFolderu(nazwaFolderu):
     for tempNazwaPliku in os.listdir(nazwaFolderu):
         l_nazwyPlikow.append(tempNazwaPliku)
+
 
 def wczytajDaneZPliku(nazwaPliku):
     wczytane.clear()
@@ -71,11 +74,13 @@ def wczytajDaneZPliku(nazwaPliku):
     l_zadania = list(range(1, wczytane[0][0] + 1))
     global m_liczbaMaszyn
     global m_liczbaZadan
+    global l_czasTrwania
     m_liczbaMaszyn = wczytane[0][1]
     m_liczbaZadan = wczytane[0][0]
 
     # przygotowanie rozmiaru struktur danych, WAZNE
     for i in range(0, m_liczbaMaszyn):
+        global l_czasTrwania
         l_czasTrwania.append([])
 
     for k in range(0, m_liczbaMaszyn):
@@ -89,10 +94,51 @@ def wczytajDaneZPliku(nazwaPliku):
     # print(l_czasTrwania)
     # print("liczba maszyn", m_liczbaMaszyn)
 
-print("SPDLab 3")
+
+def Schrage():
+    r = [] #termin dostpnosci zadania
+    p = l_czasTrwania #czas wykonania zadania
+    q = [] #czas dostraczenia zadania
+    t = 0 #chwila czasowa
+    k = 0 #pozycja w permutacji
+    cmax = 0
+    kolejnosc = []
+    G = [] #zbior zadan gotowych do realizacji
+    N = list(range(0, m_liczbaZadan)) #zbior zadan nieuszeregowanych
+    def szukajmin():
+        j = 0;
+        for i in range (N):
+            if N[j].r<N[i].r:
+                {}
+            else:
+                j = i
+        return j;
+
+
+    while((G != []) or (N != [])):
+        while((N != []) and (min(N.r) <= t)):
+            e = min(N.r)
+            G = G.append(e)
+            N = N.remove(e)
+        if(G ==[]):
+            t = min(N.r)
+        e = max(G.q)
+        G = G.remove(e)
+
+        k = k +1
+        kolejnosc[k] = e
+        t = t + p.e
+        cmax = max(cmax,t+ q.e)
+    print("     kolejnosc", kolejnosc, "cmax", cmax)
+
+
+
+
+# glowna czesc
+print("SPDLab 4")
 wczytajDaneZFolderu(nazwaKatalogu)
 
 for nazwaPliku in l_nazwyPlikow:
     print("*nazwa przetwarzanego pliku", nazwaPliku)
     wczytajDaneZPliku("daneLab4/" + nazwaPliku)
-print("gotowe")
+    Schrage()
