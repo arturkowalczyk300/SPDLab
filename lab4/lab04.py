@@ -13,8 +13,10 @@ class Zadanie:
 
 l_zadania=[]
 liczba_zadan=0
-cmax = 0
-cmax_poprz = 0
+S=[] #wektor rozpoczecia wykonywanych zadan
+C=[] #wektor zakonczenia zadan
+NN=[]
+NG=[]
 
 nazwaKatalogu = "daneLab4"  # od teraz bedzie wczytywac wszystkie instancje z katalogu
 l_nazwyPlikow = []
@@ -96,42 +98,60 @@ def wczytajDaneZPlikuSCHRAGE(nazwaPliku):
         global l_czasTrwania
         l_czasTrwania.append([])
 
+def mojeMin(): #zwraca indeks elementu w NN o najmniejszym r
+    global NN
+    min=10000000
+    minindex=-100
+    for i in range(len(NN)):
+        if(NN[i].r<min):
+            min=NN[i].r
+            minindex=i
+    return minindex#zwraca index minimalnej wartosci
+
+def mojeMax(): #zwraca indeks elementu w NN o najmniejszym r
+    global NG
+    max=0
+    maxindex=-100
+    for i in range(len(NG)):
+        if(NG[i].q>max):
+            max=NG[i].r
+            maxindex=i
+    return maxindex#zwraca index minimalnej wartosci
 
 def Schrage():
-    r = [] #termin dostpnosci zadania
-    p = l_czasTrwania #czas wykonania zadania
-    q = [] #czas dostraczenia zadania
-    t = 0 #chwila czasowa
-    k = 0 #pozycja w permutacji
-    cmax = 0
-    kolejnosc = []
-    G = [] #zbior zadan gotowych do realizacji
-    N = list(range(0, m_liczbaZadan)) #zbior zadan nieuszeregowanych
-    def szukajmin():
-        j = 0;
-        for i in range (N):
-            if N[j].r<N[i].r:
-                {}
-            else:
-                j = i
-        return j;
+    #inicjalizacja
+    global l_zadania
+    global NN
+    global NG
 
+    N=l_zadania
+    NN=N #zadania nieuszeregowane
+    NG=[] # zadania gotowe
+    t=0 #chwila czasowa #todo: poprawic z zera
+    i=1
+    RO=[] #tymczasowo lista uszeregowanych zadan
 
-    while((G != []) or (N != [])):
-        while((N != []) and (min(N.r) <= t)):
-            e = min(N.r)
-            G = G.append(e)
-            N = N.remove(e)
-        if(G ==[]):
-            t = min(N.r)
-        e = max(G.q)
-        G = G.remove(e)
+    cmax=0 #todo: change it
 
-        k = k +1
-        kolejnosc[k] = e
-        t = t + p.e
-        cmax = max(cmax,t+ q.e)
-    print("     kolejnosc", kolejnosc, "cmax", cmax)
+    tempIter=0
+    while((NG != []) or (NN != [])): #szukanie zadan gotowych do uszeregowania (rj<=t)
+        while((NN != []) and (NN[mojeMin()].r <= t)):
+            e = mojeMin()
+            NG.append(NN[e]) #dodaje do zbioru zadan gotowych
+            print("dodaje zadanie")
+            del NN[e] #usuwam ze zbioru zadan nieuszeregowanych
+
+        if(NG ==[]): #
+            t = NN[mojeMin()].r #najmniejsze r w zestawieniu nieuporzadkowanych
+        else:
+            j = mojeMax() #index
+            RO.append(j+tempIter)
+            tempIter+=1
+            #k = k +1
+            t = t + NG[j].p #dodaje czas trwania wybranego zadania
+            del NG[j]
+       # cmax = max(cmax,t+ q.e)
+    print("     kolejnosc", RO, "cmax", cmax)
 
 
 
@@ -145,4 +165,4 @@ for nazwaPliku in l_nazwyPlikow:
     wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
     print(liczba_zadan)
     print(l_zadania)
-    #Schrage()
+    Schrage()
