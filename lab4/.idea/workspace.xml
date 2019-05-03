@@ -2,6 +2,145 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dca01498-5c30-486a-9573-aed078cfee4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/lab4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lab4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/2_03.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/2_04.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/2_05.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/2_06.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/2_07.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/2_08.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/2_09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/2_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/3_04.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/3_05.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/3_06.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/3_07.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/3_08.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/3_09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/3_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/pdf.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta002.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta003.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta004.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta005.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta006.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta007.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta008.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta009.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta010.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta011.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta012.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta013.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta014.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta015.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta016.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta017.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta018.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta019.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta020.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta021.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta022.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta023.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta024.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta025.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta026.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta027.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta028.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta029.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta030.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta031.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta032.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta033.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta034.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta035.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta036.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta037.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta038.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta039.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta040.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta041.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta042.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta043.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta044.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta045.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta046.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta047.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta048.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta049.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta050.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta051.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta052.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta053.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta054.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta055.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta056.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta057.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta058.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta059.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta060.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta061.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta062.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta063.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta064.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta065.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta066.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta067.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta068.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta069.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta070.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta071.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta072.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta073.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta074.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta075.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta076.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta077.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta078.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta079.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta080.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta081.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta082.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta083.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta084.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta085.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta086.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta087.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta088.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta089.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta090.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta091.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta092.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta093.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta094.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta095.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta096.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta097.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta098.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta099.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta100.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta101.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta102.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta103.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta104.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta105.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta106.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta107.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta108.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta109.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta110.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta111.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta112.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta113.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta114.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta115.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta116.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta117.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta118.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta119.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daneLab4/ta120.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lab04.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab04.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,15 +150,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/lab4$main.coverage" NAME="main Coverage Results" MODIFIED="1556526194098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lab4$main.coverage" NAME="main Coverage Results" MODIFIED="1556913798224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lab4$lab04.coverage" NAME="lab04 Coverage Results" MODIFIED="1556915147684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lab04.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            <state relative-caret-position="453">
+              <caret line="146" column="4" selection-start-line="146" selection-start-column="4" selection-end-line="146" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -36,6 +179,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>daneL</find>
+      <find>schrage</find>
+      <find>l_zadani</find>
+      <find>l_zadan</find>
+      <find>templista</find>
+      <find>l_zadanie</find>
+      <find>l_zadania</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -50,10 +199,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="60" />
-    <option name="y" value="353" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="405" />
+    <option name="y" value="256" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -61,7 +210,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -73,12 +221,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -92,7 +242,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.lab04">
+    <configuration name="lab04" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="lab4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab04.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="lab4" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -117,6 +289,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lab04" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -132,39 +305,42 @@
       <option name="presentableId" value="Default" />
       <updated>1556519164479</updated>
       <workItem from="1556519169135" duration="3676000" />
+      <workItem from="1556867560036" duration="1274000" />
+      <workItem from="1556911474247" duration="1141000" />
+      <workItem from="1556912784434" duration="2358000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3676000" />
+    <option name="totallyTimeSpent" value="8449000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2585288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="R Packages" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="R Graphics" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32936078" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.28060672" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,8 +349,11 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lab04.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        <state relative-caret-position="453">
+          <caret line="146" column="4" selection-start-line="146" selection-start-column="4" selection-end-line="146" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

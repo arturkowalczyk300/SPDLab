@@ -1,9 +1,18 @@
 import os
+from dataclasses import dataclass
 
 print("SPD Lab 04")
 
 # zmienne poczatkowe
 
+@dataclass
+class Zadanie:
+    r: float
+    p: float
+    q: float
+
+l_zadania=[]
+liczba_zadan=0
 cmax = 0
 cmax_poprz = 0
 
@@ -14,10 +23,7 @@ l_nazwyPlikow = []
 # NOWE STRUKTURY
 ###########################################
 
-
-m_liczbaMaszyn = 0
 m_liczbaZadan = 0
-l_zadania = []
 l_czasTrwania = []  # lista zawierajaca czasy trwania na n maszynach (wiec lista dwuwymiarowa)
 l_czasZakonczenia = []
 
@@ -47,9 +53,14 @@ def wczytajDaneZFolderu(nazwaFolderu):
         l_nazwyPlikow.append(tempNazwaPliku)
 
 
-def wczytajDaneZPliku(nazwaPliku):
+def wczytajDaneZPlikuSCHRAGE(nazwaPliku):
+    global l_zadania
+    global liczba_zadan
     wczytane.clear()
     plik_zadania = []
+    r=0
+    p=0
+    q=0
     if os.path.isfile(nazwaPliku):
         with open(nazwaPliku, "r") as tekst:
             iterator = 0
@@ -57,13 +68,16 @@ def wczytajDaneZPliku(nazwaPliku):
                 linia = linia.replace("\n", "")
                 linia = linia.replace("\r", "")
                 if iterator != 0:
-                    plik_czasy_trwania = [int(s) for s in linia.split() if s.isdigit()]
-                    plik_zadania.append([])
-                    plik_zadania[iterator - 1] = plik_czasy_trwania.copy()
+                    plik_rpq = [int(s) for s in linia.split() if s.isdigit()]
+                    r=plik_rpq[0]
+                    p = plik_rpq[1]
+                    q = plik_rpq[2]
+
+                   #print("r=",r," p=",p," q=",q)
+                    l_zadania.append(Zadanie(r,p,q))
                 else:
                     ustawienia = [int(s) for s in linia.split() if s.isdigit()]
-                    plik_liczba_zadan = ustawienia[0]
-                    plik_liczba_maszyn = ustawienia[1]
+                    liczba_zadan=ustawienia[0]
                 iterator = iterator + 1
     else:
         print("plik nie istnieje!!!")
@@ -71,7 +85,6 @@ def wczytajDaneZPliku(nazwaPliku):
     wczytane.append(ustawienia)
     wczytane.append(plik_zadania)
     # NOWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE wczytywanie do pliku
-    l_zadania = list(range(1, wczytane[0][0] + 1))
     global m_liczbaMaszyn
     global m_liczbaZadan
     global l_czasTrwania
@@ -82,17 +95,6 @@ def wczytajDaneZPliku(nazwaPliku):
     for i in range(0, m_liczbaMaszyn):
         global l_czasTrwania
         l_czasTrwania.append([])
-
-    for k in range(0, m_liczbaMaszyn):
-        templista = []
-        for i in range(0, m_liczbaZadan):
-            # l_czasTrwania[i]=wczytane[1][i][0]
-            templista.append(wczytane[1][i][k])
-        l_czasTrwania[k] = templista
-
-    l_zadania = range(1, m_liczbaZadan + 1)
-    # print(l_czasTrwania)
-    # print("liczba maszyn", m_liczbaMaszyn)
 
 
 def Schrage():
@@ -140,5 +142,7 @@ wczytajDaneZFolderu(nazwaKatalogu)
 
 for nazwaPliku in l_nazwyPlikow:
     print("*nazwa przetwarzanego pliku", nazwaPliku)
-    wczytajDaneZPliku("daneLab4/" + nazwaPliku)
-    Schrage()
+    wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
+    print(liczba_zadan)
+    print(l_zadania)
+    #Schrage()
