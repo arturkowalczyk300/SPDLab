@@ -145,7 +145,7 @@ def Schrage():
             t = NN[mojeMin()].r #najmniejsze r w zestawieniu nieuporzadkowanych
         else:
             j = mojeMax() #index
-            RO.append(j+tempIter)
+            RO.append(j+tempIter) 
             tempIter+=1
             #k = k +1
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
