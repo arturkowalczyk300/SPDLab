@@ -114,7 +114,7 @@ def mojeMax(): #zwraca indeks elementu w NN o najmniejszym r
     maxindex=-100
     for i in range(len(NG)):
         if(NG[i].q>max):
-            max=NG[i].r
+            max=NG[i].q
             maxindex=i
     return maxindex#zwraca index minimalnej wartosci
 
@@ -137,9 +137,9 @@ def Schrage():
     while((NG != []) or (NN != [])): #szukanie zadan gotowych do uszeregowania (rj<=t)
         while((NN != []) and (NN[mojeMin()].r <= t)):
             e = mojeMin()
-            NG.append(NN[e]) #dodaje do zbioru zadan gotowych
-            print("dodaje zadanie")
+            NG.append(NN[e]) #dodaje do zbioru zadan gotowych`
             del NN[e] #usuwam ze zbioru zadan nieuszeregowanych
+            print("len(NN)=",len(NN),"len(NG)", len(NG), "suma=", len(NN)+len(NG))
 
         if(NG ==[]): #
             t = NN[mojeMin()].r #najmniejsze r w zestawieniu nieuporzadkowanych
