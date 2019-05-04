@@ -161,15 +161,15 @@ def Schrage():
     liczba=0
     wypelnijRozpoczeciaZadan()
     wypelnijZakonczeniaZadan()
+    tempcmax=funkcjaCelu()
     for zadanie in RO: #drukuje zadania wg kolejnosci
-        print("id=",zadanie.id, "r=", zadanie.r, "p=",zadanie.p,"q=",zadanie.q, "rozp=", zadanie.rozpoczecie, "stop=", zadanie.zakonczenie)
+        #print("id=",zadanie.id, "r=", zadanie.r, "p=",zadanie.p,"q=",zadanie.q, "rozp=", zadanie.rozpoczecie, "stop=", zadanie.zakonczenie)
         liczba+=1
-    print("#liczba zadan w wektorze kolejnosci=", liczba)
+    print("#liczba zadan w wektorze kolejnosci=", liczba, "cmax=", tempcmax)
     #print(" dl=",len(RO),"kolejnosc", RO, "cmax", cmax)
 
 def wypelnijRozpoczeciaZadan():
     global RO
-    print("rozpoczecie")
     poprzednieZadanie=None
     for zadanie in RO:
         if(not (poprzednieZadanie is None)):
@@ -177,13 +177,18 @@ def wypelnijRozpoczeciaZadan():
         poprzednieZadanie = zadanie
 def wypelnijZakonczeniaZadan():
     global RO
-    print("zakonczenie")
     for zadanie in RO:
         zadanie.zakonczenie=zadanie.rozpoczecie+zadanie.p
 
 def funkcjaCelu():
-    print("liczenie cmax")
+    global RO
+    max=0
+    for zadanie in RO:
+        cmax= zadanie.zakonczenie+zadanie.q
+        if(cmax>max):
+            max=cmax
 
+    return max
 # glowna czesc
 print("SPDLab 4")
 wczytajDaneZFolderu(nazwaKatalogu)
@@ -192,6 +197,6 @@ for nazwaPliku in l_nazwyPlikow:
     print("###########################################################")
     print("*nazwa przetwarzanego pliku", nazwaPliku)
     wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
-    print(liczba_zadan)
-    print(l_zadania)
+    #print(liczba_zadan)
+    #print(l_zadania)
     Schrage()
