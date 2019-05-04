@@ -10,7 +10,7 @@ class Zadanie:
     r: float
     p: float
     q: float
-
+    id: int
 l_zadania=[]
 liczba_zadan=0
 S=[] #wektor rozpoczecia wykonywanych zadan
@@ -77,7 +77,7 @@ def wczytajDaneZPlikuSCHRAGE(nazwaPliku):
                     q = plik_rpq[2]
 
                    #print("r=",r," p=",p," q=",q)
-                    l_zadania.append(Zadanie(r,p,q))
+                    l_zadania.append(Zadanie(r,p,q, iterator))
                 else:
                     ustawienia = [int(s) for s in linia.split() if s.isdigit()]
                     liczba_zadan=ustawienia[0]
@@ -146,13 +146,19 @@ def Schrage():
             t = NN[mojeMin()].r #najmniejsze r w zestawieniu nieuporzadkowanych
         else:
             j = mojeMax() #index
-            RO.append(j+tempIter)
+            #RO.append(j+tempIter)
+            RO.append(NG[j]) #dodaje zadanie do wektora kolejnosci !!!
             tempIter+=1
             #k = k +1
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
             del NG[j]
        # cmax = max(cmax,t+ q.e)
-    print(" dl=",len(RO),"kolejnosc", RO, "cmax", cmax)
+    liczba=0
+    for zadanie in RO: #drukuje zadania wg kolejnosci
+        print("id=",zadanie.id, "r=", zadanie.r, "p=",zadanie.p,"q=",zadanie.q)
+        liczba+=1
+    print("#liczba zadan w wektorze kolejnosci=", liczba)
+    #print(" dl=",len(RO),"kolejnosc", RO, "cmax", cmax)
 
 
 
@@ -162,6 +168,7 @@ print("SPDLab 4")
 wczytajDaneZFolderu(nazwaKatalogu)
 
 for nazwaPliku in l_nazwyPlikow:
+    print("###########################################################")
     print("*nazwa przetwarzanego pliku", nazwaPliku)
     wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
     print(liczba_zadan)
