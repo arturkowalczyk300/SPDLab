@@ -11,12 +11,15 @@ class Zadanie:
     p: float
     q: float
     id: int
+    rozpoczecie: float = 0
+    zakonczenie:float = 0
 l_zadania=[]
 liczba_zadan=0
 S=[] #wektor rozpoczecia wykonywanych zadan
 C=[] #wektor zakonczenia zadan
 NN=[]
 NG=[]
+RO=[]
 
 nazwaKatalogu = "daneLab4"  # od teraz bedzie wczytywac wszystkie instancje z katalogu
 l_nazwyPlikow = []
@@ -124,13 +127,15 @@ def Schrage():
     global l_zadania
     global NN
     global NG
+    global RO
 
     N=l_zadania
     NN=N #zadania nieuszeregowane
     NG=[] # zadania gotowe
     t=0 #chwila czasowa #todo: poprawic z zera
+    RO=[]
     i=1
-    RO=[] #tymczasowo lista uszeregowanych zadan
+
 
     cmax=0 #todo: change it
 
@@ -154,14 +159,30 @@ def Schrage():
             del NG[j]
        # cmax = max(cmax,t+ q.e)
     liczba=0
+    wypelnijRozpoczeciaZadan()
+    wypelnijZakonczeniaZadan()
     for zadanie in RO: #drukuje zadania wg kolejnosci
-        print("id=",zadanie.id, "r=", zadanie.r, "p=",zadanie.p,"q=",zadanie.q)
+        print("id=",zadanie.id, "r=", zadanie.r, "p=",zadanie.p,"q=",zadanie.q, "rozp=", zadanie.rozpoczecie, "stop=", zadanie.zakonczenie)
         liczba+=1
     print("#liczba zadan w wektorze kolejnosci=", liczba)
     #print(" dl=",len(RO),"kolejnosc", RO, "cmax", cmax)
 
+def wypelnijRozpoczeciaZadan():
+    global RO
+    print("rozpoczecie")
+    poprzednieZadanie=None
+    for zadanie in RO:
+        if(not (poprzednieZadanie is None)):
+            zadanie.rozpoczecie=max(zadanie.r, poprzednieZadanie.rozpoczecie + poprzednieZadanie.p)
+        poprzednieZadanie = zadanie
+def wypelnijZakonczeniaZadan():
+    global RO
+    print("zakonczenie")
+    for zadanie in RO:
+        zadanie.zakonczenie=zadanie.rozpoczecie+zadanie.p
 
-
+def funkcjaCelu():
+    print("liczenie cmax")
 
 # glowna czesc
 print("SPDLab 4")
