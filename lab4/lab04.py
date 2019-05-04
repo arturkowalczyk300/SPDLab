@@ -58,6 +58,7 @@ def wczytajDaneZFolderu(nazwaFolderu):
 def wczytajDaneZPlikuSCHRAGE(nazwaPliku):
     global l_zadania
     global liczba_zadan
+    l_zadania.clear()
     wczytane.clear()
     plik_zadania = []
     r=0
@@ -136,22 +137,22 @@ def Schrage():
     tempIter=0
     while((NG != []) or (NN != [])): #szukanie zadan gotowych do uszeregowania (rj<=t)
         while((NN != []) and (NN[mojeMin()].r <= t)):
-            e = mojeMin()
-            NG.append(NN[e]) #dodaje do zbioru zadan gotowych`
-            del NN[e] #usuwam ze zbioru zadan nieuszeregowanych
-            print("len(NN)=",len(NN),"len(NG)", len(NG), "suma=", len(NN)+len(NG))
+            j = mojeMin()
+            NG.append(NN[j]) #dodaje do zbioru zadan gotowych`
+            del NN[j] #usuwam ze zbioru zadan nieuszeregowanych
+            #print("len(NN)=",len(NN),"len(NG)", len(NG), "suma=", len(NN)+len(NG))
 
-        if(NG ==[]): #
+        if(NG ==[]): #brak zadan do uporzadkowania, wiec zwiekszamy chwile czasowa
             t = NN[mojeMin()].r #najmniejsze r w zestawieniu nieuporzadkowanych
         else:
             j = mojeMax() #index
-            RO.append(j+tempIter) 
+            RO.append(j+tempIter)
             tempIter+=1
             #k = k +1
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
             del NG[j]
        # cmax = max(cmax,t+ q.e)
-    print("     kolejnosc", RO, "cmax", cmax)
+    print(" dl=",len(RO),"kolejnosc", RO, "cmax", cmax)
 
 
 
