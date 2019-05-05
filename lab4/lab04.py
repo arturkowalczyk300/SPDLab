@@ -19,7 +19,7 @@ S=[] #wektor rozpoczecia wykonywanych zadan
 C=[] #wektor zakonczenia zadan
 NN=[]
 NG=[]
-RO=[]
+sigma=[]
 
 nazwaKatalogu = "daneLab4"  # od teraz bedzie wczytywac wszystkie instancje z katalogu
 l_nazwyPlikow = []
@@ -127,13 +127,13 @@ def Schrage():
     global l_zadania
     global NN
     global NG
-    global RO
+    global sigma
 
     N=l_zadania
     NN=N #zadania nieuszeregowane
     NG=[] # zadania gotowe
     t=0 #chwila czasowa #todo: poprawic z zera
-    RO=[]
+    sigma=[]
     i=1
 
 
@@ -151,8 +151,8 @@ def Schrage():
             t = NN[mojeMin()].r #najmniejsze r w zestawieniu nieuporzadkowanych
         else:
             j = mojeMax() #index
-            #RO.append(j+tempIter)
-            RO.append(NG[j]) #dodaje zadanie do wektora kolejnosci !!!
+            #sigma.append(j+tempIter)
+            sigma.append(NG[j]) #dodaje zadanie do wektora kolejnosci !!!
             tempIter+=1
             #k = k +1
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
@@ -162,28 +162,28 @@ def Schrage():
     wypelnijRozpoczeciaZadan()
     wypelnijZakonczeniaZadan()
     tempcmax=funkcjaCelu()
-    for zadanie in RO: #drukuje zadania wg kolejnosci
+    for zadanie in sigma: #drukuje zadania wg kolejnosci
         #print("id=",zadanie.id, "r=", zadanie.r, "p=",zadanie.p,"q=",zadanie.q, "rozp=", zadanie.rozpoczecie, "stop=", zadanie.zakonczenie)
         liczba+=1
     print("#liczba zadan w wektorze kolejnosci=", liczba, "cmax=", tempcmax)
-    #print(" dl=",len(RO),"kolejnosc", RO, "cmax", cmax)
+    #print(" dl=",len(sigma),"kolejnosc", sigma, "cmax", cmax)
 
 def wypelnijRozpoczeciaZadan():
-    global RO
+    global sigma
     poprzednieZadanie=None
-    for zadanie in RO:
+    for zadanie in sigma:
         if(not (poprzednieZadanie is None)):
             zadanie.rozpoczecie=max(zadanie.r, poprzednieZadanie.rozpoczecie + poprzednieZadanie.p)
         poprzednieZadanie = zadanie
 def wypelnijZakonczeniaZadan():
-    global RO
-    for zadanie in RO:
+    global sigma
+    for zadanie in sigma:
         zadanie.zakonczenie=zadanie.rozpoczecie+zadanie.p
 
 def funkcjaCelu():
-    global RO
+    global sigma
     max=0
-    for zadanie in RO:
+    for zadanie in sigma:
         cmax= zadanie.zakonczenie+zadanie.q
         if(cmax>max):
             max=cmax
