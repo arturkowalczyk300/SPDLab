@@ -90,7 +90,7 @@ def wczytajDaneZPlikuSCHRAGE(nazwaPliku):
 
     wczytane.append(ustawienia)
     wczytane.append(plik_zadania)
-    # NOWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE wczytywanie do pliku
+    # nowe wczytywanie do pliku
     global m_liczbaMaszyn
     global m_liczbaZadan
     global l_czasTrwania
@@ -165,7 +165,8 @@ def Schrage():
     for zadanie in sigma: #drukuje zadania wg kolejnosci
         #print("id=",zadanie.id, "r=", zadanie.r, "p=",zadanie.p,"q=",zadanie.q, "rozp=", zadanie.rozpoczecie, "stop=", zadanie.zakonczenie)
         liczba+=1
-    print("#liczba zadan w wektorze kolejnosci=", liczba, "cmax=", tempcmax)
+    print('cmax:', tempcmax)
+    #print("#liczba zadan w wektorze kolejnosci=", liczba, "cmax=", tempcmax)
     #print(" dl=",len(sigma),"kolejnosc", sigma, "cmax", cmax)
 
 def wypelnijRozpoczeciaZadan():
@@ -189,14 +190,57 @@ def funkcjaCelu():
             max=cmax
 
     return max
+
+def Schrage_z_przerwaniami():
+    #inicjalizacja
+    global l_zadania
+    global NN
+    global NG
+    global sigma
+
+    N=l_zadania
+    NN=N #zadania nieuszeregowane
+    NG=[] # zadania gotowe
+    t=0 #chwila czasowa #todo: poprawic z zera
+    cmax = 0
+    i=1
+    l=Zadanie(0,0,999999,0)
+
+    cmax=0 #todo: change it
+
+    tempIter=0
+    while((NG != []) or (NN != [])): #szukanie zadan gotowych do uszeregowania (rj<=t)
+        while((NN != []) and (NN[mojeMin()].r <= t)):
+            j = mojeMin()
+            NG.append(NN[j]) #dodaje do zbioru zadan gotowych`
+             #usuwam ze zbioru zadan nieuszeregowanych
+            #print("len(NN)=",len(NN),"len(NG)", len(NG), "suma=", len(NN)+len(NG))
+            if (NN[j].q > l.q):
+                l.p = t - NN[j].r
+                t = NN[j].r
+
+                if(l.p > 0):
+                    NG.append(l)
+            del NN[j]
+        if(NG ==[]): #brak zadan do uporzadkowania, wiec zwiekszamy chwile czasowa
+            t = NN[mojeMin()].r #najmniejsze r w zestawieniu nieuporzadkowanych
+        else:
+            j = mojeMax() #index
+            #k = k +1
+            l = NG[j]
+            t = t + NG[j].p #dodaje czas trwania wybranego zadania
+            cmax = max(cmax, t + NG[j].q)
+            del NG[j]
+    print('cmax (z przerwaniami):', cmax)
+    return cmax
+
 # glowna czesc
 print("SPDLab 4")
 wczytajDaneZFolderu(nazwaKatalogu)
-
 for nazwaPliku in l_nazwyPlikow:
     print("###########################################################")
     print("*nazwa przetwarzanego pliku", nazwaPliku)
     wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
-    #print(liczba_zadan)
-    #print(l_zadania)
     Schrage()
+    wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
+    Schrage_z_przerwaniami()
