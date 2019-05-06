@@ -1,4 +1,5 @@
 import os
+import time
 from dataclasses import dataclass
 
 print("SPD Lab 04")
@@ -151,7 +152,7 @@ def Schrage():
     tempcmax=funkcjaCelu()
     for zadanie in sigma: #drukuje zadania wg kolejnosci
         liczba+=1
-    print('cmax:', tempcmax)
+    #print('cmax:', tempcmax)
 
 def wypelnijRozpoczeciaZadan():
     global sigma
@@ -214,16 +215,46 @@ def Schrage_z_przerwaniami():
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
             cmax = max(cmax, t + NG[j].q)
             del NG[j]
-    print('cmax (z przerwaniami):', cmax)
+    #print('cmax (z przerwaniami):', cmax)
     return cmax
-
+def srednia(arg_start, arg_stop):
+    suma=0
+    for a in arg_start:
+        suma+=a
+    sredni_start=suma/len(arg_start)
+    suma = 0
+    for b in arg_stop:
+        suma += b
+    sredni_stop = suma / len(arg_stop)
+    return [sredni_start, sredni_stop]
 # glowna czesc
 print("SPDLab 4")
 wczytajDaneZFolderu(nazwaKatalogu)
 for nazwaPliku in l_nazwyPlikow:
     print("###########################################################")
     print("*nazwa przetwarzanego pliku", nazwaPliku)
-    wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
-    Schrage()
-    wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
-    Schrage_z_przerwaniami()
+    cmaxSchrage=0
+    cmaxPrzerwania=0
+    start=[]
+    stop=[]
+    for i in range(0,1000):
+        wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
+        start.append(time.time_ns() / (10**9))
+        cmaxSchrage=Schrage()
+        stop.append(time.time_ns() / (10**9))
+        wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
+    sredniaWartosc=srednia(start,stop)
+    print("cmax",cmaxSchrage, "## czas wykonania (srednia z 1000):", sredniaWartosc[1]-sredniaWartosc[0]) #stop - start
+    start.clear()
+    stop.clear()
+
+    for i in range(0,1000):
+        wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
+        start.append(time.time_ns() / (10**9))
+        cmaxPrzerwania=Schrage_z_przerwaniami()
+        stop.append(time.time_ns() / (10**9))
+        wczytajDaneZPlikuSCHRAGE("daneLab4/" + nazwaPliku)
+    sredniaWartosc=srednia(start,stop)
+    print("cmax (przerwania)=",cmaxPrzerwania,"## czas wykonania (srednia z 1000):", sredniaWartosc[1]-sredniaWartosc[0]) #stop - start
+    start.clear()
+    stop.clear()
