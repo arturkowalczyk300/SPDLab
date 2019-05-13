@@ -11,7 +11,6 @@ class Zadanie:
     r: float
     p: float
     q: float
-    id: int
     rozpoczecie: float = 0
     zakonczenie:float = 0
 l_zadania=[]
@@ -114,6 +113,7 @@ def mojeMax(NG): #zwraca indeks elementu w NN o najmniejszym r
             maxindex=i
     return maxindex#zwraca index minimalnej wartosci
 
+
 def Schrage(l_zadania):
     #inicjalizacja
     NN=[]
@@ -148,18 +148,19 @@ def Schrage(l_zadania):
     wypelnijRozpoczeciaZadan(sigma)
     wypelnijZakonczeniaZadan(sigma)
     tempcmax=funkcjaCelu(sigma)
+
     return [tempcmax, sigma]
 
 
-def znajdzOstatnieZadanieNaSciezceKrytycznej(l_zadania,sigma):
+def znajdzOstatnieZadanieNaSciezceKrytycznej(sigma):
     #print("szukam ostatniego zadania na sciezce")
     print()
     maxIndex=-100
     for i in range(0,len(l_zadania)):
         a=funkcjaCelu(sigma)
-        b=l_zadania[i].zakonczenie
-        c=l_zadania[i].q
-        #print("a=",a,"b=",b,"c=",c)
+        b=sigma[i].zakonczenie
+        c=sigma[i].q
+        print("i",i,"a=",a,"b=",b,"c=",c, "suma", b+c)
         #if(funkcjaCelu(sigma)==l_zadania[i].zakonczenie + l_zadania[i].q):
         if (a == b+c):
             maxIndex=i
@@ -188,8 +189,10 @@ def Carlier(l_zadania):
         UB=U
         PI_ST=PI
 
+    #tempblok
+
     #wybor zadan
-    b=znajdzOstatnieZadanieNaSciezceKrytycznej(l_zadania,PI)
+    b=znajdzOstatnieZadanieNaSciezceKrytycznej(PI)
     a=znajdzPierwszeZadanieNaSciezceKrytycznej(l_zadania,PI)
     c=znajdzZadanieKrytyczne(l_zadania)
 
@@ -275,7 +278,7 @@ for nazwaPliku in l_nazwyPlikow:
     print("*nazwa przetwarzanego pliku", nazwaPliku)
     cmaxSchrage=0
     cmaxPrzerwania=0
-
+    print("cmax schrage", Schrage(l_zadania.copy()))
 
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     Carlier(l_zadania)
