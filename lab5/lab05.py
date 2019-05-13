@@ -166,9 +166,23 @@ def znajdzOstatnieZadanieNaSciezceKrytycznej(sigma):
             maxIndex=i
     print("znalezione maxindex", maxIndex)
     return maxIndex
-def znajdzPierwszeZadanieNaSciezceKrytycznej(l_zadania,sigma):
+def znajdzPierwszeZadanieNaSciezceKrytycznej(sigma, IndeksOstatniegoZadania):
     #print("szukam pierwszego zadania na sciezce")
-    b=0
+    print()
+    maxIndex = -100
+    for i in range(0, len(l_zadania)):
+        cmax=funkcjaCelu(sigma)
+        a = sigma[i].r
+        b = 0#tu bedzie sie dodawac p z kazdego kolejnego zadania w petli, todo
+        for s in range(i, IndeksOstatniegoZadania):
+            b+=sigma[s].p
+        c = sigma[IndeksOstatniegoZadania].q
+        print("i", i, "a=", a, "b=", b, "c=", c, "suma", b + c)
+        # if(funkcjaCelu(sigma)==l_zadania[i].zakonczenie + l_zadania[i].q):
+        if (cmax== a + b + c):
+            maxIndex = i
+    print("znalezione maxindex", maxIndex)
+    return maxIndex
 
 def znajdzZadanieKrytyczne(l_zadania):
     c=0
@@ -192,8 +206,8 @@ def Carlier(l_zadania):
     #tempblok
 
     #wybor zadan
-    b=znajdzOstatnieZadanieNaSciezceKrytycznej(PI)
-    a=znajdzPierwszeZadanieNaSciezceKrytycznej(l_zadania,PI)
+    b=znajdzOstatnieZadanieNaSciezceKrytycznej(PI) #indeks ostatniego zadania
+    a=znajdzPierwszeZadanieNaSciezceKrytycznej(PI, b)
     c=znajdzZadanieKrytyczne(l_zadania)
 
     if(c==0):
