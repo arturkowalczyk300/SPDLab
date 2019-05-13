@@ -95,8 +95,8 @@ def wczytajDaneZPlikuSCHRAGE(nazwaPliku):
         global l_czasTrwania
         l_czasTrwania.append([])
 
-def mojeMin(): #zwraca indeks elementu w NN o najmniejszym r
-    global NN
+def mojeMin(NN): #zwraca indeks elementu w NN o najmniejszym r
+
     min=10000000
     minindex=-100
     for i in range(len(NN)):
@@ -105,8 +105,7 @@ def mojeMin(): #zwraca indeks elementu w NN o najmniejszym r
             minindex=i
     return minindex#zwraca index minimalnej wartosci
 
-def mojeMax(): #zwraca indeks elementu w NN o najmniejszym r
-    global NG
+def mojeMax(NG): #zwraca indeks elementu w NN o najmniejszym r
     max=0
     maxindex=-100
     for i in range(len(NG)):
@@ -115,12 +114,11 @@ def mojeMax(): #zwraca indeks elementu w NN o najmniejszym r
             maxindex=i
     return maxindex#zwraca index minimalnej wartosci
 
-def Schrage():
+def Schrage(l_zadania):
     #inicjalizacja
-    global l_zadania
-    global NN
-    global NG
-    global sigma
+    NN=[]
+    NG=[]
+    sigma=[]
 
     N=l_zadania
     NN=N #zadania nieuszeregowane
@@ -134,42 +132,58 @@ def Schrage():
 
     tempIter=0
     while((NG != []) or (NN != [])): #szukanie zadan gotowych do uszeregowania (rj<=t)
-        while((NN != []) and (NN[mojeMin()].r <= t)):
-            j = mojeMin()
+        while((NN != []) and (NN[mojeMin(NN)].r <= t)):
+            j = mojeMin(NN)
             NG.append(NN[j]) #dodaje do zbioru zadan gotowych`
             del NN[j] #usuwam ze zbioru zadan nieuszeregowanych
         if(NG ==[]): #brak zadan do uporzadkowania, wiec zwiekszamy chwile czasowa
-            t = NN[mojeMin()].r #najmniejsze r w zestawieniu nieuporzadkowanych
+            t = NN[mojeMin(NN)].r #najmniejsze r w zestawieniu nieuporzadkowanych
         else:
-            j = mojeMax() #index
+            j = mojeMax(NG) #index
             sigma.append(NG[j]) #dodaje zadanie do wektora kolejnosci !!!
             tempIter+=1
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
             del NG[j]
     liczba=0
-    wypelnijRozpoczeciaZadan()
-    wypelnijZakonczeniaZadan()
-    tempcmax=funkcjaCelu()
-    return tempcmax
+    wypelnijRozpoczeciaZadan(sigma)
+    wypelnijZakonczeniaZadan(sigma)
+    tempcmax=funkcjaCelu(sigma)
+    return [tempcmax, sigma]
 
 def Carlier():
     print("carlier")
+    N=l_zadania
+    UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
+    LB=0 #dolne oszacowanie wartosci funkcji celu
+    PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
+    PI=[] #permutacja wykonania zadan na maszynie
+    U=0 #wartosc funkcji celu
+
+    U=Schrage()
+    if(U<UB):
+        UB=U
+        PI_ST=PI
+
+    #wybor zadan
+   # b=
+   # a=
+   # c=
+
+    if(c==0):
+        return PI_ST
 
 
-def wypelnijRozpoczeciaZadan():
-    global sigma
+def wypelnijRozpoczeciaZadan(sigma):
     poprzednieZadanie=None
     for zadanie in sigma:
         if(not (poprzednieZadanie is None)):
             zadanie.rozpoczecie=max(zadanie.r, poprzednieZadanie.rozpoczecie + poprzednieZadanie.p)
         poprzednieZadanie = zadanie
-def wypelnijZakonczeniaZadan():
-    global sigma
+def wypelnijZakonczeniaZadan(sigma):
     for zadanie in sigma:
         zadanie.zakonczenie=zadanie.rozpoczecie+zadanie.p
 
-def funkcjaCelu():
-    global sigma
+def funkcjaCelu(sigma):
     max=0
     for zadanie in sigma:
         cmax= zadanie.zakonczenie+zadanie.q
@@ -178,12 +192,11 @@ def funkcjaCelu():
 
     return max
 
-def Schrage_z_przerwaniami():
+def Schrage_z_przerwaniami(l_zadania):
     #inicjalizacja
-    global l_zadania
-    global NN
-    global NG
-    global sigma
+    NN=[]
+    NG=[]
+    sigma=[]
 
     N=l_zadania
     NN=N #zadania nieuszeregowane
@@ -197,8 +210,8 @@ def Schrage_z_przerwaniami():
 
     tempIter=0
     while((NG != []) or (NN != [])): #szukanie zadan gotowych do uszeregowania (rj<=t)
-        while((NN != []) and (NN[mojeMin()].r <= t)):
-            j = mojeMin()
+        while((NN != []) and (NN[mojeMin(NN)].r <= t)):
+            j = mojeMin(NN)
             NG.append(NN[j]) #dodaje do zbioru zadan gotowych`
              #usuwam ze zbioru zadan nieuszeregowanych
             if (NN[j].q > l.q):
@@ -209,16 +222,17 @@ def Schrage_z_przerwaniami():
                     NG.append(l)
             del NN[j]
         if(NG ==[]): #brak zadan do uporzadkowania, wiec zwiekszamy chwile czasowa
-            t = NN[mojeMin()].r #najmniejsze r w zestawieniu nieuporzadkowanych
+            t = NN[mojeMin(NN)].r #najmniejsze r w zestawieniu nieuporzadkowanych
         else:
-            j = mojeMax() #index
+            j = mojeMax(NG) #index
             #k = k +1
+            sigma.append(NG[j])
             l = NG[j]
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
             cmax = max(cmax, t + NG[j].q)
             del NG[j]
     #print('cmax (z przerwaniami):', cmax)
-    return cmax
+    return [cmax, sigma]
 def srednia(arg_start, arg_stop):
     suma=0
     for a in arg_start:
@@ -237,26 +251,15 @@ for nazwaPliku in l_nazwyPlikow:
     print("*nazwa przetwarzanego pliku", nazwaPliku)
     cmaxSchrage=0
     cmaxPrzerwania=0
-    start=[]
-    stop=[]
-    for i in range(0,1000):
-        wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-        start.append(time.time_ns() / (10**9))
-        cmaxSchrage=Schrage()
-        stop.append(time.time_ns() / (10**9))
-        wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    sredniaWartosc=srednia(start,stop)
-    print("cmax",cmaxSchrage, "## czas wykonania (srednia z 1000):", sredniaWartosc[1]-sredniaWartosc[0]) #stop - start
-    start.clear()
-    stop.clear()
 
-    for i in range(0,1000):
-        wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-        start.append(time.time_ns() / (10**9))
-        cmaxPrzerwania=Schrage_z_przerwaniami()
-        stop.append(time.time_ns() / (10**9))
-        wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    sredniaWartosc=srednia(start,stop)
-    print("cmax (przerwania)=",cmaxPrzerwania,"## czas wykonania (srednia z 1000):", sredniaWartosc[1]-sredniaWartosc[0]) #stop - start
-    start.clear()
-    stop.clear()
+
+    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    cmaxSchrage=Schrage(l_zadania)[0]
+    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    print("cmax",cmaxSchrage)
+
+
+    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    cmaxPrzerwania=Schrage_z_przerwaniami(l_zadania)[0]
+    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    print("cmax (przerwania)=",cmaxPrzerwania)
