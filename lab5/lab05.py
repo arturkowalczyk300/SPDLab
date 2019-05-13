@@ -186,8 +186,13 @@ def znajdzPierwszeZadanieNaSciezceKrytycznej(sigma, IndeksOstatniegoZadania):
     print("znalezione maxindex", maxIndex)
     return maxIndex
 
-def znajdzZadanieKrytyczne(l_zadania):
-    c=0
+def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
+    maxIndex=-100
+    for i in range(pierwszyIndexZadania, ostatniIndexZadania+1):
+        if(sigma[i].q<sigma[ostatniIndexZadania].q):
+            maxIndex=i
+    print("maxindex ostatnia", maxIndex)
+    return maxIndex
 
 def Carlier(l_zadania):
     print("carlier")
@@ -210,7 +215,7 @@ def Carlier(l_zadania):
     #wybor zadan
     b=znajdzOstatnieZadanieNaSciezceKrytycznej(PI) #indeks ostatniego zadania
     a=znajdzPierwszeZadanieNaSciezceKrytycznej(PI, b)
-    c=znajdzZadanieKrytyczne(l_zadania)
+    c=znajdzZadanieKrytyczne(l_zadania,a,b)
 
     if(c==0):
         return PI_ST
