@@ -160,7 +160,7 @@ def znajdzOstatnieZadanieNaSciezceKrytycznej(sigma):
         a=funkcjaCelu(sigma)
         b=sigma[i].zakonczenie
         c=sigma[i].q
-        print("i",i,"a=",a,"b=",b,"c=",c, "suma", b+c)
+        #print("i",i,"a=",a,"b=",b,"c=",c, "suma", b+c)
         #if(funkcjaCelu(sigma)==l_zadania[i].zakonczenie + l_zadania[i].q):
         if (a == b+c):
             maxIndex=i
@@ -174,13 +174,15 @@ def znajdzPierwszeZadanieNaSciezceKrytycznej(sigma, IndeksOstatniegoZadania):
         cmax=funkcjaCelu(sigma)
         a = sigma[i].r
         b = 0#tu bedzie sie dodawac p z kazdego kolejnego zadania w petli, todo
-        for s in range(i, IndeksOstatniegoZadania):
+        for s in range(i, IndeksOstatniegoZadania+1):
             b+=sigma[s].p
+
         c = sigma[IndeksOstatniegoZadania].q
-        print("i", i, "a=", a, "b=", b, "c=", c, "suma", b + c)
+        #print("i", i, "a=", a, "b=", b, "c=", c,"cmax=",cmax ,"suma=", a+b + c, "index ostatniego zadania", IndeksOstatniegoZadania)
         # if(funkcjaCelu(sigma)==l_zadania[i].zakonczenie + l_zadania[i].q):
         if (cmax== a + b + c):
             maxIndex = i
+            #print("#############$$$$$$$$$$")
     print("znalezione maxindex", maxIndex)
     return maxIndex
 
