@@ -120,7 +120,7 @@ def Schrage(l_zadania):
     NG=[]
     sigma=[]
 
-    N=l_zadania
+    N=l_zadania.copy()
     NN=N #zadania nieuszeregowane
     NG=[] # zadania gotowe
     t=0 #chwila czasowa #todo: poprawic z zera
@@ -150,7 +150,29 @@ def Schrage(l_zadania):
     tempcmax=funkcjaCelu(sigma)
     return [tempcmax, sigma]
 
-def Carlier():
+
+def znajdzOstatnieZadanieNaSciezceKrytycznej(l_zadania,sigma):
+    #print("szukam ostatniego zadania na sciezce")
+    print()
+    maxIndex=-100
+    for i in range(0,len(l_zadania)):
+        a=funkcjaCelu(sigma)
+        b=l_zadania[i].zakonczenie
+        c=l_zadania[i].q
+        #print("a=",a,"b=",b,"c=",c)
+        #if(funkcjaCelu(sigma)==l_zadania[i].zakonczenie + l_zadania[i].q):
+        if (a == b+c):
+            maxIndex=i
+    print("znalezione maxindex", maxIndex)
+    return maxIndex
+def znajdzPierwszeZadanieNaSciezceKrytycznej(l_zadania,sigma):
+    #print("szukam pierwszego zadania na sciezce")
+    b=0
+
+def znajdzZadanieKrytyczne(l_zadania):
+    c=0
+
+def Carlier(l_zadania):
     print("carlier")
     N=l_zadania
     UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
@@ -159,15 +181,17 @@ def Carlier():
     PI=[] #permutacja wykonania zadan na maszynie
     U=0 #wartosc funkcji celu
 
-    U=Schrage()
+    temp=Schrage(l_zadania) #[0] - cmax    [1]-kolejnosc
+    PI=temp[1]
+    U=temp[0]
     if(U<UB):
         UB=U
         PI_ST=PI
 
     #wybor zadan
-   # b=
-   # a=
-   # c=
+    b=znajdzOstatnieZadanieNaSciezceKrytycznej(l_zadania,PI)
+    a=znajdzPierwszeZadanieNaSciezceKrytycznej(l_zadania,PI)
+    c=znajdzZadanieKrytyczne(l_zadania)
 
     if(c==0):
         return PI_ST
@@ -254,12 +278,4 @@ for nazwaPliku in l_nazwyPlikow:
 
 
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    cmaxSchrage=Schrage(l_zadania)[0]
-    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    print("cmax",cmaxSchrage)
-
-
-    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    cmaxPrzerwania=Schrage_z_przerwaniami(l_zadania)[0]
-    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    print("cmax (przerwania)=",cmaxPrzerwania)
+    Carlier(l_zadania)
