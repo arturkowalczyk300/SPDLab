@@ -147,8 +147,8 @@ def Schrage(l_zadania):
     liczba=0
     wypelnijRozpoczeciaZadan(sigma)
     wypelnijZakonczeniaZadan(sigma)
+    global tempcmax
     tempcmax=funkcjaCelu(sigma)
-
     return [tempcmax, sigma]
 
 
@@ -196,6 +196,7 @@ def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
 
 def Carlier(l_zadania):
     print("carlier")
+    global cmax
     N=l_zadania
     UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
     LB=0 #dolne oszacowanie wartosci funkcji celu
@@ -219,6 +220,38 @@ def Carlier(l_zadania):
 
     if(c==0):
         return PI_ST
+    Kr = 99999
+    Kp = 99999
+    Kq = 99999
+    Khr = 99999
+    Khp = 99999
+    Khq = 99999
+
+    for i in range (c+1,b):
+        Kr = min(Kr,PI[i].r)
+        Kp += PI[i].p
+        Kq = min(Kq,PI[i].q)
+    Kh = Kr + Kp + Kq
+    for j in range(c, b):
+        Khr = min(Khr, PI[j].r)
+        Khp += PI[j].p
+        Khq = min(Kq, PI[j].q)
+    Khc = Khr + Khp + Khq
+    PI[c].r = max(PI[c].r,Kr+Kp)
+    LB = Schrage_z_przerwaniami(l_zadania)[0]
+    LB = max(Kh,Khc,LB)
+    if(LB < UB):
+        Carlier(l_zadania)
+    Z = PI[c].r
+    print('inne',Z)
+    PI[c].q = max(PI[c].q,Kq+Kp)
+    LB = Schrage_z_przerwaniami(l_zadania)[0]
+    LB = max(Kh, Khc, LB)
+    if LB < UB:
+        Carlier(l_zadania)
+    Z = PI[c].q
+    cmax =funkcjaCelu()
+
 
 
 def wypelnijRozpoczeciaZadan(sigma):
@@ -250,10 +283,9 @@ def Schrage_z_przerwaniami(l_zadania):
     NN=N #zadania nieuszeregowane
     NG=[] # zadania gotowe
     t=0 #chwila czasowa #todo: poprawic z zera
-    cmax = 0
+    global cmax
     i=1
     l=Zadanie(0,0,999999,0)
-
     cmax=0 #todo: change it
 
     tempIter=0
@@ -279,7 +311,7 @@ def Schrage_z_przerwaniami(l_zadania):
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
             cmax = max(cmax, t + NG[j].q)
             del NG[j]
-    #print('cmax (z przerwaniami):', cmax)
+
     return [cmax, sigma]
 def srednia(arg_start, arg_stop):
     suma=0
@@ -292,14 +324,20 @@ def srednia(arg_start, arg_stop):
     sredni_stop = suma / len(arg_stop)
     return [sredni_start, sredni_stop]
 # glowna czesc
-print("SPDLab 4")
+print("SPDLab 5")
 wczytajDaneZFolderu(nazwaKatalogu)
 for nazwaPliku in l_nazwyPlikow:
     print("###########################################################")
     print("*nazwa przetwarzanego pliku", nazwaPliku)
     cmaxSchrage=0
     cmaxPrzerwania=0
-    print("cmax schrage", Schrage(l_zadania.copy()))
+    tempcmax = 0
+    cmax = 0
 
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    Carlier(l_zadania)
+    Schrage(l_zadania)
+    print("cmax Schrage=", tempcmax)
+    Schrage_z_przerwaniami(l_zadania)
+    print('cmax Schrage z przerwaniami:', cmax)
+    #Carlier(l_zadania)
+    #print("cmax Carier=", cmax)
