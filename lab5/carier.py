@@ -1,0 +1,343 @@
+import os
+import time
+from dataclasses import dataclass
+
+print("SPD Lab 05")
+
+# zmienne poczatkowe
+
+@dataclass
+class Zadanie:
+    r: float
+    p: float
+    q: float
+    rozpoczecie: float = 0
+    zakonczenie:float = 0
+l_zadania=[]
+liczba_zadan=0
+S=[] #wektor rozpoczecia wykonywanych zadan
+C=[] #wektor zakonczenia zadan
+NN=[]
+NG=[]
+sigma=[]
+
+nazwaKatalogu = "daneLab5"  # od teraz bedzie wczytywac wszystkie instancje z katalogu
+l_nazwyPlikow = []
+
+
+m_liczbaZadan = 0
+l_czasTrwania = []  # lista zawierajaca czasy trwania na n maszynach (wiec lista dwuwymiarowa)
+l_czasZakonczenia = []
+
+wczytane = []
+
+def permutacja(liczba):
+    dlugosc = len(liczba)
+    if dlugosc == 1:
+        return [liczba]
+    elif dlugosc == 0:
+        return []
+    else:
+        wynik = []
+        for i in range(dlugosc):
+            a = liczba[i]
+            b = liczba[:i] + liczba[i + 1:]
+            for p in permutacja(b):
+                wynik.append([a] + p)
+        return wynik
+
+
+def wczytajDaneZFolderu(nazwaFolderu):
+    for tempNazwaPliku in os.listdir(nazwaFolderu):
+        l_nazwyPlikow.append(tempNazwaPliku)
+
+
+def wczytajDaneZPlikuSCHRAGE(nazwaPliku):
+    global l_zadania
+    global liczba_zadan
+    l_zadania.clear()
+    wczytane.clear()
+    plik_zadania = []
+    r=0
+    p=0
+    q=0
+    if os.path.isfile(nazwaPliku):
+        with open(nazwaPliku, "r") as tekst:
+            iterator = 0
+            for linia in tekst:
+                linia = linia.replace("\n", "")
+                linia = linia.replace("\r", "")
+                if iterator != 0:
+                    plik_rpq = [int(s) for s in linia.split() if s.isdigit()]
+                    r=plik_rpq[0]
+                    p = plik_rpq[1]
+                    q = plik_rpq[2]
+                    l_zadania.append(Zadanie(r,p,q, iterator))
+                else:
+                    ustawienia = [int(s) for s in linia.split() if s.isdigit()]
+                    liczba_zadan=ustawienia[0]
+                iterator = iterator + 1
+    else:
+        print("plik nie istnieje!!!")
+
+    wczytane.append(ustawienia)
+    wczytane.append(plik_zadania)
+    # nowe wczytywanie do pliku
+    global m_liczbaMaszyn
+    global m_liczbaZadan
+    global l_czasTrwania
+    m_liczbaMaszyn = wczytane[0][1]
+    m_liczbaZadan = wczytane[0][0]
+
+    # przygotowanie rozmiaru struktur danych, WAZNE
+    for i in range(0, m_liczbaMaszyn):
+        global l_czasTrwania
+        l_czasTrwania.append([])
+
+def mojeMin(NN): #zwraca indeks elementu w NN o najmniejszym r
+
+    min=10000000
+    minindex=-100
+    for i in range(len(NN)):
+        if(NN[i].r<min):
+            min=NN[i].r
+            minindex=i
+    return minindex#zwraca index minimalnej wartosci
+
+def mojeMax(NG): #zwraca indeks elementu w NN o najmniejszym r
+    max=0
+    maxindex=-100
+    for i in range(len(NG)):
+        if(NG[i].q>max):
+            max=NG[i].q
+            maxindex=i
+    return maxindex#zwraca index minimalnej wartosci
+
+
+def Schrage(l_zadania):
+    #inicjalizacja
+    NN=[]
+    NG=[]
+    sigma=[]
+
+    N=l_zadania.copy()
+    NN=N #zadania nieuszeregowane
+    NG=[] # zadania gotowe
+    t=0 #chwila czasowa #todo: poprawic z zera
+    sigma=[]
+    i=1
+
+
+    cmax=0 #todo: change it
+
+    tempIter=0
+    while((NG != []) or (NN != [])): #szukanie zadan gotowych do uszeregowania (rj<=t)
+        while((NN != []) and (NN[mojeMin(NN)].r <= t)):
+            j = mojeMin(NN)
+            NG.append(NN[j]) #dodaje do zbioru zadan gotowych`
+            del NN[j] #usuwam ze zbioru zadan nieuszeregowanych
+        if(NG ==[]): #brak zadan do uporzadkowania, wiec zwiekszamy chwile czasowa
+            t = NN[mojeMin(NN)].r #najmniejsze r w zestawieniu nieuporzadkowanych
+        else:
+            j = mojeMax(NG) #index
+            sigma.append(NG[j]) #dodaje zadanie do wektora kolejnosci !!!
+            tempIter+=1
+            t = t + NG[j].p #dodaje czas trwania wybranego zadania
+            del NG[j]
+    liczba=0
+    wypelnijRozpoczeciaZadan(sigma)
+    wypelnijZakonczeniaZadan(sigma)
+    global tempcmax
+    tempcmax=funkcjaCelu(sigma)
+    return [tempcmax, sigma]
+
+
+def znajdzOstatnieZadanieNaSciezceKrytycznej(sigma):
+    #print("szukam ostatniego zadania na sciezce")
+    print()
+    maxIndex=-100
+    for i in range(0,len(l_zadania)):
+        a=funkcjaCelu(sigma)
+        b=sigma[i].zakonczenie
+        c=sigma[i].q
+        #print("i",i,"a=",a,"b=",b,"c=",c, "suma", b+c)
+        #if(funkcjaCelu(sigma)==l_zadania[i].zakonczenie + l_zadania[i].q):
+        if (a == b+c):
+            maxIndex=i
+    print("znalezione maxindex", maxIndex)
+    return maxIndex
+def znajdzPierwszeZadanieNaSciezceKrytycznej(sigma, IndeksOstatniegoZadania):
+    #print("szukam pierwszego zadania na sciezce")
+    print()
+    maxIndex = -100
+    for i in range(0, len(l_zadania)):
+        cmax=funkcjaCelu(sigma)
+        a = sigma[i].r
+        b = 0#tu bedzie sie dodawac p z kazdego kolejnego zadania w petli, todo
+        for s in range(i, IndeksOstatniegoZadania+1):
+            b+=sigma[s].p
+
+        c = sigma[IndeksOstatniegoZadania].q
+        #print("i", i, "a=", a, "b=", b, "c=", c,"cmax=",cmax ,"suma=", a+b + c, "index ostatniego zadania", IndeksOstatniegoZadania)
+        # if(funkcjaCelu(sigma)==l_zadania[i].zakonczenie + l_zadania[i].q):
+        if (cmax== a + b + c):
+            maxIndex = i
+            #print("#############$$$$$$$$$$")
+    print("znalezione maxindex", maxIndex)
+    return maxIndex
+
+def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
+    maxIndex=-100
+    for i in range(pierwszyIndexZadania, ostatniIndexZadania+1):
+        if(sigma[i].q<sigma[ostatniIndexZadania].q):
+            maxIndex=i
+    print("maxindex ostatnia", maxIndex)
+    return maxIndex
+
+def Carlier(l_zadania):
+    print("carlier")
+    global cmax
+    N=l_zadania
+    UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
+    LB=0 #dolne oszacowanie wartosci funkcji celu
+    PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
+    PI=[] #permutacja wykonania zadan na maszynie
+    U=0 #wartosc funkcji celu
+
+    temp=Schrage(l_zadania) #[0] - cmax    [1]-kolejnosc
+    PI=temp[1]
+    U=temp[0]
+    if(U<UB):
+        UB=U
+        PI_ST=PI
+
+    #tempblok
+
+    #wybor zadan
+    b=znajdzOstatnieZadanieNaSciezceKrytycznej(PI) #indeks ostatniego zadania
+    a=znajdzPierwszeZadanieNaSciezceKrytycznej(PI, b)
+    c=znajdzZadanieKrytyczne(l_zadania,a,b)
+
+    if(c==0):
+        return PI_ST
+    Kr = 99999
+    Kp = 99999
+    Kq = 99999
+    Khr = 99999
+    Khp = 99999
+    Khq = 99999
+
+    for i in range (c+1,b):
+        Kr = min(Kr,PI[i].r)
+        Kp += PI[i].p
+        Kq = min(Kq,PI[i].q)
+    Kh = Kr + Kp + Kq
+    for j in range(c, b):
+        Khr = min(Khr, PI[j].r)
+        Khp += PI[j].p
+        Khq = min(Kq, PI[j].q)
+    Khc = Khr + Khp + Khq
+    PI[c].r = max(PI[c].r,Kr+Kp)
+    LB = Schrage_z_przerwaniami(l_zadania)[0]
+    LB = max(Kh,Khc,LB)
+    if(LB < UB):
+        Carlier(l_zadania)
+    Z = PI[c].r
+    print('inne',Z)
+    PI[c].q = max(PI[c].q,Kq+Kp)
+    LB = Schrage_z_przerwaniami(l_zadania)[0]
+    LB = max(Kh, Khc, LB)
+    if LB < UB:
+        Carlier(l_zadania)
+    Z = PI[c].q
+    cmax =funkcjaCelu()
+
+
+
+def wypelnijRozpoczeciaZadan(sigma):
+    poprzednieZadanie=None
+    for zadanie in sigma:
+        if(not (poprzednieZadanie is None)):
+            zadanie.rozpoczecie=max(zadanie.r, poprzednieZadanie.rozpoczecie + poprzednieZadanie.p)
+        poprzednieZadanie = zadanie
+def wypelnijZakonczeniaZadan(sigma):
+    for zadanie in sigma:
+        zadanie.zakonczenie=zadanie.rozpoczecie+zadanie.p
+
+def funkcjaCelu(sigma):
+    max=0
+    for zadanie in sigma:
+        cmax= zadanie.zakonczenie+zadanie.q
+        if(cmax>max):
+            max=cmax
+
+    return max
+
+def Schrage_z_przerwaniami(l_zadania):
+    #inicjalizacja
+    NN=[]
+    NG=[]
+    sigma=[]
+
+    N=l_zadania
+    NN=N #zadania nieuszeregowane
+    NG=[] # zadania gotowe
+    t=0 #chwila czasowa #todo: poprawic z zera
+    global cmax
+    i=1
+    l=Zadanie(0,0,999999,0)
+    cmax=0 #todo: change it
+
+    tempIter=0
+    while((NG != []) or (NN != [])): #szukanie zadan gotowych do uszeregowania (rj<=t)
+        while((NN != []) and (NN[mojeMin(NN)].r <= t)):
+            j = mojeMin(NN)
+            NG.append(NN[j]) #dodaje do zbioru zadan gotowych`
+             #usuwam ze zbioru zadan nieuszeregowanych
+            if (NN[j].q > l.q):
+                l.p = t - NN[j].r
+                t = NN[j].r
+
+                if(l.p > 0):
+                    NG.append(l)
+            del NN[j]
+        if(NG ==[]): #brak zadan do uporzadkowania, wiec zwiekszamy chwile czasowa
+            t = NN[mojeMin(NN)].r #najmniejsze r w zestawieniu nieuporzadkowanych
+        else:
+            j = mojeMax(NG) #index
+            #k = k +1
+            sigma.append(NG[j])
+            l = NG[j]
+            t = t + NG[j].p #dodaje czas trwania wybranego zadania
+            cmax = max(cmax, t + NG[j].q)
+            del NG[j]
+
+    return [cmax, sigma]
+def srednia(arg_start, arg_stop):
+    suma=0
+    for a in arg_start:
+        suma+=a
+    sredni_start=suma/len(arg_start)
+    suma = 0
+    for b in arg_stop:
+        suma += b
+    sredni_stop = suma / len(arg_stop)
+    return [sredni_start, sredni_stop]
+# glowna czesc
+print("SPDLab 5")
+wczytajDaneZFolderu(nazwaKatalogu)
+for nazwaPliku in l_nazwyPlikow:
+    print("###########################################################")
+    print("*nazwa przetwarzanego pliku", nazwaPliku)
+    cmaxSchrage=0
+    cmaxPrzerwania=0
+    tempcmax = 0
+    cmax = 0
+
+    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    Schrage(l_zadania)
+    print("cmax Schrage=", tempcmax)
+    Schrage_z_przerwaniami(l_zadania)
+    print('cmax Schrage z przerwaniami:', cmax)
+    #Carlier(l_zadania)
+    #print("cmax Carier=", cmax)
