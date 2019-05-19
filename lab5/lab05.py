@@ -196,7 +196,7 @@ def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
 
 def Carlier(l_zadania):
     print("carlier")
-    global cmax
+    global tecmax
     N=l_zadania
     UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
     LB=0 #dolne oszacowanie wartosci funkcji celu
@@ -237,20 +237,21 @@ def Carlier(l_zadania):
         Khp += PI[j].p
         Khq = min(Kq, PI[j].q)
     Khc = Khr + Khp + Khq
+    StoreR = PI[c].r
     PI[c].r = max(PI[c].r,Kr+Kp)
     LB = Schrage_z_przerwaniami(l_zadania)[0]
     LB = max(Kh,Khc,LB)
     if(LB < UB):
         Carlier(l_zadania)
-    Z = PI[c].r
-    print('inne',Z)
+    PI[c].r = StoreR
+    StoreQ=PI[c].q
     PI[c].q = max(PI[c].q,Kq+Kp)
     LB = Schrage_z_przerwaniami(l_zadania)[0]
     LB = max(Kh, Khc, LB)
     if LB < UB:
         Carlier(l_zadania)
-    Z = PI[c].q
-    cmax =funkcjaCelu()
+    PI[c].q = StoreQ
+    #tecmax =funkcjaCelu()
 
 
 
@@ -339,5 +340,5 @@ for nazwaPliku in l_nazwyPlikow:
     print("cmax Schrage=", tempcmax)
     Schrage_z_przerwaniami(l_zadania)
     print('cmax Schrage z przerwaniami:', cmax)
-    #Carlier(l_zadania)
+    Carlier(l_zadania)
     #print("cmax Carier=", cmax)
