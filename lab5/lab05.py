@@ -4,6 +4,7 @@ from dataclasses import dataclass
 
 print("SPD Lab 05")
 carliercmax=0
+znalezionoOptymalneRozwiazanie=False
 # zmienne poczatkowe
 
 @dataclass
@@ -202,6 +203,7 @@ def Carlier(arg_l_zadania):
     global carliercmax
     global tecmax
     global N
+    global znalezionoOptymalneRozwiazanie
     global UB
     global LB
     global PI_ST
@@ -241,6 +243,7 @@ def Carlier(arg_l_zadania):
     if(c==0): #znaleziono optymalna kolejnosc
         #print("znaleziono optymalna kolejnosc!, nowa kolejnosc", PI_ST)
         optKol=PI_ST.copy()
+        znalezionoOptymalneRozwiazanie=True
         return optKol
 
     #for i in range(c + 1, b + 1):
@@ -372,6 +375,10 @@ for nazwaPliku in l_nazwyPlikow:
     print('cmax Schrage z przerwaniami:', cmax)
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     #print("####### CARLIER ##########################################")
+    znalezionoOptymalneRozwiazanie=False
     Carlier(l_zadania)
-    print("cmax Carlier=", funkcjaCelu(PI_ST), "optymalna kolejnosc=",PI_ST)
+    if(znalezionoOptymalneRozwiazanie):
+        print("cmax Carlier=", funkcjaCelu(PI_ST), "optymalna kolejnosc=",PI_ST)
+    else:
+        print("Carlier: nie znaleziono optymalnego rozwiazania!")
     #print("cmax Carier=", cmax)1
