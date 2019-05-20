@@ -114,13 +114,13 @@ def mojeMax(NG): #zwraca indeks elementu w NN o najmniejszym r
     return maxindex#zwraca index minimalnej wartosci
 
 
-def Schrage(l_zadania):
+def Schrage(arg_l_zadania):
     #inicjalizacja
     NN=[]
     NG=[]
     sigma=[]
 
-    N=l_zadania.copy()
+    N=arg_l_zadania.copy()
     NN=N #zadania nieuszeregowane
     NG=[] # zadania gotowe
     t=0 #chwila czasowa #todo: poprawic z zera
@@ -156,7 +156,7 @@ def znajdzOstatnieZadanieNaSciezceKrytycznej(sigma):
     #print("szukam ostatniego zadania na sciezce")
     print()
     maxIndex=-100
-    for i in range(0,len(l_zadania)):
+    for i in range(0,len(sigma)):
         a=funkcjaCelu(sigma)
         b=sigma[i].zakonczenie
         c=sigma[i].q
@@ -164,13 +164,13 @@ def znajdzOstatnieZadanieNaSciezceKrytycznej(sigma):
         #if(funkcjaCelu(sigma)==l_zadania[i].zakonczenie + l_zadania[i].q):
         if (a == b+c):
             maxIndex=i
-    print("znalezione maxindex", maxIndex)
+    #print("znalezione maxindex", maxIndex)
     return maxIndex
 def znajdzPierwszeZadanieNaSciezceKrytycznej(sigma, IndeksOstatniegoZadania):
     #print("szukam pierwszego zadania na sciezce")
-    print()
+    #print()
     maxIndex = -100
-    for i in range(0, len(l_zadania)):
+    for i in range(0, len(sigma)):
         cmax=funkcjaCelu(sigma)
         a = sigma[i].r
         b = 0#tu bedzie sie dodawac p z kazdego kolejnego zadania w petli, todo
@@ -183,16 +183,16 @@ def znajdzPierwszeZadanieNaSciezceKrytycznej(sigma, IndeksOstatniegoZadania):
         if (cmax== a + b + c):
             maxIndex = i
             #print("#############$$$$$$$$$$")
-    print("znalezione maxindex", maxIndex)
+    #print("znalezione maxindex", maxIndex)
     return maxIndex
 
 def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
     maxIndex=-100
-    print("liczba zadan=",len(sigma), "pierwszy index=",pierwszyIndexZadania, "ostatni index", ostatniIndexZadania)
+    #print("liczba zadan=",len(sigma), "pierwszy index=",pierwszyIndexZadania, "ostatni index", ostatniIndexZadania)
     for i in range(pierwszyIndexZadania, ostatniIndexZadania+1):
         if(sigma[i].q<sigma[ostatniIndexZadania].q):
             maxIndex=i
-    print("maxindex ostatnia", maxIndex)
+    #print("maxindex ostatnia", maxIndex)
     return maxIndex
 
 N=l_zadania
@@ -201,7 +201,7 @@ LB=0 #dolne oszacowanie wartosci funkcji celu
 PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
 PI=[] #permutacja wykonania zadan na maszynie
 U=0 #wartosc funkcji celu
-def Carlier(l_zadania):
+def Carlier(arg_l_zadania):
     print("carlier")
     global tecmax
     global N
@@ -210,14 +210,14 @@ def Carlier(l_zadania):
     global PI_ST
     global PI
     global U
-    N=l_zadania.copy()
+    N=arg_l_zadania.copy()
     #UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
     #LB=0 #dolne oszacowanie wartosci funkcji celu
     #PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
     #PI=[] #permutacja wykonania zadan na maszynie
     #U=0 #wartosc funkcji celu
 
-    temp=Schrage(l_zadania) #[0] - cmax    [1]-kolejnosc
+    temp=Schrage(arg_l_zadania) #[0] - cmax    [1]-kolejnosc
     print("$$$$$$wynik dzialania schrage",temp)
     PI=temp[1] #kolejnosc uzyskana z algorytmu Schrage
     U=temp[0] #cmax uzyskany z algorytmu Schrage
@@ -232,8 +232,8 @@ def Carlier(l_zadania):
     #wybor zadan
     b=znajdzOstatnieZadanieNaSciezceKrytycznej(PI) #indeks ostatniego zadania
     a=znajdzPierwszeZadanieNaSciezceKrytycznej(PI, b)
-    c=znajdzZadanieKrytyczne(l_zadania,a,b)
-
+    c=znajdzZadanieKrytyczne(PI,a,b)
+    print("a=",a,"b=",b,"c=",c)
     if(c==0): #znaleziono optymalna kolejnosc
         print("znaleziono optymalna kolejnosc!")
         return PI_ST
@@ -258,19 +258,19 @@ def Carlier(l_zadania):
         Khq = min(Kq, PI[j].q)
     Khc = Khr + Khp + Khq #h(K)
     StoreR = PI[c].r #zapamietaj r_pi(c)
-    l_zadania[c].r= max(l_zadania[c].r, Kr + Kp)
-    LB = Schrage_z_przerwaniami(l_zadania)[0]
+    PI[c].r= max(PI[c].r, Kr + Kp)
+    LB = Schrage_z_przerwaniami(PI)[0]
     LB = max(Kh,Khc,LB)
     if(LB < UB):
-        Carlier(l_zadania) #tworze nowy wezel ze zmodyfikowanym r
-    l_zadania[c].r = StoreR #odtworz r_pi(c)
+        Carlier(PI) #tworze nowy wezel ze zmodyfikowanym r
+    PI[c].r = StoreR #odtworz r_pi(c)
     StoreQ=PI[c].q #zapamietaj q_pi(c)
-    l_zadania[c].q = max(l_zadania[c].q, Kq + Kp)
-    LB = Schrage_z_przerwaniami(l_zadania)[0]
+    PI[c].q = max(PI[c].q, Kq + Kp)
+    LB = Schrage_z_przerwaniami(PI)[0]
     LB = max(Kh, Khc, LB)
     if LB < UB:
-        Carlier(l_zadania) #tworze nowy wezel ze zmodyfikowanym q
-    l_zadania[c].q= StoreQ #odtworz q_pi(c)
+        Carlier(PI) #tworze nowy wezel ze zmodyfikowanym q
+    PI[c].q= StoreQ #odtworz q_pi(c)
     #tecmax =funkcjaCelu()
 
 
@@ -294,13 +294,13 @@ def funkcjaCelu(sigma):
 
     return max
 
-def Schrage_z_przerwaniami(l_zadania):
+def Schrage_z_przerwaniami(arg_l_zadania):
     #inicjalizacja
     NN=[]
     NG=[]
     sigma=[]
 
-    N=l_zadania.copy()
+    N=arg_l_zadania.copy()
     NN=N #zadania nieuszeregowane
     NG=[] # zadania gotowe
     t=0 #chwila czasowa #todo: poprawic z zera
