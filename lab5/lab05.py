@@ -3,7 +3,7 @@ import time
 from dataclasses import dataclass
 
 print("SPD Lab 05")
-
+carliercmax=0
 # zmienne poczatkowe
 
 @dataclass
@@ -153,7 +153,7 @@ def Schrage(arg_l_zadania):
 
 
 def znajdzOstatnieZadanieNaSciezceKrytycznej(sigma):
-    print()
+    #print()
     maxIndex=-100
     for i in range(0,len(sigma)):
         a=funkcjaCelu(sigma)
@@ -198,7 +198,8 @@ Khr = 99999
 Khp = 0
 Khq = 99999
 def Carlier(arg_l_zadania):
-    print("carlier")
+    #print("carlier")
+    global carliercmax
     global tecmax
     global N
     global UB
@@ -223,11 +224,11 @@ def Carlier(arg_l_zadania):
     #print("$$$$$$wynik dzialania schrage",temp)
     PI=temp[1] #kolejnosc uzyskana z algorytmu Schrage
     U=temp[0] #cmax uzyskany z algorytmu Schrage
-    print("U=",U," UB=",UB)
+    #print("U=",U," UB=",UB)
     if(U<UB): #znaleziono lepsze rozwiazanie
         UB=U
         PI_ST=PI.copy() #najlepsze rozwiazanie do tej pory
-        print("znaleziono dobre rozw")
+        #print("znaleziono dobre rozw, kolejnosc", PI)
 
    # print("%$#kolejnosc",PI_ST)
 
@@ -236,10 +237,11 @@ def Carlier(arg_l_zadania):
     b=znajdzOstatnieZadanieNaSciezceKrytycznej(PI) #indeks ostatniego zadania
     a=znajdzPierwszeZadanieNaSciezceKrytycznej(PI, b)
     c=znajdzZadanieKrytyczne(PI,a,b)
-    print("a=",a,"b=",b,"c=",c)
+    #print("a=",a,"b=",b,"c=",c)
     if(c==0): #znaleziono optymalna kolejnosc
-        print("znaleziono optymalna kolejnosc!")
-        return PI_ST
+        #print("znaleziono optymalna kolejnosc!, nowa kolejnosc", PI_ST)
+        optKol=PI_ST.copy()
+        return optKol
 
     #for i in range(c + 1, b + 1):
 
@@ -248,11 +250,11 @@ def Carlier(arg_l_zadania):
     Kq=999999
     Kp=0
     for i in range (c+1,b+1):
-        print("~~~~ maxrange",b+1, "size", len(PI))
+        #print("~~~~ maxrange",b+1, "size", len(PI))
         Kr = min(Kr,PI[i].r)
         Kp += PI[i].p
         Kq = min(Kq,PI[i].q)
-        print("Znalezione kr=",Kr, " kp=",Kp, " Kq=", Kq)
+        #print("Znalezione kr=",Kr, " kp=",Kp, " Kq=", Kq)
     Kh = Kr + Kp + Kq
     Khp=0
     Khr=99999
@@ -266,7 +268,7 @@ def Carlier(arg_l_zadania):
     PI[c].r= max(PI[c].r, Kr + Kp)
     LB = Schrage_z_przerwaniami(PI)[0]
     LB = max(Kh,Khc,LB)
-    print("1: LB=", LB, "UB=", UB)
+    #print("1: LB=", LB, "UB=", UB)
     if(LB < UB):
         Carlier(PI) #tworze nowy wezel ze zmodyfikowanym r
     PI[c].r = StoreR #odtworz r_pi(c)
@@ -274,7 +276,7 @@ def Carlier(arg_l_zadania):
     PI[c].q = max(PI[c].q, Kq + Kp)
     LB = Schrage_z_przerwaniami(PI)[0]
     LB = max(Kh, Khc, LB)
-    print("2: LB=",LB,"UB=",UB)
+    #print("2: LB=",LB,"UB=",UB)
     if LB < UB:
         Carlier(PI) #tworze nowy wezel ze zmodyfikowanym q
     PI[c].q=StoreQ #odtworz q_pi(c)
@@ -362,14 +364,14 @@ for nazwaPliku in l_nazwyPlikow:
     tempcmax = 0
     cmax = 0
 
-    #wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    #Schrage(l_zadania)
-    #print("cmax Schrage=", tempcmax)
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    #Schrage_z_przerwaniami(l_zadania)
-    #print('cmax Schrage z przerwaniami:', cmax)
-    #wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    Schrage(l_zadania)
+    print("cmax Schrage=", tempcmax)
+    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    Schrage_z_przerwaniami(l_zadania)
+    print('cmax Schrage z przerwaniami:', cmax)
+    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     #print("####### CARLIER ##########################################")
-    optymalnaKolejnosc= Carlier(l_zadania)
-    print("optymalna kolejnosc=",optymalnaKolejnosc)
-    #print("cmax Carier=", cmax)
+    Carlier(l_zadania)
+    print("cmax Carlier=", funkcjaCelu(PI_ST), "optymalna kolejnosc=",PI_ST)
+    #print("cmax Carier=", cmax)1
