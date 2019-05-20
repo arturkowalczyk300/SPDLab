@@ -181,6 +181,8 @@ def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
     for i in range(pierwszyIndexZadania, ostatniIndexZadania+1):
         if(sigma[i].q<sigma[ostatniIndexZadania].q):
             maxIndex=i
+    if(maxIndex==-100):
+        return 0
     return maxIndex
 
 N=l_zadania
@@ -225,7 +227,7 @@ def Carlier(arg_l_zadania):
     if(U<UB): #znaleziono lepsze rozwiazanie
         UB=U
         PI_ST=PI.copy() #najlepsze rozwiazanie do tej pory
-        print("XDD znaleziono dobre rozw")
+        print("znaleziono dobre rozw")
 
    # print("%$#kolejnosc",PI_ST)
 
@@ -246,6 +248,7 @@ def Carlier(arg_l_zadania):
     Kq=999999
     Kp=0
     for i in range (c+1,b+1):
+        print("~~~~ maxrange",b+1, "size", len(PI))
         Kr = min(Kr,PI[i].r)
         Kp += PI[i].p
         Kq = min(Kq,PI[i].q)

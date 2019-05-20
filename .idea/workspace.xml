@@ -11,15 +11,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SPDLab$lab05.coverage" NAME="lab05 Coverage Results" MODIFIED="1558346453119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab5" />
+    <SUITE FILE_PATH="coverage/SPDLab$lab05.coverage" NAME="lab05 Coverage Results" MODIFIED="1558346780713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab5" />
   </component>
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lab5/lab05.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="254" column="13" lean-forward="true" selection-start-line="254" selection-start-column="13" selection-end-line="254" selection-end-column="13" />
+            <state relative-caret-position="141">
+              <caret line="239" column="26" lean-forward="true" selection-start-line="239" selection-start-column="26" selection-end-line="239" selection-end-column="26" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -32,6 +32,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>carlier</find>
+      <find>-100</find>
+      <find>XDD</find>
+      <find>znaleziono</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,12 +135,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1558345699371</updated>
-      <workItem from="1558345704169" duration="794000" />
+      <workItem from="1558345704169" duration="1072000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="794000" />
+    <option name="totallyTimeSpent" value="1072000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -176,8 +179,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/lab5/lab05.py</url>
-          <line>257</line>
-          <option name="timeStamp" value="7" />
+          <line>235</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -185,8 +188,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lab5/lab05.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="254" column="13" lean-forward="true" selection-start-line="254" selection-start-column="13" selection-end-line="254" selection-end-column="13" />
+        <state relative-caret-position="141">
+          <caret line="239" column="26" lean-forward="true" selection-start-line="239" selection-start-column="26" selection-end-line="239" selection-end-column="26" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
