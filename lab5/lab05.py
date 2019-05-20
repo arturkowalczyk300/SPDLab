@@ -242,16 +242,22 @@ def Carlier(arg_l_zadania):
     #for i in range(c + 1, b + 1):
 
     #linia 13, szukamy czasow spelniajacych podane kryteria
+    Kr=999999
+    Kq=999999
+    Kp=0
     for i in range (c+1,b+1):
         Kr = min(Kr,PI[i].r)
         Kp += PI[i].p
         Kq = min(Kq,PI[i].q)
         print("Znalezione kr=",Kr, " kp=",Kp, " Kq=", Kq)
     Kh = Kr + Kp + Kq
+    Khp=0
+    Khr=99999
+    Khq=99999
     for j in range(c, b+1):
         Khr = min(Khr, PI[j].r)
         Khp += PI[j].p
-        Khq = min(Kq, PI[j].q)
+        Khq = min(Kq, PI[j].q) #to tez zle
     Khc = Khr + Khp + Khq #h(K)
     StoreR = PI[c].r #zapamietaj r_pi(c)
     PI[c].r= max(PI[c].r, Kr + Kp)
