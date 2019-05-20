@@ -189,6 +189,12 @@ LB=0 #dolne oszacowanie wartosci funkcji celu
 PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
 PI=[] #permutacja wykonania zadan na maszynie
 U=0 #wartosc funkcji celu
+Kr = 99999
+Kp = 0
+Kq = 99999
+Khr = 99999
+Khp = 0
+Khq = 99999
 def Carlier(arg_l_zadania):
     print("carlier")
     global tecmax
@@ -198,6 +204,12 @@ def Carlier(arg_l_zadania):
     global PI_ST
     global PI
     global U
+    global Kr
+    global Kp
+    global Kq
+    global Khr
+    global Khp
+    global Khq
     #N=arg_l_zadania.copy()
     #UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
     #LB=0 #dolne oszacowanie wartosci funkcji celu
@@ -226,12 +238,7 @@ def Carlier(arg_l_zadania):
     if(c==0): #znaleziono optymalna kolejnosc
         print("znaleziono optymalna kolejnosc!")
         return PI_ST
-    Kr = 99999
-    Kp = 99999
-    Kq = 99999
-    Khr = 99999
-    Khp = 99999
-    Khq = 99999
+
     #for i in range(c + 1, b + 1):
 
     #linia 13, szukamy czasow spelniajacych podane kryteria
@@ -250,6 +257,7 @@ def Carlier(arg_l_zadania):
     PI[c].r= max(PI[c].r, Kr + Kp)
     LB = Schrage_z_przerwaniami(PI)[0]
     LB = max(Kh,Khc,LB)
+    print("1: LB=", LB, "UB=", UB)
     if(LB < UB):
         Carlier(PI) #tworze nowy wezel ze zmodyfikowanym r
     PI[c].r = StoreR #odtworz r_pi(c)
@@ -257,9 +265,10 @@ def Carlier(arg_l_zadania):
     PI[c].q = max(PI[c].q, Kq + Kp)
     LB = Schrage_z_przerwaniami(PI)[0]
     LB = max(Kh, Khc, LB)
+    print("2: LB=",LB,"UB=",UB)
     if LB < UB:
         Carlier(PI) #tworze nowy wezel ze zmodyfikowanym q
-    PI[c].q= StoreQ #odtworz q_pi(c)
+    PI[c].q=StoreQ #odtworz q_pi(c)
     #tecmax =funkcjaCelu()
 
 
