@@ -267,7 +267,7 @@ def Carlier(arg_l_zadania):
     for j in range(c, b+1):
         Khr = min(Khr, PI[j].r)
         Khp += PI[j].p
-        Khq = min(Kq, PI[j].q)
+        Khq = min(Khq, PI[j].q)
     Khc = Khr + Khp + Khq #h(K)
     StoreR = PI[c].r #zapamietaj r_pi(c)
     PI[c].r= max(PI[c].r, Kr + Kp)
