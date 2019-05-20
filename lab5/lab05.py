@@ -195,31 +195,47 @@ def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
     print("maxindex ostatnia", maxIndex)
     return maxIndex
 
+N=l_zadania
+UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
+LB=0 #dolne oszacowanie wartosci funkcji celu
+PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
+PI=[] #permutacja wykonania zadan na maszynie
+U=0 #wartosc funkcji celu
 def Carlier(l_zadania):
     print("carlier")
     global tecmax
-    N=l_zadania
-    UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
-    LB=0 #dolne oszacowanie wartosci funkcji celu
-    PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
-    PI=[] #permutacja wykonania zadan na maszynie
-    U=0 #wartosc funkcji celu
+    global N
+    global UB
+    global LB
+    global PI_ST
+    global PI
+    global U
+    N=l_zadania.copy()
+    #UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
+    #LB=0 #dolne oszacowanie wartosci funkcji celu
+    #PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
+    #PI=[] #permutacja wykonania zadan na maszynie
+    #U=0 #wartosc funkcji celu
 
     temp=Schrage(l_zadania) #[0] - cmax    [1]-kolejnosc
-    PI=temp[1]
-    U=temp[0]
+    print("$$$$$$wynik dzialania schrage",temp)
+    PI=temp[1] #kolejnosc uzyskana z algorytmu Schrage
+    U=temp[0] #cmax uzyskany z algorytmu Schrage
     if(U<UB):
         UB=U
-        PI_ST=PI
+        PI_ST=PI.copy()
+        print("XDD znaleziono dobre rozw")
 
-    #tempblok
+    print("%$#kolejnosc",PI_ST)
+
 
     #wybor zadan
     b=znajdzOstatnieZadanieNaSciezceKrytycznej(PI) #indeks ostatniego zadania
     a=znajdzPierwszeZadanieNaSciezceKrytycznej(PI, b)
     c=znajdzZadanieKrytyczne(l_zadania,a,b)
 
-    if(c==0):
+    if(c==0): #znaleziono optymalna kolejnosc
+        print("znaleziono optymalna kolejnosc!")
         return PI_ST
     Kr = 99999
     Kp = 99999
@@ -227,31 +243,34 @@ def Carlier(l_zadania):
     Khr = 99999
     Khp = 99999
     Khq = 99999
+    #for i in range(c + 1, b + 1):
 
-    for i in range (c+1,b):
+    #linia 13, szukamy czasow spelniajacych podane kryteria
+    for i in range (c+1,b+1):
         Kr = min(Kr,PI[i].r)
         Kp += PI[i].p
         Kq = min(Kq,PI[i].q)
+        print("Znalezione kr=",Kr, " kp=",Kp, " Kq=", Kq)
     Kh = Kr + Kp + Kq
-    for j in range(c, b):
+    for j in range(c, b+1):
         Khr = min(Khr, PI[j].r)
         Khp += PI[j].p
         Khq = min(Kq, PI[j].q)
-    Khc = Khr + Khp + Khq
-    StoreR = PI[c].r
-    PI[c].r = max(PI[c].r,Kr+Kp)
+    Khc = Khr + Khp + Khq #h(K)
+    StoreR = PI[c].r #zapamietaj r_pi(c)
+    l_zadania[c].r= max(l_zadania[c].r, Kr + Kp)
     LB = Schrage_z_przerwaniami(l_zadania)[0]
     LB = max(Kh,Khc,LB)
     if(LB < UB):
-        Carlier(l_zadania)
-    PI[c].r = StoreR
-    StoreQ=PI[c].q
-    PI[c].q = max(PI[c].q,Kq+Kp)
+        Carlier(l_zadania) #tworze nowy wezel ze zmodyfikowanym r
+    l_zadania[c].r = StoreR #odtworz r_pi(c)
+    StoreQ=PI[c].q #zapamietaj q_pi(c)
+    l_zadania[c].q = max(l_zadania[c].q, Kq + Kp)
     LB = Schrage_z_przerwaniami(l_zadania)[0]
     LB = max(Kh, Khc, LB)
     if LB < UB:
-        Carlier(l_zadania)
-    PI[c].q = StoreQ
+        Carlier(l_zadania) #tworze nowy wezel ze zmodyfikowanym q
+    l_zadania[c].q= StoreQ #odtworz q_pi(c)
     #tecmax =funkcjaCelu()
 
 
@@ -281,7 +300,7 @@ def Schrage_z_przerwaniami(l_zadania):
     NG=[]
     sigma=[]
 
-    N=l_zadania
+    N=l_zadania.copy()
     NN=N #zadania nieuszeregowane
     NG=[] # zadania gotowe
     t=0 #chwila czasowa #todo: poprawic z zera
@@ -344,5 +363,6 @@ for nazwaPliku in l_nazwyPlikow:
     print('cmax Schrage z przerwaniami:', cmax)
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     print("####### CARLIER ##########################################")
-    Carlier(l_zadania)
+    optymalnaKolejnosc= Carlier(l_zadania)
+    print("optymalna kolejnosc=",optymalnaKolejnosc)
     #print("cmax Carier=", cmax)
