@@ -196,7 +196,7 @@ def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
     return maxIndex
 
 N=l_zadania
-UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
+UB=999999 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
 LB=0 #dolne oszacowanie wartosci funkcji celu
 PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
 PI=[] #permutacja wykonania zadan na maszynie
@@ -210,7 +210,7 @@ def Carlier(arg_l_zadania):
     global PI_ST
     global PI
     global U
-    N=arg_l_zadania.copy()
+    #N=arg_l_zadania.copy()
     #UB=0 #gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
     #LB=0 #dolne oszacowanie wartosci funkcji celu
     #PI_ST=[] #optymalna permutacja wykonania zadan na maszynie
@@ -218,15 +218,16 @@ def Carlier(arg_l_zadania):
     #U=0 #wartosc funkcji celu
 
     temp=Schrage(arg_l_zadania) #[0] - cmax    [1]-kolejnosc
-    print("$$$$$$wynik dzialania schrage",temp)
+    #print("$$$$$$wynik dzialania schrage",temp)
     PI=temp[1] #kolejnosc uzyskana z algorytmu Schrage
     U=temp[0] #cmax uzyskany z algorytmu Schrage
-    if(U<UB):
+    print("U=",U," UB=",UB)
+    if(U<UB): #znaleziono lepsze rozwiazanie
         UB=U
-        PI_ST=PI.copy()
+        PI_ST=PI.copy() #najlepsze rozwiazanie do tej pory
         print("XDD znaleziono dobre rozw")
 
-    print("%$#kolejnosc",PI_ST)
+   # print("%$#kolejnosc",PI_ST)
 
 
     #wybor zadan
@@ -355,14 +356,14 @@ for nazwaPliku in l_nazwyPlikow:
     tempcmax = 0
     cmax = 0
 
+    #wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    #Schrage(l_zadania)
+    #print("cmax Schrage=", tempcmax)
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    Schrage(l_zadania)
-    print("cmax Schrage=", tempcmax)
-    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    Schrage_z_przerwaniami(l_zadania)
-    print('cmax Schrage z przerwaniami:', cmax)
-    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
-    print("####### CARLIER ##########################################")
+    #Schrage_z_przerwaniami(l_zadania)
+    #print('cmax Schrage z przerwaniami:', cmax)
+    #wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    #print("####### CARLIER ##########################################")
     optymalnaKolejnosc= Carlier(l_zadania)
     print("optymalna kolejnosc=",optymalnaKolejnosc)
     #print("cmax Carier=", cmax)
