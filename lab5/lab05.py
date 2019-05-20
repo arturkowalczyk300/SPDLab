@@ -223,6 +223,7 @@ def Carlier(arg_l_zadania):
     #PI=[] #permutacja wykonania zadan na maszynie
     #U=0 #wartosc funkcji celu
 
+    #print("####GALAZ####")
     temp=Schrage(arg_l_zadania) #[0] - cmax    [1]-kolejnosc
     #print("$$wynik dzialania schrage",temp)
     PI=temp[1] #kolejnosc uzyskana z algorytmu Schrage

@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8831586-80b2-4798-b726-6cebb9274cca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab5/daneLab5/data.003.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab5/daneLab5/data.006.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab5/daneLab5/data.008.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lab5/lab05.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/lab05.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,15 +11,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SPDLab$lab05.coverage" NAME="lab05 Coverage Results" MODIFIED="1558359491495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab5" />
+    <SUITE FILE_PATH="coverage/SPDLab$lab05.coverage" NAME="lab05 Coverage Results" MODIFIED="1558361563841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab5" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lab5/lab05.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="270" column="4" lean-forward="true" selection-start-line="261" selection-start-column="4" selection-end-line="270" selection-end-column="4" />
+            <state relative-caret-position="102">
+              <caret line="225" column="4" selection-start-line="225" selection-start-column="4" selection-end-line="225" selection-end-column="4" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -65,17 +61,15 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -98,6 +92,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -161,22 +156,23 @@
       <workItem from="1558345704169" duration="1878000" />
       <workItem from="1558357863310" duration="1294000" />
       <workItem from="1558359242008" duration="245000" />
+      <workItem from="1558361439402" duration="160000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4321000" />
+    <option name="totallyTimeSpent" value="4481000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18821605" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19312602" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -202,8 +198,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lab5/lab05.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="270" column="4" lean-forward="true" selection-start-line="261" selection-start-column="4" selection-end-line="270" selection-end-column="4" />
+        <state relative-caret-position="102">
+          <caret line="225" column="4" selection-start-line="225" selection-start-column="4" selection-end-line="225" selection-end-column="4" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
