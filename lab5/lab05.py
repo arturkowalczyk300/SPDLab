@@ -178,6 +178,7 @@ def znajdzPierwszeZadanieNaSciezceKrytycznej(sigma, IndeksOstatniegoZadania):
     return maxIndex
 
 def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
+    #print("Pierwszy index zadania", pierwszyIndexZadania, " ostatni index=",ostatniIndexZadania)
     maxIndex=-100
     for i in range(pierwszyIndexZadania, ostatniIndexZadania+1):
         if(sigma[i].q<sigma[ostatniIndexZadania].q):
@@ -223,7 +224,7 @@ def Carlier(arg_l_zadania):
     #U=0 #wartosc funkcji celu
 
     temp=Schrage(arg_l_zadania) #[0] - cmax    [1]-kolejnosc
-    #print("$$$$$$wynik dzialania schrage",temp)
+    #print("$$wynik dzialania schrage",temp)
     PI=temp[1] #kolejnosc uzyskana z algorytmu Schrage
     U=temp[0] #cmax uzyskany z algorytmu Schrage
     #print("U=",U," UB=",UB)
@@ -232,7 +233,7 @@ def Carlier(arg_l_zadania):
         PI_ST=PI.copy() #najlepsze rozwiazanie do tej pory
         #print("znaleziono dobre rozw, kolejnosc", PI)
 
-   # print("%$#kolejnosc",PI_ST)
+    #print("%$#kolejnosc",PI_ST)
 
 
     #wybor zadan
@@ -265,7 +266,7 @@ def Carlier(arg_l_zadania):
     for j in range(c, b+1):
         Khr = min(Khr, PI[j].r)
         Khp += PI[j].p
-        Khq = min(Kq, PI[j].q) #to tez zle
+        Khq = min(Kq, PI[j].q)
     Khc = Khr + Khp + Khq #h(K)
     StoreR = PI[c].r #zapamietaj r_pi(c)
     PI[c].r= max(PI[c].r, Kr + Kp)
@@ -381,4 +382,17 @@ for nazwaPliku in l_nazwyPlikow:
         print("cmax Carlier=", funkcjaCelu(PI_ST), "optymalna kolejnosc=",PI_ST)
     else:
         print("Carlier: nie znaleziono optymalnego rozwiazania!")
+
+    N = l_zadania
+    UB = 999999  # gorne oszacowanie wartosci funkcji celu - dla najlepszego dotychczas rozwiazania
+    LB = 0  # dolne oszacowanie wartosci funkcji celu
+    PI_ST = []  # optymalna permutacja wykonania zadan na maszynie
+    PI = []  # permutacja wykonania zadan na maszynie
+    U = 0  # wartosc funkcji celu
+    Kr = 99999
+    Kp = 0
+    Kq = 99999
+    Khr = 99999
+    Khp = 0
+    Khq = 99999
     #print("cmax Carier=", cmax)1
