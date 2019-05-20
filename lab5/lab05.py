@@ -188,6 +188,7 @@ def znajdzPierwszeZadanieNaSciezceKrytycznej(sigma, IndeksOstatniegoZadania):
 
 def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
     maxIndex=-100
+    print("liczba zadan=",len(sigma), "pierwszy index=",pierwszyIndexZadania, "ostatni index", ostatniIndexZadania)
     for i in range(pierwszyIndexZadania, ostatniIndexZadania+1):
         if(sigma[i].q<sigma[ostatniIndexZadania].q):
             maxIndex=i
@@ -338,7 +339,10 @@ for nazwaPliku in l_nazwyPlikow:
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     Schrage(l_zadania)
     print("cmax Schrage=", tempcmax)
+    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     Schrage_z_przerwaniami(l_zadania)
     print('cmax Schrage z przerwaniami:', cmax)
+    wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
+    print("####### CARLIER ##########################################")
     Carlier(l_zadania)
     #print("cmax Carier=", cmax)
