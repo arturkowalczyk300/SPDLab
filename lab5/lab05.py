@@ -141,6 +141,7 @@ def Schrage(arg_l_zadania):
             t = NN[mojeMin(NN)].r #najmniejsze r w zestawieniu nieuporzadkowanych
         else:
             j = mojeMax(NG) #index
+            print("dbg: j=",j, "len(NG)=", len(NG))
             sigma.append(NG[j]) #dodaje zadanie do wektora kolejnosci !!!
             tempIter+=1
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
@@ -371,16 +372,16 @@ for nazwaPliku in l_nazwyPlikow:
 
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     Schrage(l_zadania)
-    print("cmax Schrage=", tempcmax)
+    #print("cmax Schrage=", tempcmax)
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     Schrage_z_przerwaniami(l_zadania)
-    print('cmax Schrage z przerwaniami:', cmax)
+    #print('cmax Schrage z przerwaniami:', cmax)
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     #print("####### CARLIER ##########################################")
     znalezionoOptymalneRozwiazanie=False
     Carlier(l_zadania)
     if(znalezionoOptymalneRozwiazanie):
-        print("cmax Carlier=", funkcjaCelu(PI_ST), "optymalna kolejnosc=",PI_ST)
+        print("cmax Carlier=", funkcjaCelu(PI_ST)) #, "optymalna kolejnosc=",PI_ST)
     else:
         print("Carlier: nie znaleziono optymalnego rozwiazania!")
 
