@@ -209,6 +209,7 @@ Kq = 99999
 Khr = 99999
 Khp = 0
 Khq = 99999
+listaKolejnosci=[]
 def Carlier(arg_l_zadania):
     #print("carlier")
     global carliercmax
@@ -256,7 +257,9 @@ def Carlier(arg_l_zadania):
         #print("znaleziono optymalna kolejnosc!, nowa kolejnosc", PI_ST)
         optKol=PI_ST.copy()
         znalezionoOptymalneRozwiazanie=True
-        return optKol
+        listaKolejnosci.append(optKol.copy())
+        print("dbg= znaleziono optymalna kolejnosc")
+        return optKol # to kolejnosc tylko w tym wezle !!!!!!!!
 
     #for i in range(c + 1, b + 1):
 
@@ -286,6 +289,7 @@ def Carlier(arg_l_zadania):
     #print("1: LB=", LB, "UB=", UB)
     if(LB < UB):
         Carlier(PI) #tworze nowy wezel ze zmodyfikowanym r
+        print("#tworze wezel#")
     PI[c].r = StoreR #odtworz r_pi(c)
     StoreQ=PI[c].q #zapamietaj q_pi(c)
     PI[c].q = max(PI[c].q, Kq + Kp)
@@ -294,6 +298,7 @@ def Carlier(arg_l_zadania):
     #print("2: LB=",LB,"UB=",UB)
     if LB < UB:
         Carlier(PI) #tworze nowy wezel ze zmodyfikowanym q
+        print("#tworze wezel#")
     PI[c].q=StoreQ #odtworz q_pi(c)
     #tecmax =funkcjaCelu()
 
@@ -388,12 +393,18 @@ for nazwaPliku in l_nazwyPlikow:
     wczytajDaneZPlikuSCHRAGE("daneLab5/" + nazwaPliku)
     #print("####### CARLIER ##########################################")
     znalezionoOptymalneRozwiazanie=False
+    listaKolejnosci.clear()
     Carlier(l_zadania)
     if znalezionoOptymalneRozwiazanie:
         uzyskanyCmax=funkcjaCelu(PI_ST)
         if prawidlowy_wynik==uzyskanyCmax:
             print("----PRAWIDLOWY WYNIK----")
         print("Carlier: prawidlowy cmax=", prawidlowy_wynik, "uzyskany cmax=", uzyskanyCmax)#, "optymalna kolejnosc=",PI_ST)
+
+        print("dbg testuje cala liste rozwiazan!!")
+        for kolejnosc in listaKolejnosci:
+            tempppcmax=funkcjaCelu(kolejnosc)
+            print(tempppcmax)
     else:
         print("Carlier: nie znaleziono optymalnego rozwiazania!")
 
