@@ -106,7 +106,7 @@ def mojeMin(NN): #zwraca indeks elementu w NN o najmniejszym r
     return minindex#zwraca index minimalnej wartosci
 
 def mojeMax(NG): #zwraca indeks elementu w NN o najmniejszym r
-    max=0
+    max=-100
     maxindex=-100
     for i in range(len(NG)):
         if(NG[i].q>max):
@@ -141,11 +141,12 @@ def Schrage(arg_l_zadania):
             t = NN[mojeMin(NN)].r #najmniejsze r w zestawieniu nieuporzadkowanych
         else:
             j = mojeMax(NG) #index
-            print("dbg: j=",j, "len(NG)=", len(NG))
+            #print("dbg: j=",j, "len(NG)=", len(NG))
             sigma.append(NG[j]) #dodaje zadanie do wektora kolejnosci !!!
             tempIter+=1
             t = t + NG[j].p #dodaje czas trwania wybranego zadania
             del NG[j]
+            #print("Udalo sie usunac!")
     liczba=0
     wypelnijRozpoczeciaZadan(sigma)
     wypelnijZakonczeniaZadan(sigma)
@@ -176,11 +177,14 @@ def znajdzPierwszeZadanieNaSciezceKrytycznej(sigma, IndeksOstatniegoZadania):
         c = sigma[IndeksOstatniegoZadania].q
         if (cmax== a + b + c):
             maxIndex = i
+    if(maxIndex==-100):
+        return 0
     return maxIndex
 
 def znajdzZadanieKrytyczne(sigma, pierwszyIndexZadania, ostatniIndexZadania):
     #print("Pierwszy index zadania", pierwszyIndexZadania, " ostatni index=",ostatniIndexZadania)
     maxIndex=-100
+    #print("dbg=pierwszyindex",pierwszyIndexZadania, "ostatniindex", ostatniIndexZadania, "len(sigma)", len(sigma))
     for i in range(pierwszyIndexZadania, ostatniIndexZadania+1):
         if(sigma[i].q<sigma[ostatniIndexZadania].q):
             maxIndex=i
