@@ -24,7 +24,7 @@ sigma=[]
 
 nazwaKatalogu = "daneLab5"  # od teraz bedzie wczytywac wszystkie instancje z katalogu
 l_nazwyPlikow = []
-
+prawidlowy_wynik=0
 
 m_liczbaZadan = 0
 l_czasTrwania = []  # lista zawierajaca czasy trwania na n maszynach (wiec lista dwuwymiarowa)
@@ -56,6 +56,7 @@ def wczytajDaneZFolderu(nazwaFolderu):
 def wczytajDaneZPlikuSCHRAGE(nazwaPliku):
     global l_zadania
     global liczba_zadan
+    global prawidlowy_wynik
     l_zadania.clear()
     wczytane.clear()
     plik_zadania = []
@@ -68,16 +69,20 @@ def wczytajDaneZPlikuSCHRAGE(nazwaPliku):
             for linia in tekst:
                 linia = linia.replace("\n", "")
                 linia = linia.replace("\r", "")
-                if iterator != 0:
+                if iterator >1:
                     plik_rpq = [int(s) for s in linia.split() if s.isdigit()]
                     r=plik_rpq[0]
                     p = plik_rpq[1]
                     q = plik_rpq[2]
                     l_zadania.append(Zadanie(r,p,q, iterator))
-                else:
+                elif iterator==1:
                     ustawienia = [int(s) for s in linia.split() if s.isdigit()]
                     liczba_zadan=ustawienia[0]
+                else: ##pierwsza linia - prawidlowy wynik
+                    prawidlowy_wynik=int(linia.split()[0])
+                    #print("prawidlowy", prawidlowy_wynik)
                 iterator = iterator + 1
+
     else:
         print("plik nie istnieje!!!")
 
@@ -384,8 +389,11 @@ for nazwaPliku in l_nazwyPlikow:
     #print("####### CARLIER ##########################################")
     znalezionoOptymalneRozwiazanie=False
     Carlier(l_zadania)
-    if(znalezionoOptymalneRozwiazanie):
-        print("cmax Carlier=", funkcjaCelu(PI_ST)) #, "optymalna kolejnosc=",PI_ST)
+    if znalezionoOptymalneRozwiazanie:
+        uzyskanyCmax=funkcjaCelu(PI_ST)
+        if prawidlowy_wynik==uzyskanyCmax:
+            print("----PRAWIDLOWY WYNIK----")
+        print("Carlier: prawidlowy cmax=", prawidlowy_wynik, "uzyskany cmax=", uzyskanyCmax)#, "optymalna kolejnosc=",PI_ST)
     else:
         print("Carlier: nie znaleziono optymalnego rozwiazania!")
 
