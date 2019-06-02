@@ -102,8 +102,8 @@ def Cp(jobs, instanceName):
         print(pi)
     else:
         print("Not optimal ! ")
-file_paths = ["daneLab5/"]
-#file_paths = ["data.000.txt", "daneLab5/data.001.txt", "daneLab5/data.002.txt", "daneLab5/data.003.txt","daneLab5/data.004.txt","daneLab5/data.005.txt", "daneLab5/data.006.txt","daneLab5/data.007.txt","daneLab5/data.008.txt"]
+
+file_paths = ["data.000.txt", "daneLab5/data.001.txt", "daneLab5/data.002.txt", "daneLab5/data.003.txt","daneLab5/data.004.txt","daneLab5/data.005.txt", "daneLab5/data.006.txt","daneLab5/data.007.txt","daneLab5/data.008.txt"]
 for i in range(len(file_paths)):
     jobs = GetRPQsFromFile(file_paths[i])
     Cp(jobs, file_paths[i])
